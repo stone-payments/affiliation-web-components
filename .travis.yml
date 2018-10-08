@@ -4,9 +4,18 @@ notifications:
   email: false
 node_js:
   - "8"
-# before_install: .travis/before_install.sh
-# after_script: npm run send-coverage
-# after_success: .travis/after_success.sh
-script: npm run lint && npm test && npm run spec
+before_install: .travis/before_install.sh
+script:
+  - npm run build
+  - npm run lint
+  - npm test
+  - npm run spec
+deploy:
+  provider: npm
+  email: "YOUR_EMAIL_ADDRESS"
+  api_key: "YOUR_AUTH_TOKEN"
+after_success:
+  - .travis/after_success.sh
+  - npm run send-coverage
 git:
   depth: 1
