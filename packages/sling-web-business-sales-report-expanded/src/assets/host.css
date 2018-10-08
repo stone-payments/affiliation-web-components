@@ -1,9 +1,0 @@
-:host sling-table {
-  border: none;
-}
-
-/* for compatibility */
-
-sling-web-sales-report-expanded sling-table {
-  border: none;
-}

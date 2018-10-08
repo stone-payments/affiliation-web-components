@@ -1,9 +1,0 @@
-:host sling-table {
-  border: none;
-}
-
-/* for compatibility */
-
-sling-web-payment-details-item sling-table {
-  border: none;
-}
