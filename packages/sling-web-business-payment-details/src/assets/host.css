@@ -1,0 +1,53 @@
+:host {
+  height: 100%;
+}
+
+:host([open]) sling-payment-details-item {
+  display: block;
+  height: 100%;
+}
+
+:host sling-payment-details-item {
+  display: none;
+}
+
+:host([open]) sling-payment-details-summary {
+  display: none;
+}
+
+:host sling-payment-details-summary {
+  display: block;
+  height: 100%;
+}
+
+:host sling-table {
+  border: none;
+}
+
+/* for compatibility */
+
+sling-payment-details {
+  height: 100%;
+}
+
+sling-payment-details[open] sling-payment-details-item {
+  display: block;
+  height: 100%;
+}
+
+sling-payment-details sling-payment-details-item {
+  display: none;
+}
+
+sling-payment-details[open] sling-payment-details-summary {
+  display: none;
+}
+
+sling-payment-details sling-payment-details-summary {
+  display: block;
+  height: 100%;
+}
+
+sling-payment-details sling-table {
+  border: none;
+}

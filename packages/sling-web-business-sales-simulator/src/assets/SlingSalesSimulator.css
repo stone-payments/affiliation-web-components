@@ -1,0 +1,40 @@
+.button__simulate-button {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.card__title {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  margin-bottom: -4px;
+  line-height: 1.0;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2d3844;
+}
+
+.card__subtitle {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  margin-bottom: 18px;
+  line-height: 1.17;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #96a0af;
+}
+
+.card__divider {
+  width: 100%;
+  border: solid 0.5px #c3c8d2;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.card__prepay-text {
+  margin-top: 18px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  color: #e74c3c;
+}

@@ -1,0 +1,28 @@
+.business-component {
+    position: relative;
+}
+.payments__status {
+    color: #fff;
+    display: inline-block;
+    background: rgb(116, 116, 116);
+    padding: 4px 0;
+    width: 85px;
+    text-align: center;
+    font: var(--calendar-header-font, normal .8em Open Sans,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif);
+}
+.payments__status_1 {
+    background: var(--calendar-status-1-color, #F9BF09);
+}
+.payments__status_2 {
+    background: var(--calendar-status-2-color, #B9C3CC);
+}
+.payments__status_3 {
+    background: var(--calendar-status-3-color, #C7352E);
+}
+.payments__status_4 {
+    background: var(--calendar-status-4-color, #31CD65);
+}
+
+.business-component.payment-status {
+  margin-top: 18px;
+}

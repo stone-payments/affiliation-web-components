@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
+
+.payment-status--item {
+  display: inline-flex;
+  margin-right: 16px;
+}
+
+svg {
+  width: 18px;
+  margin-right: 10px;
+}
+
+.payment-status--item.payment__open svg {
+  fill: #f9bf09;
+}
+
+.payment-status--item.payment__scheduled svg {
+  fill: #c3c8d2;
+}
+
+.payment-status--item.payment__rejected svg {
+  fill: #e74c3c;
+}
+
+.payment-status--item.payment__paid svg {
+  fill: #2ecc71;
+}
+
+.label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  margin: auto;
+}

@@ -1,0 +1,13 @@
+sling-card {
+  text-align: center;
+}
+
+.sales-amount__header {
+  padding: 15px 30px;
+  border-bottom: solid 1px #c3c8d2;
+}
+
+.sales-amount__footer--value {
+  font-weight: bold;
+  padding: 15px 30px;
+}

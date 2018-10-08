@@ -1,0 +1,9 @@
+:host sling-table {
+  border: none;
+}
+
+/* for compatibility */
+
+sling-aggregate-sales sling-table {
+  border: none;
+}

@@ -1,0 +1,51 @@
+:host {
+  height: 100%;
+}
+
+:host([open]) sling-sales-report-expanded {
+  display: block;
+  height: 100%;
+}
+
+:host sling-sales-report-expanded {
+  display: none;
+}
+
+:host([open]) sling-aggregate-sales {
+  display: none;
+}
+
+:host sling-aggregate-sales {
+  display: block;
+  height: 100%;
+}
+
+:host sling-table {
+  border: none;
+}
+
+sling-sales-report {
+  height: 100%;
+}
+
+sling-sales-report[open] sling-sales-report-expanded {
+  display: block;
+  height: 100%;
+}
+
+sling-sales-report sling-sales-report-expanded {
+  display: none;
+}
+
+sling-sales-report[open] sling-aggregate-sales {
+  display: none;
+}
+
+sling-sales-report sling-aggregate-sales {
+  display: block;
+  height: 100%;
+}
+
+sling-sales-report sling-table {
+  border: none;
+}
