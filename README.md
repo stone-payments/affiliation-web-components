@@ -1,104 +1,50 @@
-# Customer Web Components  
+# Affiliation Web Components
 
 The project was thought to be a library of reusable web components, made with native web components,
 these components are primarily focused on means of payment.
-The customer web components are maintained by [StoneCo](https://www.stone.com.br/) 
+The affiliation web components are maintained by [StoneCo](https://www.stone.com.br/)
+
+![node version][node-badge]
+![npm version][npm-badge]
+[![Build Status][build-status]][travis-url]
+[![Coverage Status][coverage-status]][coveralls-url]
+[![License][license-badge]][license-url]
+
+# Sling Web Framework
+Sling is a open-source framework that makes it easy to build top quality components for high-performance financial applications, made by [Stone Co](https://www.stone.com.br).
+
+The `sling-web-framework` is totally based on vanilla [Web Components](https://www.webcomponents.org/introduction), allowing other projects, both internal and external, to use components without worrying about other frameworks or workflows.
+
+### :sparkles: Getting started
 
 
-## Project  
-  
-* Project decisions 
+We would love to hear from you! If you have any feedback or run into issues using our components, please file
+an [issue](https://github.com/stone-payments/affiliation-web-components/issues) on this repository.
 
-  [Lerna](https://lernajs.io/)
+### :rocket: Contributing
 
-  [Karma](https://karma-runner.github.io/2.0/index.html)
 
-  [EsLint](https://eslint.org/), rules extends [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
+# Packages
 
-  [RollUp](https://rollupjs.org/guide/en)
-  
-### Structure  
-  
-* Monorepo  
- 
- * Folder structure
- 
-	```
-	sling-web/
-	├── packages/
-	│   ├── sling-web-component
-	│	  ├── dist/  (Folder generated using npm run build command)
-	│	  │   ├── cjs/
-	│	  │   │    ├── component/
-	│	  │   │    │    └── Component.js
-	│	  │   │    └── index.js
-	│	  │   └── es/
-	│	  │        ├── component/
-	│	  │        │    └── Component.js
-	│	  │        └── index.js
-	│	  ├── src/
-	│	  │   ├── assets/
-	│	  │   │    ├── Component.css
-	│	  │   │    └── host.css
-	│	  │   ├── component/
-	│	  │   │	   ├── Component.js
-	│	  │   │	   └──  Component.test.js
-	│	  │   └── index.js
-	│	  ├── .gitignore
-	│	  ├── .npmignore
-	│	  ├── README.md
-	│	  ├── index.html
-	│	  ├── index.js
-	│	  └──  package.json
-	└── scripts/
-	```
+### :black_heart: Core
+The `sling-framework` package is essential for all of your components. With `sling-helpers` and `sling-assets`, they are part of the core of our project. See the docs below:
 
-### Use  
-#### Node 
-	v8.10.0
-	
-#### Install
-```npm install```
-  
-#### Start  
-```npm start```
- 
-#### Test  
-```npm test```
+* [sling-framework](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-framework)
+* [sling-helpers](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-helpers)
+* [sling-assets](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-assets)
 
-```FILES_PATTERN='packages/*/src/sling-web-my-component/*.test.js' npm test```
+### :card_file_box: Components
+Right now all the basic components are available. See the docs of each one to know how to use it on your application:
 
-## Components  
-  
-* Project decisions 
+### :green_apple: Technologies
 
-  [Polymer](https://www.polymer-project.org/)
-  
-  [LitElement](https://github.com/Polymer/lit-element)
-  
-### Framework  
-  
-  [SlingElement](./packages/sling-framework/src/framework/SlingElement.js)
-  
-  [SlingBusinessElement](./packages/sling-framework/src/framework/SlingBusinessElement.js)  
-  
-Emerald
-  
-## SDK  
-#### [Customer JS sdk](https://github.com/stone-payments/customer-js-sdk)
-
-### Redux in project
-  
-![image](https://user-images.githubusercontent.com/22959060/40637352-b923fff6-62da-11e8-96fa-667c23529a72.png)
-    
-### SlingSDK  
-  
-* Init method
-   
-### Sling SDK Connect  
-  
-* Store in the project 
-  
-* Properties 
-
-### [Contribute](./CONTRIBUTING.md)
+* [Babel](https://babeljs.io/)
+* [Chai](https://www.chaijs.com/)
+* [EsLint](https://eslint.org/) (rules extends [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb))
+* [Karma](https://karma-runner.github.io)
+* [Lerna](https://lernajs.io/)
+* [Mocha](https://mochajs.org/)
+* [RollUp](https://rollupjs.org/guide/en)
+* [Sinon](https://sinonjs.org/)
+* [TestCafé](http://devexpress.github.io/testcafe/)
+* [Webpack](https://webpack.js.org/)
