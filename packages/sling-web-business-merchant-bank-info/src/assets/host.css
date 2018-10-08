@@ -1,0 +1,17 @@
+:host .business-component__form {
+  display: none;
+}
+
+:host([editing]) .business-component__form {
+  display: flex;
+}
+
+/* for compatibility */
+
+sling-merchant-bank-info .business-component__form {
+  display: none;
+}
+
+sling-merchant-bank-info[editing] .business-component__form {
+  display: flex;
+}
