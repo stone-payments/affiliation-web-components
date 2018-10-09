@@ -4,10 +4,6 @@ The project was thought to be a library of reusable web components, made with na
 these components are primarily focused on means of payment.
 The affiliation web components are maintained by [StoneCo](https://www.stone.com.br/)
 
-# Sling Web Framework
-Sling is a open-source framework that makes it easy to build top quality components for high-performance financial applications, made by [Stone Co](https://www.stone.com.br).
-
-The `sling-web-framework` is totally based on vanilla [Web Components](https://www.webcomponents.org/introduction), allowing other projects, both internal and external, to use components without worrying about other frameworks or workflows.
 
 ### :sparkles: Getting started
 
