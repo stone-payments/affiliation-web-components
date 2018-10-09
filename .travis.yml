@@ -9,11 +9,9 @@ script:
   - npm run lint
   - npm test
   - npm run spec
-# deploy:
-#   provider: npm
-#   email: NPM_EMAIL_ADDRESS
-#   api_key: NPM_AUTH_TOKEN
 after_success:
   - npm run send-coverage
-git:
-  depth: 1
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
