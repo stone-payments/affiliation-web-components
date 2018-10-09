@@ -1,7 +1,7 @@
 {
-  "name": "costumer-web-components",
+  "name": "affiliation-web-components",
   "description": "Costumer web components main repo",
-  "version": "1.7.2",
+  "version": "1.0.0",
   "private": true,
   "flat": true,
   "scripts": {
@@ -78,13 +78,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stone-payments/customer-web-components.git"
+    "url": "git+https://github.com/stone-payments/affiliation-web-components.git"
   },
   "author": "Stone Pagamentos",
   "bugs": {
-    "url": "https://github.com/stone-payments/customer-web-components/issues"
+    "url": "https://github.com/stone-payments/affiliation-web-components/issues"
   },
-  "homepage": "https://github.com/stone-payments/customer-web-components#readme",
+  "homepage": "https://github.com/stone-payments/affiliation-web-components#readme",
   "resolutions": {
     "eslint-scope": "3.7.1"
   }
