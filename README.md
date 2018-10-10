@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/stone-payments/affiliation-web-components.svg?branch=master)](https://travis-ci.org/stone-payments/affiliation-web-components)
+
+
 # Affiliation Web Components
 
 Affiliation-web-components is an open-source library of components that aims to make it easier to display data from the affiliation area in financial applications.
