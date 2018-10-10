@@ -4,15 +4,13 @@
 [![Build Status](https://travis-ci.org/stone-payments/affiliation-web-components.svg?branch=master)](https://travis-ci.org/stone-payments/affiliation-web-components)
 [![Coverage Status](https://coveralls.io/repos/github/stone-payments/affiliation-web-components/badge.svg?branch=develop)](https://coveralls.io/github/stone-payments/affiliation-web-components?branch=develop)
 
-
-
 # Affiliation Web Components
 
 Affiliation-web-components is an open-source library of components that aims to make it easier to display data from the affiliation area in financial applications.
 
 The library was based on [Web Components](https://www.webcomponents.org/introduction) and made with the [sling-web-framework](https://github.com/stone-payments/sling-web-framework), thus assigning high performance and reuse of components, even in legacy projects.
 
-The affiliation web components are maintained by [StoneCo](https://www.stone.com.br/)
+The affiliation web components are maintained by [Stone.Co](https://www.stone.com.br/).
 
 
 
@@ -25,20 +23,17 @@ If you have any feedback, it will be a great help to the project,
 just write a [issue](https://github.com/stone-payments/affiliation-web-components/issues)
 to this repository.
 
-Caso tenha algum feedback, será de grande ajuda para o projeto,
-basta escrever uma [issue](https://github.com/stone-payments/affiliation-web-components/issues)
-para o repositorio.
-
 ### Contributing
 
-Thank you for your interest in contributing to the project. Read our guidelines for [contributing](./ CONTRIBUTING.md)
+Thank you for your interest in contributing to the project. Read our guidelines for [contributing](./CONTRIBUTING.md).
 
 ## Packages
 
 ### Core
 
-`Sling-framework`,`sling-helpers` and `customer-js-sdk` packages are essential for the build of our
-components and as a basis for the interface we have the basic components of the sling-web-framework. see the docs below.
+`Sling-framework`,`sling-helpers` and `customer-js-sdk` packages are essential for the build of our components.
+
+We use as base of our interface the basic components of the sling-web-framework. see the docs below.
 
 * [sling-framework](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-framework)
 * [sling-helpers](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-helpers)
