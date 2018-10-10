@@ -1,6 +1,9 @@
+[![node](https://img.shields.io/badge/node%20version-8.x.x-brightgreen.svg)](https://github.com/stone-payments/sling-web-framework)
+[![npm](https://img.shields.io/badge/npm-6.x.x-blue.svg)](https://github.com/stone-payments/affiliation-web-components/tree/develop)
+[![license](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/stone-payments/affiliation-web-components)
 [![Build Status](https://travis-ci.org/stone-payments/affiliation-web-components.svg?branch=master)](https://travis-ci.org/stone-payments/affiliation-web-components)
 [![Coverage Status](https://coveralls.io/repos/github/stone-payments/affiliation-web-components/badge.svg?branch=develop)](https://coveralls.io/github/stone-payments/affiliation-web-components?branch=develop)
-[![npm](https://img.shields.io/npm/v/:package.svg)](https://github.com/stone-payments/affiliation-web-components/tree/develop)
+
 
 
 # Affiliation Web Components
@@ -10,6 +13,9 @@ Affiliation-web-components is an open-source library of components that aims to 
 The library was based on [Web Components](https://www.webcomponents.org/introduction) and made with the [sling-web-framework](https://github.com/stone-payments/sling-web-framework), thus assigning high performance and reuse of components, even in legacy projects.
 
 The affiliation web components are maintained by [StoneCo](https://www.stone.com.br/)
+
+
+
 
 ### Getting started
 
