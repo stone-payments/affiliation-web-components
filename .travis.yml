@@ -6,14 +6,14 @@ node_js:
   - "8"
 cache:
   directories:
-    - node_modules
+    - ~/.npm
 jobs:
   include:
     - stage: Lint
       script: npm run lint
     - stage: Tests
       script: npm test
-      script: npm run spec
+    - script: npm run spec
     - stage: Build
       script: npm run build
     - stage: Publish
