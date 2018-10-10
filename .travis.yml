@@ -4,14 +4,20 @@ notifications:
   email: false
 node_js:
   - "8"
-script:
-  - npm run lint
-  - npm test
-  - npm run spec
-  - npm run build
+jobs:
+  include:
+    - stage: Lint
+      script: npm run lint
+    - stage: Tests
+      script: npm test
+    - stage: unity tests
+      script: npm run spec
+    - stage: Build
+      script: npm run build
+    - stage: Publish
+      script: npm run semantic-release
 after_success:
   - npm run send-coverage
-  - npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
