@@ -4,13 +4,15 @@ notifications:
   email: false
 node_js:
   - "8"
+cache:
+  directories:
+    - node_modules
 jobs:
   include:
     - stage: Lint
       script: npm run lint
     - stage: Tests
       script: npm test
-    - stage: unity tests
       script: npm run spec
     - stage: Build
       script: npm run build
