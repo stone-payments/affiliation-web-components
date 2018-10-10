@@ -34,6 +34,10 @@ components and as a basis for the interface we have the basic components of the 
 * [customer-js-sdk](https://github.com/stone-payments/customer-js-sdk)
 * [sling-web-framework](https://github.com/stone-payments/sling-web-framework)
 
+### Ecosystem
+
+Under construction :construction:.
+
 ### Components
 
 the currently available components and their docs are:
