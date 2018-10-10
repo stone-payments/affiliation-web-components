@@ -1,33 +1,44 @@
 # Affiliation Web Components
 
-The project was thought to be a library of reusable web components, made with native web components,
-these components are primarily focused on means of payment.
+O affiliation-web-components é uma biblioteca open-source de componentes que tem o objetivo de facilitar a exposição de dados da area de credenciamento de clientes em aplicações financeiras.
+
+A biblioteca foi baseada em Web Componentes e feita com o [sling-web-framework](https://github.com/stone-payments/sling-web-framework), atribuindo assim uma alta performance e reutilização dos componentes, mesmo em projetos legados.
+
 The affiliation web components are maintained by [StoneCo](https://www.stone.com.br/)
 
+### Getting started
 
-### :sparkles: Getting started
+Start a new Affiliation Component by following our quick [Start Guide]().
 
+Caso tenha algum feedback, será de grande ajuda para o projeto,
+basta escrever uma [issue](https://github.com/stone-payments/affiliation-web-components/issues)
+para o repositorio.
 
-We would love to hear from you! If you have any feedback or run into issues using our components, please file
-an [issue](https://github.com/stone-payments/affiliation-web-components/issues) on this repository.
+### Contributing
 
-### :rocket: Contributing
+Agradecemos pelo interesse em contribuir para o projeto. Leia nossas guidelines de [contributing](./CONTRIBUTING.md)
 
+## Packages
 
-# Packages
+### Core
 
-### :black_heart: Core
-The `sling-framework` package is essential for all of your components. With `sling-helpers` and `sling-assets`, they are part of the core of our project. See the docs below:
+Os pacotes `sling-framework`, `sling-helpers` e `customer-js-sdk` sao essenciais para a construção dos nossos
+componentes e como base para a interface temos os componentes basicos do sling-web-framework. veja as docs a baixo.
 
 * [sling-framework](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-framework)
 * [sling-helpers](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-helpers)
-* [sling-assets](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-assets)
+* [customer-js-sdk](https://github.com/stone-payments/customer-js-sdk)
+* [sling-web-framework](https://github.com/stone-payments/sling-web-framework)
 
-### :card_file_box: Components
+### Components
+
+Aqui estao os nossos componentes atuais, para usar qualquer um dos componentes veja as docs.
+
 Right now all the basic components are available. See the docs of each one to know how to use it on your application:
 
-### :green_apple: Technologies
+### Technologies
 
+* [sling-web-framework](https://github.com/stone-payments/sling-web-framework)
 * [Babel](https://babeljs.io/)
 * [Chai](https://www.chaijs.com/)
 * [EsLint](https://eslint.org/) (rules extends [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb))
