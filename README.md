@@ -46,7 +46,7 @@ Under construction :construction:.
 
 ### Components
 
-the currently available components and their docs are:
+The currently available components and their docs are:
 
 ### Technologies
 
