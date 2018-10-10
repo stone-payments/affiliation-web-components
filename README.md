@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/stone-payments/affiliation-web-components.svg?branch=master)](https://travis-ci.org/stone-payments/affiliation-web-components)
+[![Coverage Status](https://coveralls.io/repos/github/stone-payments/affiliation-web-components/badge.svg?branch=develop)](https://coveralls.io/github/stone-payments/affiliation-web-components?branch=develop)
+[![npm](https://img.shields.io/npm/v/:package.svg)](https://github.com/stone-payments/affiliation-web-components/tree/develop)
 
 
 # Affiliation Web Components
