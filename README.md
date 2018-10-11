@@ -12,15 +12,12 @@ The library was based on [Web Components](https://www.webcomponents.org/introduc
 
 The affiliation web components are maintained by [Stone.Co](https://www.stone.com.br/).
 
-
-
-
 ### Getting started
 
-Start a new Affiliation Component by following our quick [Start Guide]().
+Start a new Affiliation Component by following our quick [Start Guide(Under construction :construction:)](https://github.com/stone-payments/affiliation-web-components/wiki/Start-Guide).
 
 If you have any feedback, it will be a great help to the project,
-just write a [issue](https://github.com/stone-payments/affiliation-web-components/issues)
+just write an [issue](https://github.com/stone-payments/affiliation-web-components/issues)
 to this repository.
 
 ### Contributing
@@ -43,10 +40,6 @@ We use as base of our interface the basic components of the sling-web-framework.
 ### Ecosystem
 
 Under construction :construction:.
-
-### Components
-
-the currently available components and their docs are:
 
 ### Technologies
 
