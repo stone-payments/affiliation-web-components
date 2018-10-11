@@ -28,9 +28,9 @@ Thank you for your interest in contributing to the project. Read our guidelines 
 
 ### Core
 
-`Sling-framework`,`sling-helpers` and `customer-js-sdk` packages are essential for the build of our components.
+`sling-framework`,`sling-helpers` and `customer-js-sdk` packages are essential for the build of our components.
 
-We use as base of our interface the basic components of the sling-web-framework. see the docs below.
+We use as base of our interface the basic components of the `sling-web-framework`. see the docs below.
 
 * [sling-framework](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-framework)
 * [sling-helpers](https://github.com/stone-payments/sling-web-framework/tree/master/packages/sling-helpers)
