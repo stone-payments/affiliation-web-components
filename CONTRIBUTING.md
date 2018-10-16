@@ -1,11 +1,11 @@
 # Affiliation-web-components Contributing guide
 
-Contributions are always welcome :sparkling_heart:, no matter how large or small. Before contributing, please read the following guidelines.
+Contributions are always welcome :sparkling_heart:, no matter how large or small. Before contributing read the following guidelines.
 
 - [Issue Reporting Guidelines](#Issue-Reporting-Guidelines)
 - [Pull Request Guidelines](#Pull-Request-Guidelines)
 - [Development Setup](#Development-Setup)
-- [Code of conduct(Under Construction)](https://github.com/stone-payments/affiliation-web-components/wiki/Code-of-conduct).
+- [Code of conduct(Under Construction :contruction:)](https://github.com/stone-payments/affiliation-web-components/wiki/Code-of-conduct).
 
 # Issue Reporting Guidelines
 
