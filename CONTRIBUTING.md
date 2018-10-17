@@ -15,7 +15,7 @@ Always check if already exists an [open issue](https://github.com/stone-payments
 
 - We use [git-flow](https://git-scm.com/docs/gitworkflows) as the base workflow of the project.
 - The master branch is a snapshot of our latest stable version. All development should be targeted at specific branches.
-- Do not submit PRs to a branch `master`. :x:
+- Do not submit PRs to the branch `master`. :x:
 - Check out a topic branch from the relevant branch, e.g. `dev`, and merge back against that branch.
 - Make sure npm test passes (see [Development Setup](#Development-Setup)).
 - To new feature:
