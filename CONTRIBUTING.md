@@ -9,7 +9,7 @@ Contributions are always welcome :sparkling_heart:, no matter how large or small
 
 # Issue Reporting Guidelines
 
-Always check if already exists an [open issue](https://github.com/stone-payments/affiliation-web-components/issues?q=is:open+is:issue) related, if not, you can open a [new one](https://github.com/stone-payments/affiliation-web-components/issues/new) to create new issues.
+Always check if already exists an [open issue](https://github.com/stone-payments/affiliation-web-components/issues?q=is:open+is:issue) related, if not, you can open a [new one](https://github.com/stone-payments/affiliation-web-components/issues/new).
 
 # Pull Request Guidelines
 
