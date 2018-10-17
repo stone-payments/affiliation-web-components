@@ -14,7 +14,7 @@ The affiliation web components are maintained by [Stone Co](https://www.stone.co
 
 ### Getting started
 
-Start a new Affiliation Component by following our quick [Start Guide(Under construction :construction:)](https://github.com/stone-payments/affiliation-web-components/wiki/Start-Guide).
+Start a new Affiliation Component by following our [Quick Start Guide (Under construction :construction:)](https://github.com/stone-payments/affiliation-web-components/wiki/Start-Guide).
 
 If you have any feedback, it will be a great help to the project,
 just write an [issue](https://github.com/stone-payments/affiliation-web-components/issues)
