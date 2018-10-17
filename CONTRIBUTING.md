@@ -2,9 +2,9 @@
 
 Contributions are always welcome :sparkling_heart:, no matter how large or small. Before contributing read the following guidelines.
 
-- [Issue Reporting Guidelines](#Issue-Reporting-Guidelines)
-- [Pull Request Guidelines](#Pull-Request-Guidelines)
-- [Development Setup](#Development-Setup)
+- [Issue Reporting Guidelines](#Issue-Reporting-Guidelines);
+- [Pull Request Guidelines](#Pull-Request-Guidelines);
+- [Development Setup](#Development-Setup);
 - [Code of conduct(Under Construction :construction:)](https://github.com/stone-payments/affiliation-web-components/wiki/Code-of-conduct).
 
 # Issue Reporting Guidelines
@@ -13,18 +13,22 @@ Always check if already exists an [open issue](https://github.com/stone-payments
 
 # Pull Request Guidelines
 
-- We use [git-flow](https://git-scm.com/docs/gitworkflows) as the base workflow of the project.
-- The master branch is a snapshot of our latest stable version. All development should be targeted at specific branches.
-- Do not submit PRs to the branch `master`. :x:
-- Check out a topic branch from the relevant branch, e.g. `dev`, and merge back against that branch.
-- Make sure npm test passes (see [Development Setup](#Development-Setup)).
+- We use [git-flow](https://git-scm.com/docs/gitworkflows) as the base workflow of the project;
+- The master branch is a snapshot of our latest stable version. All development should be targeted at specific branches;
+- Do not submit PRs to the branch `master` :x:;
+
+- Check out a topic branch from the relevant branch, e.g. `develop`, and open a pull request back against that branch;
+
+- Make sure npm `test` passes (see [Development Setup](#Development-Setup));
+
 - To new feature:
-    - Tell the reason for the new feature, ideally you should open an issue with the suggestion of the feature before starting to work on it.
-    - Remember, add an accompanying test case.
-- To fix a bug:
-    - If you are resolving a special issue, add (fix #xxx[,#xxx]) (#xxx is the issue id) in your PR title for a better release log, e.g. [affiliation-web-component-merchant-addresses] update date modeling (fix #3899).
-    - Provide a detailed description of the bug in the PR. Live demo preferred.
-    - Add appropriate test coverage if applicable.
+  - Tell the reason for the new feature, ideally you should open an issue with the suggestion of the feature before starting to work on it;
+  - Remember, add an accompanying test case.
+
+- To fixing a bug:
+  - If you are resolving a special issue, add `(fix #ISSUE_ID)` in your PR title for a better release log, e.g. `update date modeling (fix #3899)` more information in [Closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/);
+  - Provide a detailed description of the bug in the PR. Live demo preferred;
+  - Add appropriate test if applicable.
 
 # Development Setup
 
