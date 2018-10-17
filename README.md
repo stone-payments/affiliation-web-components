@@ -10,7 +10,7 @@ Affiliation-web-components is an open-source library of components that aims to 
 
 The library was based on [Web Components](https://www.webcomponents.org/introduction) and made with the [sling-web-framework](https://github.com/stone-payments/sling-web-framework), thus assigning high performance and reuse of components, even in legacy projects.
 
-The affiliation web components are maintained by [Stone.Co](https://www.stone.com.br/).
+The affiliation web components are maintained by [Stone Co](https://www.stone.com.br/).
 
 ### Getting started
 
