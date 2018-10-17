@@ -21,7 +21,7 @@ Always check if already exists an [open issue](https://github.com/stone-payments
 - To new feature:
     - Tell the reason for the new feature, ideally you should open an issue with the suggestion of the feature before starting to work on it.
     - Remember, add an accompanying test case.
-- To fixing a bug:
+- To fix a bug:
     - If you are resolving a special issue, add (fix #xxx[,#xxx]) (#xxx is the issue id) in your PR title for a better release log, e.g. [affiliation-web-component-merchant-addresses] update date modeling (fix #3899).
     - Provide a detailed description of the bug in the PR. Live demo preferred.
     - Add appropriate test coverage if applicable.
