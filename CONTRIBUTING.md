@@ -1,82 +1,66 @@
+# Affiliation-web-components Contributing guide
 
-## Contributing ##
+Contributions are always welcome :sparkling_heart:, no matter how large or small. Before contributing read the following guidelines.
 
-Please read this doc before start to use this repo. We have a set of guidelines that should be followed.
+- [Issue Reporting Guidelines](#Issue-Reporting-Guidelines);
+- [Pull Request Guidelines](#Pull-Request-Guidelines);
+- [Development Setup](#Development-Setup);
+- [Code of conduct(Under Construction :construction:)](https://github.com/stone-payments/affiliation-web-components/wiki/Code-of-conduct).
 
-Feel free to propose changes to this document using a pull request.
+# Issue Reporting Guidelines
 
-* Code patterns
+Always check if already exists an [open issue](https://github.com/stone-payments/affiliation-web-components/issues?q=is:open+is:issue) related, if not, you can open a [new one](https://github.com/stone-payments/affiliation-web-components/issues/new).
 
-### Available Scripts ###
+# Pull Request Guidelines
 
-Local Development enviroment
-```
-npm start (component-name)
-```
-Build for production
-```
-npm run build
-```
-Run unit testing
-```
-npm test
-```
+- We use [git-flow](https://git-scm.com/docs/gitworkflows) as the base workflow of the project;
+- The master branch is a snapshot of our latest stable version. All development should be targeted at specific branches;
+- Do not submit PRs to the branch `master` :x:;
 
-### Git Workflow ###
+- Check out a topic branch from the relevant branch, e.g. `develop`, and open a pull request back against that branch;
 
-We use [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/).
+- Make sure npm `test` passes (see [Development Setup](#Development-Setup));
 
-### Branching
-- ```feature/feature-name``` to new features.
-- ```fix/bug-name``` to fix bugs.
-- ```improvement/improvement-name``` to improvement code.
+- To new feature:
+  - Tell the reason for the new feature, ideally you should open an issue with the suggestion of the feature before starting to work on it;
+  - Remember, add an accompanying test case.
 
-### Commit messages ###
+- To fixing a bug:
+  - If you are resolving a special issue, add `(fix #ISSUE_ID)` in your PR title for a better release log, e.g. `update date modeling (fix #3899)` more information in [Closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/);
+  - Provide a detailed description of the bug in the PR. Live demo preferred;
+  - Add appropriate test if applicable.
 
-- Use emoji at the beginning of each message. It help us to identify what's the purpose for each commit.
+# Development Setup
 
-| Code.                 | Emoji               | Description                                     |
-|-----------------------|---------------------|-------------------------------------------------|
-| `:art:`               | :art:               | when improving the format/structure of the code |
-| `:racehorse:`         | :racehorse:         | when improving performance                      |
-| `:memo:`              | :memo:              | when writing docs                               |
-| `:bug:`               | :bug:               | when fixing a bug                               |
-| `:fire:`              | :fire:              | when removing code or files                     |
-| `:green_heart:`       | :green_heart:       | when work with CI                               |
-| `:white_check_mark:`  | :white_check_mark:  | when work with tests                            |
-| `:lock:`              | :lock:              | when dealing with security                      |
-| `:arrow_up:`          | :arrow_up:          | when upgrading dependencies                     |
-| `:arrow_down:`        | :arrow_down:        | when downgrading dependencies                   |
-| `:shirt:`             | :shirt:             | when removing linter warnings                   |
-| `:bulb:`              | :bulb:              | new idea                                        |
-| `:construction:`      | :construction:      | work in progress                                |
-| `:heavy_plus_sign:`   | :heavy_plus_sign:   | when adding feature                             |
-| `:heavy_minus_sign:`  | :heavy_minus_sign:  | when removing feature                           |
-| `:facepunch:`         | :facepunch:         | when resolving conflicts                        |
-| `:hammer:`            | :hammer:            | when changing configuration files               |
+For development, you will need the [Node.js](http://nodejs.org/) in version 8 or above.
 
+After cloning the repo, run:
 
-Commit exemple:
-```
-git commit -m ":arrow_up: Update Carthage dependencies"
+```javascript
+  npm install
 ```
 
-### Pull Requests ###
+## Committing Changes
 
-All Pull Request must be made to the `devolop branch`.
+Commit messages should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) so that changelogs can be automatically generated. Commit messages will be automatically validated upon commit.
 
-Before opening a Pull Request, verify if all unit tests passed,
-we have CI tools to run tests, if it fails [you will be notified](https://www.youtube.com/watch?v=mmLRTVYgEq4).
+## Used NPM scripts
 
+```javascript
+  //Starting a component, you need to pass a component scope (component name).
+  npm start <scope>
 
-### Releasing a new version ###
+  //Run lint on the project.
+  npm run lint
 
-Currently, the release proccess requires you to:
-1. Open a release branch, following gitflow branching conventions (`release/vx.x.x`), from `develop branch`.
-2. Run the `npm run version-bump` command.
-3. Update the version in the main `package.json`.
-4. Commit.
-5. Create a tag (`git tag -a vx.x.x`)
-6. Push a tag.
-7. Push the release branch.
-8. Create pull request against the `develop branch` and the `master branch`.
+  //Run the tests with DOM.*
+  npm test
+
+  //Run the unity tests*
+  npm run spec
+
+  //Run the build process on the project
+  npm run build
+```
+
+** We divide our tests in `.test`, tests with a browser, they need a DOM to run and `.spec`, unity tests,  they don't need a DOM to run.

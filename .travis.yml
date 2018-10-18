@@ -12,6 +12,7 @@ jobs:
     - stage: Lint
       script: npm run lint
     - stage: Tests
+      name: DOM tests and Unity tests
       script: npm test
     - script: npm run spec
     - stage: Build
