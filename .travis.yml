@@ -1,0 +1,26 @@
+sudo: false
+language: node_js
+notifications:
+  email: false
+node_js:
+  - "8"
+cache:
+  directories:
+    - ~/.npm
+jobs:
+  include:
+    - stage: Lint
+      script: npm run lint
+    - stage: Tests
+      name: DOM tests and Unity tests
+      script: npm test
+    - script: npm run spec
+    - stage: Build
+      script: npm run build
+    - stage: Publish
+      script: npm run semantic-release
+after_success:
+  - npm run send-coverage
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
