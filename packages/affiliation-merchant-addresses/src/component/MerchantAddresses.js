@@ -11,13 +11,16 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
     super();
 
     this.state = {
-      apidata: [],
+      addresses: [],
     };
   }
 
   static get properties() {
     return {
-      ...super.properties,
+      state: {
+        type: Object,
+        reflectToAttribute: false,
+      },
       editable: {
         type: Boolean,
         reflectToAttribute: true,
@@ -44,12 +47,9 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
           SDK.merchants.addresses.get({ affiliationCode }),
         ])
         .then((responses) => {
-          console.log('res', responses)
           if (responses.every(notEmpty)) {
-            const apidata = addressesModel(responses);
-            console.log('MODELED DATA', apidata);
-            this.setState({ apidata });
-            console.log('state', this.state);
+            const addresses = addressesModel(responses);
+            this.setState({ addresses });
           }
         });
     }
@@ -60,7 +60,6 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
   }
 
   render() {
-    console.log('state', this.state);
     return MerchantAddressesView(this);
   }
 };
