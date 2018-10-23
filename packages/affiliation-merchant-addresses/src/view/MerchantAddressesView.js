@@ -34,11 +34,9 @@ export const MerchantAddressesView = ({
   requestErrors,
   editable,
   addable,
-  apidata,
+  state,
   isLoading,
-}) => {
-  console.log('data NA VIEW', apidata);
-  return html`
+}) => html`
   <style>
     @import url('affiliation-merchant-addresses/src/index.css');
   </style>
@@ -59,9 +57,8 @@ export const MerchantAddressesView = ({
     ` : ''}
     <sling-table
       editable="${editable}"
-      srcdata="${apidata}"
+      srcdata="${state.addresses}"
       srccolumns="${columns}">
     </sling-table>
   </div>
 `;
-};
