@@ -1,3 +1,5 @@
-import { slingSdk } from 'customer-js-sdk';
+import { v0 as SDK } from 'customer-js-sdk';
 
-slingSdk.init();
+
+SDK.authorization.set(SDK.BEARER, '');
+SDK.headers.append('Content-type', 'application/json');

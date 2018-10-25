@@ -1,47 +1,26 @@
-import { html, SlingBusinessElement } from 'sling-framework';
-import { merchantActions, bindActionCreators } from 'customer-js-sdk';
-import 'sling-web-component-table';
-import 'sling-web-component-form';
-import 'sling-web-component-input';
-import 'sling-web-component-select';
-import 'sling-web-component-loader';
-import 'sling-web-component-message';
-import 'sling-web-component-button';
+import { v0 as SDK } from 'customer-js-sdk';
+import { withRequest, withSetState } from 'sling-framework';
+import { addressesModel } from '../model/MerchantAddressesModel.js';
+import { MerchantAddressesView } from '../view/MerchantAddressesView.js';
 
-const columns = [{
-  title: 'Descrição',
-  field: 'description',
-}, {
-  title: 'UF',
-  field: 'uf',
-}, {
-  title: 'Cidade',
-  field: 'city',
-}, {
-  title: 'Endereço',
-  field: 'street',
-}, {
-  title: 'Nº',
-  field: 'number',
-}, {
-  title: 'Complem.',
-  field: 'complement',
-}, {
-  title: 'Bairro',
-  field: 'neighborhood',
-}];
+const notEmpty = arg => arg != null;
 
-let instanceName;
-
-export class AffiliationMerchantAddresses extends SlingBusinessElement {
+export const AffiliationMerchantAddresses = (Base = class {}) => class extends
+  withRequest(withSetState(Base)) {
   constructor() {
     super();
-    instanceName = this.localName;
+
+    this.state = {
+      addresses: [],
+    };
   }
 
   static get properties() {
     return {
-      ...super.properties,
+      state: {
+        type: Object,
+        reflectToAttribute: false,
+      },
       editable: {
         type: Boolean,
         reflectToAttribute: true,
@@ -50,45 +29,37 @@ export class AffiliationMerchantAddresses extends SlingBusinessElement {
         type: Boolean,
         reflectToAttribute: true,
       },
+      isLoading: {
+        type: Boolean,
+        reflectToAttribute: false,
+      },
     };
   }
 
-  render() {
-    return html`
-    <style>
-      @import url('affiliation-merchant-addresses/src/index.css');
-    </style>
-    <sling-message
-      aim="error"
-      srcdata="${this.errors}"
-      layout="outline"></sling-message>
-    <div class="business-component">
-      <sling-loader loading="${this.loading > 0}"></sling-loader>
-      ${this.addable ? html`
-        <div class="business-component__button">
-          <sling-button
-            color="success"
-            type="text">
-            adicionar endereço
-          </sling-button>
-        </div>
-      ` : ''}
-      <sling-table
-        editable="${this.editable}"
-        srcdata="${this.apidata}"
-        srccolumns="${columns}">
-      </sling-table>
-    </div>
-    `;
+  static get requestParamNames() {
+    return ['affiliationCode'];
   }
-}
 
-export const mapStateToProps = state => ({
-  apidata: state.merchantReducer.merchantAddresses,
-  loading: state.globalReducer.loaders[instanceName],
-  errors: state.globalReducer.errors[instanceName],
-});
+  fetchData({ affiliationCode }) {
+    if (affiliationCode) {
+      this
+        .request([
+          SDK.merchants.addresses.get({ affiliationCode }),
+        ])
+        .then((responses) => {
+          if (responses.every(notEmpty)) {
+            const addresses = addressesModel(responses);
+            this.setState({ addresses });
+          }
+        });
+    }
+  }
 
-export const mapDispatchToProps = dispatch => ({
-  getdata: bindActionCreators(merchantActions.getMerchantAddresses, dispatch),
-});
+  requestParamsChangedCallback(requestParams) {
+    this.fetchData(requestParams);
+  }
+
+  render() {
+    return MerchantAddressesView(this);
+  }
+};
