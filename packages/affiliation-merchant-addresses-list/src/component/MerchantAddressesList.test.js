@@ -1,8 +1,9 @@
 import { registerComponent } from 'sling-helpers';
-import { SlingMerchantAddressesList } from './MerchantAddressesList.js';
+import { SlingElement } from 'sling-framework';
+import { AffiliationMerchantAddressesList } from './MerchantAddressesList.js';
 
-registerComponent('sling-merchant-addresses-list', SlingMerchantAddressesList);
-
+registerComponent('sling-merchant-addresses-list',
+  AffiliationMerchantAddressesList(SlingElement));
 let $el;
 
 describe('Addresses list', () => {
