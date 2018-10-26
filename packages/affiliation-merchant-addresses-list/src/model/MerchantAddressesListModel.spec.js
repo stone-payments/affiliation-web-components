@@ -1,8 +1,8 @@
 import { expect } from 'Chai';
 import { addressesListModel } from './MerchantAddressesListModel.js';
 
-const mockData = {
-  data: {
+const mockData = [
+  {
     data: [
       {
         affiliationCode: 111111111,
@@ -25,7 +25,7 @@ const mockData = {
       },
     ],
   },
-};
+];
 
 const expctedeData = [{
   description: 'test',
@@ -37,7 +37,7 @@ const expctedeData = [{
   neighborhood: 'test',
 }];
 
-describe('Merchant Addresses Model', () => {
+describe('Merchant Addresses Model List', () => {
   it('Should return a sucesses modeled data', () => {
     const testData = addressesListModel(mockData);
     expect(testData).to.deep.equal(expctedeData);
