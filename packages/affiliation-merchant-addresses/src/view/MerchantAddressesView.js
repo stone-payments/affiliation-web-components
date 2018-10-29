@@ -30,7 +30,7 @@ const columns = [{
   field: 'neighborhood',
 }];
 
-export const MerchantAddressesView = ({
+export const merchantAddressesView = ({
   requestErrors,
   editable,
   addable,
