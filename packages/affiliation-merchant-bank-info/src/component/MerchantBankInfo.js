@@ -1,7 +1,10 @@
 import { withRequest, withSetState } from 'sling-framework';
 import { v0 as sdk } from 'customer-js-sdk';
 import { merchantBankInfoView } from '../views/MerchantBankInfoView.js';
-import { bankInfoModel, bankInfoResponseModel } from '../model/BankIndoModel.js';
+import {
+  bankInfoModel,
+  bankInfoResponseModel,
+} from '../model/BankInfoModel.js';
 
 const notEmpty = arg => arg != null;
 
