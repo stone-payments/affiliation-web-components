@@ -61,7 +61,6 @@ export const AffiliarionMerchantBankInfoList = (base = class {}) =>
     }
 
     render() {
-      console.log(this.state);
       return merchantInfoListView(this);
     }
   };
