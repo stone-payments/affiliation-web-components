@@ -22,7 +22,7 @@ export const bankInfoModel = (responses) => {
   return modeledData;
 };
 
-export const bankInfoResponseModel = (state, responses) => {
+export const bankInfoFormResponseModel = (state, responses) => {
   const [oldValue] = state;
   const [data] = responses;
 

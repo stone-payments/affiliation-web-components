@@ -3,7 +3,7 @@ import { v0 as sdk } from 'customer-js-sdk';
 import { merchantBankInfoView } from '../views/MerchantBankInfoView.js';
 import {
   bankInfoModel,
-  bankInfoResponseModel,
+  bankInfoFormResponseModel,
 } from '../model/BankInfoModel.js';
 
 const notEmpty = arg => arg != null;
@@ -84,7 +84,7 @@ export const AffiliationMerchantBankInfo = (base = class {}) => class extends
           sdk.merchants.bankAccounts.put(requestParams, payload),
         ])
         .then((responses) => {
-          const data = bankInfoResponseModel(this.state.banks, responses);
+          const data = bankInfoFormResponseModel(this.state.banks, responses);
           this.setState({
             banks: data,
           });
