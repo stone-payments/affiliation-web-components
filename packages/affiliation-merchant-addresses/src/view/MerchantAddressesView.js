@@ -12,7 +12,7 @@ const columns = [{
   field: 'description',
 }, {
   title: 'UF',
-  field: 'uf',
+  field: 'state',
 }, {
   title: 'Cidade',
   field: 'city',
