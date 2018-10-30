@@ -13,7 +13,7 @@ This is how you set the component into the project html structure
     </affiliation-merchant-addresses>
 ```
 
-The *affiliationCode* atributes are mandatory for the component to make the correct request to the integrated api and populate it with data.
+The *affiliationCode* attribute is mandatory for the component to make the correct request to the integrated API and populate it with data.
 
 ## Project Wiki:
 
