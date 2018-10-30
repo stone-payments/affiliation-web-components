@@ -29,7 +29,7 @@ const mockData = {
 
 const expctedeData = [{
   description: 'test',
-  uf: 'test',
+  state: 'test',
   city: 'test',
   street: 'test',
   number: 1,
