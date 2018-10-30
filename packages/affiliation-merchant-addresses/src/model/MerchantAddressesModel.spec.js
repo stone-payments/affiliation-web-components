@@ -1,8 +1,8 @@
 import { expect } from 'Chai';
 import { addressesModel } from './MerchantAddressesModel.js';
 
-const mockData = {
-  data: {
+const mockData = [
+  {
     data: [
       {
         affiliationCode: 111111111,
@@ -25,7 +25,7 @@ const mockData = {
       },
     ],
   },
-};
+];
 
 const expctedeData = [{
   description: 'test',
