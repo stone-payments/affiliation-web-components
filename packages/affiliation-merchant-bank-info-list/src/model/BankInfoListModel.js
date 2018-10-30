@@ -19,18 +19,14 @@ export const bankInfoListModel = (responses) => {
     return [...result, current];
   }, []);
 
-  modeledData.banks = {
-    bankName: modeledData.banks.bankName,
-    typeName: modeledData.banks.typeName,
-    agencyNumber: modeledData.banks.agencyNumber,
-    agencyNumberVerificationCode:
-      modeledData.banks.agencyNumberVerificationCode,
-    accountNumber: modeledData.banks.accountNumber,
-    accountNumberVerificationCode:
-      modeledData.banks.accountNumberVerificationCode,
-  };
+  modeledData.banks = modeledData.banks.map(el => ({
+    bankName: el.bankName,
+    typeName: el.typeName,
+    agencyNumber: el.agencyNumber,
+    agencyNumberVerificationCode: el.agencyNumberVerificationCode,
+    accountNumber: el.accountNumber,
+    accountNumberVerificationCode: el.accountNumberVerificationCode,
+  }));
 
-  console.log('aqui', modeledData);
-
-  return [modeledData];
+  return modeledData;
 };
