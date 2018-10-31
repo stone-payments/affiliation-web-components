@@ -1,6 +1,6 @@
 {
   "name": "affiliation-merchant-contacts",
-  "version": "1.8.0",
+  "version": "0.0.0",
   "description": "Merchant Contacts business component",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
