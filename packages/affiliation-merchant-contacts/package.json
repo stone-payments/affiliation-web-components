@@ -1,0 +1,21 @@
+{
+  "name": "affiliation-merchant-contacts",
+  "version": "1.8.0",
+  "description": "Merchant Contacts business component",
+  "author": "Stone Pagamentos",
+  "module": "src/index.js",
+  "main": "dist/cjs/es5/index.js",
+  "jsnext:main": "dist/es/es6/index.js",
+  "dependencies": {
+    "customer-js-sdk": "^1.5.1",
+    "sling-framework": "^1.9.0",
+    "sling-helpers": "^1.10.0",
+    "sling-web-component-button": "^1.6.0",
+    "sling-web-component-form": "^1.6.0",
+    "sling-web-component-input": "^1.6.0",
+    "sling-web-component-loader": "^1.6.0",
+    "sling-web-component-message": "^1.6.0",
+    "sling-web-component-select": "^1.6.0",
+    "sling-web-component-table": "^1.6.0"
+  }
+}
