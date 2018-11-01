@@ -1,9 +1,9 @@
-export const addressesModel = ([
+export const AddressesModel = ([
   data,
 ]) => {
   const modeledData = data.data.map(item => ({
     description: item.typeName,
-    uf: item.stateName,
+    state: item.stateName,
     city: item.cityName,
     street: item.streetName,
     number: item.streetNumber,
