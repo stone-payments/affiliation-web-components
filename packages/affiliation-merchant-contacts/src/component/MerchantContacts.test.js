@@ -1,16 +1,17 @@
+import sinon from 'sinon';
 import { registerComponent } from 'sling-helpers';
-import { SlingMerchantContacts } from './MerchantContacts.js';
+import { SlingElement } from 'sling-framework';
+import { AffiliationMerchantContacts } from './MerchantContacts.js';
 
+registerComponent('affiliation-merchant-contacts',
+  AffiliationMerchantContacts(SlingElement));
 
-registerComponent('sling-web-business-merchant-contacts',
-  SlingMerchantContacts);
+describe('Merchant Contacts', () => {
+  let $merchantContacts;
 
-let $merchantContacts;
-
-describe('Merchant contacts', () => {
   beforeEach(() => {
     $merchantContacts = document.createElement(
-      'sling-web-business-merchant-contacts');
+      'affiliation-merchant-contacts');
     document.body.appendChild($merchantContacts);
   });
 
@@ -40,6 +41,56 @@ describe('Merchant contacts', () => {
       expect($merchantContacts.hasAttribute('editable')).to.be.false;
       expect($merchantContacts.hasAttribute('editing')).to.be.false;
       expect($merchantContacts.hasAttribute('addable')).to.be.false;
+      done();
+    });
+  });
+  it('Should start submit form', () => {
+    const myEvent = new CustomEvent('myEvent', {
+      detail: {
+        email: 'test',
+        id: 11111,
+        mobilePhone: '(11) 1111-1111',
+        name: 'test',
+        phone: '(22) 2222-2222',
+        typeId: 1,
+      },
+    });
+
+    $merchantContacts.handleStopEditing = sinon.spy();
+
+    $merchantContacts.handleFormSubmit(myEvent);
+
+    expect($merchantContacts.handleStopEditing).to.be.callCount(1);
+  });
+
+  it('Should start editing', () => {
+    const myEvent = new CustomEvent('myEvent', {
+      detail: {
+        affiliationCode: '111111',
+        email: 'test',
+        id: 11111,
+        mobilePhone: '1111111111',
+        name: 'test',
+        phone: '2222222222',
+        typeId: 1,
+        typeName: 'test',
+      },
+    });
+
+    $merchantContacts.handleFormUpdate = sinon.spy();
+
+    $merchantContacts.handleStartEditing(myEvent);
+
+    expect($merchantContacts.editing).to.be.true;
+    expect($merchantContacts.handleFormUpdate).to.be.callCount(1);
+  });
+
+  it('Should stop editing', (done) => {
+    $merchantContacts.editing = true;
+    $merchantContacts.handleStopEditing();
+
+    setTimeout(() => {
+      expect($merchantContacts.editing).to.be.false;
       done();
     });
   });

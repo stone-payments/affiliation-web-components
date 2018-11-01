@@ -2,13 +2,14 @@ import { registerComponent } from 'sling-helpers';
 import { SlingElement } from 'sling-framework';
 import { AffiliationMerchantAddressesList } from './MerchantAddressesList.js';
 
-registerComponent('sling-merchant-addresses-list',
+registerComponent('affiliation-addresses-list',
   AffiliationMerchantAddressesList(SlingElement));
-let $el;
 
-describe('Addresses list', () => {
+describe('Merchant Addresses list', () => {
+  let $el;
+
   beforeEach(() => {
-    $el = document.createElement('sling-merchant-addresses-list');
+    $el = document.createElement('affiliation-addresses-list');
     document.body.appendChild($el);
   });
 
