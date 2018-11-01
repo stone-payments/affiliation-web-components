@@ -3,7 +3,7 @@ import 'sling-web-component-message';
 import 'sling-web-component-loader';
 import 'sling-web-component-table';
 import 'sling-web-component-button';
-import { wrappedFromView } from './WrappedFormView.js';
+import { getWrappedFromView } from './WrappedFormView.js';
 
 const columns = [{
   title: 'Banco',
@@ -25,7 +25,7 @@ const columns = [{
   field: 'accountNumberVerificationCode',
 }];
 
-export const merchantBankInfoView = ({
+export const getMerchantBankInfoView = ({
   state,
   isLoading,
   requestErrors,
@@ -44,7 +44,7 @@ export const merchantBankInfoView = ({
     srcdata="${requestErrors.length > 0 ? ['Ocorreu um erro ao acessar os dados.'] : []}"
     layout="outline">
   </sling-message>
-  ${wrappedFromView(state, handleStopEditing, handleFormSubmit, handleFormUpdate)}
+  ${getWrappedFromView(state, handleStopEditing, handleFormSubmit, handleFormUpdate)}
   <div class="business-component">
     <sling-loader loading="${isLoading}"></sling-loader>
     ${addable ? html`

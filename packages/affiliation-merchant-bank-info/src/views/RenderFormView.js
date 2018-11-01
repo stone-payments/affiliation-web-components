@@ -20,7 +20,7 @@ const validation = [
   isNotEmpty('accountNumberVerificationCode'),
 ];
 
-export const renderForm = (
+export const getRenderForm = (
   state,
   handleFormSubmit,
   handleFormUpdate,
