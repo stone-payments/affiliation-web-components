@@ -13,13 +13,10 @@ const keys = [
 
 export const MerchantAddressesListView = ({
   state,
-}) => {
-  console.log(state);
-  return html`
+}) => html`
     <sling-list
       cascadelist
       srcdata="${state.addresses}"
       srckeys="${keys}">
     </sling-list>
 `;
-};

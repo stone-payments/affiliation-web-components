@@ -12,7 +12,7 @@ const columns = [{
   field: 'description',
 }, {
   title: 'UF',
-  field: 'uf',
+  field: 'state',
 }, {
   title: 'Cidade',
   field: 'city',
@@ -30,7 +30,7 @@ const columns = [{
   field: 'neighborhood',
 }];
 
-export const MerchantAddressesView = ({
+export const merchantAddressesView = ({
   requestErrors,
   editable,
   addable,
