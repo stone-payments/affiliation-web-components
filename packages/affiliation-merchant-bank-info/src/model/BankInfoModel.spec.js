@@ -1,7 +1,7 @@
 import { expect } from 'Chai';
 import {
-  bankInfoModel,
-  bankInfoFormResponseModel,
+  BankInfoModel,
+  BankInfoFormResponseModel,
 } from './BankInfoModel.js';
 
 const infoData = [
@@ -110,7 +110,7 @@ describe('Merchant Bank Info Model', () => {
       }],
     };
 
-    expect(bankInfoModel(infoData)).to.deep.equal(modeledData);
+    expect(BankInfoModel(infoData)).to.deep.equal(modeledData);
   });
 
   it('Should return correct Merchant Bank Info Form Response model', () => {
@@ -129,7 +129,7 @@ describe('Merchant Bank Info Model', () => {
       },
     ];
 
-    expect(bankInfoFormResponseModel(stateFormValue, apiResponsesValues))
+    expect(BankInfoFormResponseModel(stateFormValue, apiResponsesValues))
       .to
       .deep
       .equal(modeledData);
