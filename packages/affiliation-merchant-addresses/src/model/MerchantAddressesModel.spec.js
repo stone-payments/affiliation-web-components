@@ -1,5 +1,5 @@
 import { expect } from 'Chai';
-import { addressesModel } from './MerchantAddressesModel.js';
+import { AddressesModel } from './MerchantAddressesModel.js';
 
 const mockData = [
   {
@@ -39,7 +39,8 @@ const expctedeData = [{
 
 describe('Merchant Addresses Model', () => {
   it('Should return a sucesses modeled data', () => {
-    const testData = addressesModel(mockData);
+    const testData = AddressesModel(mockData);
+
     expect(testData).to.deep.equal(expctedeData);
   });
 });

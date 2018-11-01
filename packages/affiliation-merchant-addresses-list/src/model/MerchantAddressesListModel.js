@@ -1,4 +1,4 @@
-export const addressesListModel = ([
+export const AddressesListModel = ([
   data,
 ]) => {
   const modeledData = data.data.map(item => ({
