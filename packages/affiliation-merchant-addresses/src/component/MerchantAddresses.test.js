@@ -1,8 +1,9 @@
 import { registerComponent } from 'sling-helpers';
+import { SlingElement } from 'sling-framework';
 import { AffiliationMerchantAddresses } from './MerchantAddresses.js';
 
 registerComponent('affiliation-merchant-addresses',
-  AffiliationMerchantAddresses);
+  AffiliationMerchantAddresses(SlingElement));
 
 describe('Class AffiliationMerchantAddresses', () => {
   let merchantAddresses;
@@ -18,18 +19,8 @@ describe('Class AffiliationMerchantAddresses', () => {
     merchantAddresses = null;
   });
 
-  it('Should reflect "stonecode" attribute to property ', () => {
-    merchantAddresses.setAttribute('stonecode', '616565655');
-
-    expect(merchantAddresses.hasAttribute('stonecode')).to.be.true;
-  });
-
-  it('Should reflect "apitoken" property to attribute ', (done) => {
-    merchantAddresses.apitoken = '12312321';
-
-    setTimeout(() => {
-      expect(merchantAddresses.hasAttribute('apitoken')).to.be.true;
-      done();
-    });
+  it('Should reflect "affiliationCode" attribute to property ', () => {
+    merchantAddresses.setAttribute('affiliationCode', '0000000');
+    expect(merchantAddresses.hasAttribute('affiliationCode')).to.be.true;
   });
 });
