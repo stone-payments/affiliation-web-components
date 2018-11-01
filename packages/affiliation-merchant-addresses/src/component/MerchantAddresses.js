@@ -1,7 +1,7 @@
-import { v0 as SDK } from 'customer-js-sdk';
+import { v0 as sdk } from 'customer-js-sdk';
 import { withRequest, withSetState } from 'sling-framework';
-import { addressesModel } from '../model/MerchantAddressesModel.js';
-import { merchantAddressesView } from '../view/MerchantAddressesView.js';
+import { AddressesModel } from '../model/MerchantAddressesModel.js';
+import { getMerchantAddressesView } from '../view/MerchantAddressesView.js';
 
 const notEmpty = arg => arg != null;
 
@@ -44,11 +44,11 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
     if (affiliationCode) {
       this
         .request([
-          SDK.merchants.addresses.get({ affiliationCode }),
+          sdk.merchants.addresses.get({ affiliationCode }),
         ])
         .then((responses) => {
           if (responses.every(notEmpty)) {
-            const addresses = addressesModel(responses);
+            const addresses = AddressesModel(responses);
             this.setState({ addresses });
           }
         });
@@ -60,6 +60,6 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
   }
 
   render() {
-    return merchantAddressesView(this);
+    return getMerchantAddressesView(this);
   }
 };
