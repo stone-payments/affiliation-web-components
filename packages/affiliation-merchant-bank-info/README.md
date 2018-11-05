@@ -14,7 +14,7 @@ This is how you set the component into the project html structure
     </affiliation-merchant-bank-info>
 ```
 
-The *affiliationCode* atribute are mandatory for the component to make the correct request to the integrated api and populate it with data.
+The *affiliationCode* attribute is mandatory for the component to make the correct request to the integrated API and populate it with data.
 the *editable* atribute config the component to be editable.
 
 ## Project Wiki
