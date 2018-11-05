@@ -1,7 +1,6 @@
 import { registerComponent } from 'sling-helpers';
-import { connect } from 'customer-js-sdk';
-import { SlingMerchantContactsList, mapStateToProps, mapDispatchToProps }
-  from './component/MerchantContactsList.js';
+import { SlingElement } from 'sling-framework';
+import { AffiliationMerchantContactsList } from './component/MerchantContactsList.js';
 
-registerComponent('sling-merchant-contacts-list',
-  connect(mapStateToProps, mapDispatchToProps)(SlingMerchantContactsList));
+registerComponent('affiliation-merchant-contacts-list',
+  AffiliationMerchantContactsList(SlingElement));
