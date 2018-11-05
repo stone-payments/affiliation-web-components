@@ -1,29 +1,56 @@
-import { html, SlingBusinessElement } from 'sling-framework';
-import { merchantActions, bindActionCreators } from 'customer-js-sdk';
-import 'sling-web-component-list';
+import { withRequest, withSetState } from 'sling-framework';
+import { v0 as sdk } from 'customer-js-sdk';
+import { getMerchantContactsListView } from '../views/MerchantContactsListVew.js';
+import { ContactsListModel } from '../model/MerchantContactsListModel.js';
 
-const keys = [
-  'Nome',
-  'Cargo',
-  'E-mail',
-  'Telefone',
-  'Celular',
-];
+const notEmpty = arg => arg != null;
 
-export class SlingMerchantContactsList extends SlingBusinessElement {
-  render() {
-    return html`
-      <sling-list cascadelist srcdata="${this.apidata}"
-        srckeys="${keys}">
-      </sling-list>
-    `;
-  }
-}
+export const AffiliationMerchantContactsList = (base = class {}) =>
+  class extends withRequest(withSetState(base)) {
+    constructor() {
+      super();
 
-export const mapStateToProps = state => ({
-  apidata: state.merchantReducer.merchantContacts,
-});
+      this.state = {
+        contacts: [],
+      };
+    }
 
-export const mapDispatchToProps = dispatch => ({
-  getdata: bindActionCreators(merchantActions.getMerchantContacts, dispatch),
-});
+    static get properties() {
+      return {
+        state: {
+          type: Object,
+          reflectToAttribute: false,
+        },
+      };
+    }
+
+    static get requestParamNames() {
+      return ['affiliationCode'];
+    }
+
+    fetchData({ affiliationCode }) {
+      if (affiliationCode) {
+        this
+          .request([
+            sdk.merchants.contacts.get({ affiliationCode }),
+          ])
+          .then((responses) => {
+            if (responses.every(notEmpty)) {
+              const data = ContactsListModel(responses);
+              this.setState({
+                affiliationCode,
+                contacts: data,
+              });
+            }
+          });
+      }
+    }
+
+    requestParamsChangedCallback(requestParams) {
+      this.fetchData(requestParams);
+    }
+
+    render() {
+      return getMerchantContactsListView(this);
+    }
+  };
