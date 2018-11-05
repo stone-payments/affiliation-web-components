@@ -1,22 +1,24 @@
 /* eslint-disable */
-import { SlingMerchantContactsList } from './MerchantContactsList.js';
+import { AffiliationMerchantContactsList } from './MerchantContactsList.js';
+import { SlingElement } from 'sling-framework';
 import { registerComponent } from 'sling-helpers';
 
-registerComponent('sling-merchant-constacts-list', SlingMerchantContactsList);
+registerComponent('affiliation-merchant-contacts-list',
+  AffiliationMerchantContactsList(SlingElement));
 
-let $el;
+describe('Merchant Contacts list', () => {
+  let $contactsList;
 
-describe('Contacts list', () => {
   beforeEach(() => {
-    $el = document.createElement('sling-merchant-constacts-list');
-    document.body.appendChild($el);
+    $contactsList = document.createElement('affiliation-merchant-contacts-list');
+    document.body.appendChild($contactsList);
   });
 
   afterEach(() => {
-    document.body.removeChild($el);
-    $el = undefined;
+    document.body.removeChild($contactsList);
+    $contactsList = undefined;
   });
   it('Should check if the element is in the DOM.', () => {
-    expect(document.body.contains($el)).to.be.true;
+    expect(document.body.contains($contactsList)).to.be.true;
   });
 });
