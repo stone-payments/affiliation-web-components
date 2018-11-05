@@ -1,0 +1,58 @@
+.business-component {
+  position: relative;
+  min-height: 120px;
+}
+
+.business-component__button {
+  text-align: right;
+  padding: 16px;
+}
+
+
+.business-component__form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+}
+
+.business-component__inner {
+  max-width: 600px;
+  position: relative;
+  padding: 32px 0;
+}
+
+.business-component__inner > svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  fill: #424B54;
+  cursor: pointer;
+}
+
+sling-list {
+  min-height: 115px;
+  font-family: 'Roboto', sans-serif;
+}
+
+sling-form {
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 16px;
+}
+
+sling-input {
+  grid-column: 1 / 9;
+}
+
+sling-button {
+  grid-column: 8;
+}
