@@ -3,7 +3,7 @@ import 'sling-web-component-message';
 import 'sling-web-component-loader';
 import 'sling-web-component-table';
 import 'sling-web-component-button';
-import { getWrappedFromView } from './WrappedFormView.js';
+import { getWrappedFormView } from './WrappedFormView.js';
 
 const columns = [{
   title: 'Banco',
