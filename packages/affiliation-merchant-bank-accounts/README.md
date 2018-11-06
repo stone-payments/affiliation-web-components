@@ -1,6 +1,6 @@
 # Sling Merchant Bank accounts Table Component.
 
-This component renders a table element with the merchant bank account information within. It uses table basic component as content wrapper.
+This component renders a table element with the merchant bank account information inside. It uses table basic component as content wrapper.
 
 ## Usage
 
