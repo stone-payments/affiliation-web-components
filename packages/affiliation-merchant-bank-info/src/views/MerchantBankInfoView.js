@@ -44,7 +44,7 @@ export const getMerchantBankInfoView = ({
     srcdata="${requestErrors.length > 0 ? ['Ocorreu um erro ao acessar os dados.'] : []}"
     layout="outline">
   </sling-message>
-  ${getWrappedFromView(state, handleStopEditing, handleFormSubmit, handleFormUpdate)}
+  ${getWrappedFormView(state, handleStopEditing, handleFormSubmit, handleFormUpdate)}
   <div class="business-component">
     <sling-loader loading="${isLoading}"></sling-loader>
     ${addable ? html`

@@ -1,7 +1,7 @@
 import { html } from 'sling-framework';
 import { getRenderForm } from './RenderFormView.js';
 
-export const getWrappedFromView = (
+export const getWrappedFormView = (
   state,
   handleStopEditing,
   handleFormSubmit,
