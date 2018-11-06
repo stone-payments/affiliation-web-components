@@ -1,13 +1,18 @@
 import { registerComponent } from 'sling-helpers';
-import { SlingMerchantInfoList } from './MerchantInfoList.js';
+import { SlingElement } from 'sling-framework';
+import sinon from 'sinon';
+import { AffiliationMerchantInfoList } from './MerchantInfoList.js';
 
-registerComponent('sling-merchant-info-list', SlingMerchantInfoList);
+registerComponent('affiliation-merchant-info-list',
+  AffiliationMerchantInfoList(SlingElement));
 
-describe('MerchantInfoList', () => {
+
+describe('Merchant Info List', () => {
   let $merchantInfoList;
 
   beforeEach((done) => {
-    $merchantInfoList = document.createElement('sling-merchant-info-list');
+    $merchantInfoList =
+      document.createElement('affiliation-merchant-info-list');
     document.body.appendChild($merchantInfoList);
     setTimeout(done);
   });
@@ -18,26 +23,76 @@ describe('MerchantInfoList', () => {
     setTimeout(done);
   });
 
-  it('should handleStartEditing when editing is false', () => {
-    $merchantInfoList.editing = false;
-    $merchantInfoList.handleStartEditing();
-    expect($merchantInfoList.editing).to.be.true;
+  it('Should start submit form', () => {
+    const myEvent = new CustomEvent('myEvent', {
+      detail: {
+      },
+    });
+
+    $merchantInfoList.handleStopEditing = sinon.spy();
+    $merchantInfoList.handleFormSubmit(myEvent);
+    expect($merchantInfoList.handleStopEditing).to.be.callCount(1);
   });
-  it('should handleStartEditing when editing is false', () => {
+
+  it('Should start editing', () => {
+    const myEvent = new CustomEvent('myEvent', {
+      detail: {
+        value: 'test',
+      },
+    });
+
+    $merchantInfoList.handleFormUpdate = sinon.spy();
+    $merchantInfoList.handleStartEditing(myEvent);
+    expect($merchantInfoList.editing).to.be.true;
+    expect($merchantInfoList.handleFormUpdate).to.be.callCount(1);
+  });
+
+  it('Should top editing', (done) => {
     $merchantInfoList.editing = true;
-    $merchantInfoList.handleStartEditing();
-    expect($merchantInfoList.editing).to.be.true;
+    $merchantInfoList.handleStopEditing();
+
+    setTimeout(() => {
+      expect($merchantInfoList.editing).to.be.false;
+      done();
+    });
   });
-  it('should set form data when handleStartEditing', () => {
-    const fantasyNameValue = 'fantasyNameValue';
-    $merchantInfoList.apidata = [{ fantasyName: fantasyNameValue }];
-    $merchantInfoList.handleStartEditing();
-    expect($merchantInfoList.formdata.fantasyName).to.equal(fantasyNameValue);
+
+  it('Should reflect "affiliationCode", "isLoading", "requestErrors"' +
+   ', "cascadelist", "editable", "editing" attributes to properties.', () => {
+    $merchantInfoList.setAttribute('affiliationCode', '111111111');
+    $merchantInfoList.setAttribute('isLoading', '');
+    $merchantInfoList.setAttribute('requestErrors', {});
+    $merchantInfoList.setAttribute('cascadelist', '');
+    $merchantInfoList.setAttribute('editable', '');
+    $merchantInfoList.setAttribute('editing', '');
+
+    expect($merchantInfoList.hasAttribute('affiliationCode')).to.be.true;
+    expect($merchantInfoList.hasAttribute('isLoading')).to.be.true;
+    expect($merchantInfoList.hasAttribute('requestErrors')).to.be.true;
+    expect($merchantInfoList.hasAttribute('cascadelist')).to.be.true;
+    expect($merchantInfoList.hasAttribute('editable')).to.be.true;
+    expect($merchantInfoList.hasAttribute('editing')).to.be.true;
   });
-  it('should handleFormUpdate', () => {
-    const fantasyNameValue = 'fantasyNameValue';
-    $merchantInfoList.apidata = [{ fantasyName: fantasyNameValue }];
-    $merchantInfoList.handleFormUpdate();
-    expect($merchantInfoList.formdata.fantasyName).to.equal(fantasyNameValue);
+
+  it('Should reflect "affiliationCode", "state", "isLoading", "requestErrors"' +
+  ', "cascadelist", "editable", "editing" properties to atributes.', (done) => {
+    $merchantInfoList.affiliationCode = false;
+    $merchantInfoList.state = undefined;
+    $merchantInfoList.isLoading = false;
+    $merchantInfoList.requestErrors = undefined;
+    $merchantInfoList.cascadelist = false;
+    $merchantInfoList.editable = false;
+    $merchantInfoList.editing = false;
+
+    setTimeout(() => {
+      expect($merchantInfoList.hasAttribute('affiliationCode')).to.be.false;
+      expect($merchantInfoList.hasAttribute('state')).to.be.false;
+      expect($merchantInfoList.hasAttribute('isLoading')).to.be.false;
+      expect($merchantInfoList.hasAttribute('requestErrors')).to.be.false;
+      expect($merchantInfoList.hasAttribute('cascadelist')).to.be.false;
+      expect($merchantInfoList.hasAttribute('editable')).to.be.false;
+      expect($merchantInfoList.hasAttribute('editing')).to.be.false;
+      done();
+    });
   });
 });

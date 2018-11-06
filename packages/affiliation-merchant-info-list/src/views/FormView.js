@@ -15,8 +15,6 @@ export const getFormView = (
   handleFormUpdate,
 ) => {
   const info = getInfo(state);
-  console.log(info);
-  console.log('mystate', state);
   return html`
   <sling-form
     validation="${validation}"
@@ -24,9 +22,9 @@ export const getFormView = (
     onformupdate="${handleFormUpdate}">
     <sling-input
       label="Nome Fantasia"
-      value="${state.info[0].fantasyName}"
+      value="${info.fantasyName}"
       type="text"
-      name="fantasyName">${state.info[0].fantasyName}</sling-input>
+      name="fantasyName">${info.fantasyName}</sling-input>
     <sling-button
       color="success"
       type="submit">
@@ -34,4 +32,4 @@ export const getFormView = (
     </sling-button>
   </sling-form>
 `;
-}
+};

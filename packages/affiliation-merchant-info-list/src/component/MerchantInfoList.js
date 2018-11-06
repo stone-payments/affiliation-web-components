@@ -4,7 +4,8 @@ import { getMerchantInfoListView } from '../views/MerchantInfoListView';
 import {
   MerchantInfoListPayloadModel,
   MerchantInfoListModel,
-} from '../model/MerchantInfoListPayloadModel.js';
+  MerchantInfoListresponseModel,
+} from '../model/MerchantInfoListModel.js';
 
 const notEmpty = arg => arg != null;
 
@@ -19,7 +20,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
 
       this.state = {
         info: [],
-        formdata: {},
+        formData: {},
       };
     }
 
@@ -53,9 +54,8 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
     }
 
     handleFormUpdate(evt) {
-      console.log('evt', evt.detail);
       this.setState({
-        formdata: evt.detail,
+        formData: evt.detail,
       });
     }
 
@@ -65,28 +65,25 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
           affiliationCode: this.state.affiliationCode,
           id: evt.detail.id,
         };
-        console.log('formadata', this.state.formdata);
         const payload = MerchantInfoListPayloadModel(this.state);
-        console.log('payload', payload);
         this
           .request([
             sdk.merchants.merchant.patch(requestParams, payload),
           ])
           .then((responses) => {
-            const data = responses;
-            console.log(responses);
+            console.log(responses, this.state.info);
+            const data =
+              MerchantInfoListresponseModel(responses, this.state.info);
             this.setState({
-              contacts: data,
+              info: data,
             });
           });
       }
       this.handleStopEditing();
     }
 
-    handleStartEditing(evt) {
-      console.log('evt', evt.detail);
+    handleStartEditing() {
       this.editing = true;
-      this.handleFormUpdate(evt);
     }
 
     handleStopEditing() {

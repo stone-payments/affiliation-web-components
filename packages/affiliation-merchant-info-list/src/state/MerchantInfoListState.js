@@ -1,4 +1,8 @@
 export const getInfo = ({ info }) => {
   const [modeledData] = info;
-  return modeledData;
+  if (modeledData) {
+    return modeledData;
+  }
+  return '';
 };
+
