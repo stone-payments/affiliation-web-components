@@ -1,6 +1,6 @@
 {
-  "name": "affiliation-merchant-bank-info",
-  "description": "Merchant Bank Info business component",
+  "name": "affiliation-merchant-bank-accounts",
+  "description": "Merchant Bank Accounts business component",
   "version": "0.0.0",
   "author": "Stone Pagamentos",
   "module": "src/index.js",

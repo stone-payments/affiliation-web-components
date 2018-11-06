@@ -1,4 +1,4 @@
-export const BankInfoModel = (responses) => {
+export const BankAccountsModel = (responses) => {
   const [availableBanks, banks] = responses;
   const modeledData = {
     banks: banks.data,
@@ -22,7 +22,7 @@ export const BankInfoModel = (responses) => {
   return modeledData;
 };
 
-export const BankInfoFormResponseModel = (state, responses) => {
+export const BankAccountsFormResponseModel = (state, responses) => {
   const [oldValue] = state;
   const [data] = responses;
 

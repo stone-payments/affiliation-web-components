@@ -3,7 +3,7 @@ import { isNotEmpty, isValidBankId, isValidBankAgencyNumber, isValidBankAccountN
 import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
-import { findAccountType } from '../state/MerchantbankInfoState.js';
+import { findAccountType } from '../state/MerchantBankAccountsState.js';
 
 const validation = [
   isNotEmpty('bankId'),

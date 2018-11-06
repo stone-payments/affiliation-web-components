@@ -25,7 +25,7 @@ const columns = [{
   field: 'accountNumberVerificationCode',
 }];
 
-export const getMerchantBankInfoView = ({
+export const getMerchantBankAccountsView = ({
   state,
   isLoading,
   requestErrors,
