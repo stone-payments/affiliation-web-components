@@ -37,7 +37,7 @@ export const getMerchantBankAccountsView = ({
   handleFormUpdate,
 }) => html`
   <style>
-    @import url('affiliation-merchant-bank-info/src/index.css');
+    @import url('affiliation-merchant-bank-accounts/src/index.css');
   </style>
   <sling-message
     aim="error"
