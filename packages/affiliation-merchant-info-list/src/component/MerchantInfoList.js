@@ -71,7 +71,6 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
             sdk.merchants.merchant.patch(requestParams, payload),
           ])
           .then((responses) => {
-            console.log(responses, this.state.info);
             const data =
               MerchantInfoListresponseModel(responses, this.state.info);
             this.setState({
