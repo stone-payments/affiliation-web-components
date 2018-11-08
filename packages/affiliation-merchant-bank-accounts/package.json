@@ -1,7 +1,7 @@
 {
-  "name": "affiliation-merchant-addresses",
-  "description": "Merchant Addresses business component",
-  "version": "1.0.0",
+  "name": "affiliation-merchant-bank-accounts",
+  "description": "Merchant Bank Accounts business component",
+  "version": "0.0.0",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
   "main": "dist/cjs/es5/index.js",
@@ -9,7 +9,7 @@
   "dependencies": {
     "customer-js-sdk": "^1.5.1",
     "sling-framework": "^1.9.0",
-    "sling-helpers": "1.10.0",
+    "sling-helpers": "^1.10.0",
     "sling-web-component-button": "^1.6.0",
     "sling-web-component-form": "^1.6.0",
     "sling-web-component-input": "^1.6.0",
