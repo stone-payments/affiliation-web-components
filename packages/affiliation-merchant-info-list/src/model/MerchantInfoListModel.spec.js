@@ -52,25 +52,31 @@ describe('Merchant Info List Model', () => {
   });
 
   it('Should return correct MerchantInfoListresponseModel response', () => {
-    const infoData = [
-      {
-        data: {
-          fantasyName: 'Flash',
-        },
-      },
-    ];
+    const stateData = [{
+      fantasyName: 'Flash',
+      affiliationCode: '11111111',
+      cnpj: '1111',
+      companyName: 'test',
+      mccDescription: 'test',
+    }];
 
     const requestResponseData = [
       {
         data: {
-          fantasyName: 'Flash',
+          fantasyName: 'Superman',
         },
       },
     ];
 
-    const modeledData = [{ fantasyName: 'Flash' }];
+    const modeledData = [{
+      fantasyName: 'Superman',
+      affiliationCode: '11111111',
+      cnpj: '1111',
+      companyName: 'test',
+      mccDescription: 'test',
+    }];
 
-    expect(MerchantInfoListresponseModel(requestResponseData, infoData))
+    expect(MerchantInfoListresponseModel(requestResponseData, stateData))
       .to
       .deep
       .equal(modeledData);
