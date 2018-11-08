@@ -1,11 +1,11 @@
 import { withRequest, withSetState } from 'sling-framework';
 import { v0 as sdk } from 'customer-js-sdk';
-import { merchantInfoListView } from '../views/MerchantBankInfoListView.js';
-import { bankInfoListModel } from '../model/BankInfoListModel.js';
+import { getMerchantBankAccountsListView } from '../views/MerchantBankAccountsListView.js';
+import { BankAccountsListModel } from '../model/BankAccountsListModel.js';
 
 const notEmpty = arg => arg != null;
 
-export const AffiliarionMerchantBankInfoList = (base = class {}) =>
+export const AffiliarionMerchantBankAccountsList = (base = class {}) =>
   class extends withRequest(withSetState(base)) {
     constructor() {
       super();
@@ -45,7 +45,7 @@ export const AffiliarionMerchantBankInfoList = (base = class {}) =>
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
-              const data = bankInfoListModel(responses);
+              const data = BankAccountsListModel(responses);
               this.setState({
                 affiliationCode,
                 banks: data.banks,
@@ -61,7 +61,7 @@ export const AffiliarionMerchantBankInfoList = (base = class {}) =>
     }
 
     render() {
-      return merchantInfoListView(this);
+      return getMerchantBankAccountsListView(this);
     }
   };
 

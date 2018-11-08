@@ -1,15 +1,15 @@
 import { registerComponent } from 'sling-helpers';
 import { SlingElement } from 'sling-framework';
-import { AffiliarionMerchantBankInfoList } from './MerchantBankInfoList.js';
+import { AffiliarionMerchantBankAccountsList } from './MerchantBankAccountsList.js';
 
-registerComponent('affiliation-merchant-bank-info-list',
-  AffiliarionMerchantBankInfoList(SlingElement));
+registerComponent('affiliation-merchant-bank-accounts-list',
+  AffiliarionMerchantBankAccountsList(SlingElement));
 
 let $el;
 
-describe('Merchant Bank info list', () => {
+describe('Merchant Bank Accounts list', () => {
   beforeEach(() => {
-    $el = document.createElement('affiliation-merchant-bank-info-list');
+    $el = document.createElement('affiliation-merchant-bank-accounts-list');
     document.body.appendChild($el);
   });
 

@@ -1,5 +1,5 @@
 import { expect } from 'Chai';
-import { bankInfoListModel } from './BankInfoListModel.js';
+import { BankAccountsListModel } from './BankAccountsListModel.js';
 
 const infoData = [
   {
@@ -38,8 +38,8 @@ const infoData = [
   },
 ];
 
-describe('Merchant Bank Info List Model', () => {
-  it('Should return correct Merchant Bank Info model.', () => {
+describe('Merchant Bank Accounts List Model', () => {
+  it('Should return correct Merchant Bank Accounts model.', () => {
     const modeledData = {
       banks: [{
         accountNumber: 2222,
@@ -67,6 +67,6 @@ describe('Merchant Bank Info List Model', () => {
       }],
     };
 
-    expect(bankInfoListModel(infoData)).to.deep.equal(modeledData);
+    expect(BankAccountsListModel(infoData)).to.deep.equal(modeledData);
   });
 });

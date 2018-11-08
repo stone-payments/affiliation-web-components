@@ -1,4 +1,4 @@
-export const bankInfoListModel = (responses) => {
+export const BankAccountsListModel = (responses) => {
   const [availableBanks, banks] = responses;
   const modeledData = {
     banks: banks.data,

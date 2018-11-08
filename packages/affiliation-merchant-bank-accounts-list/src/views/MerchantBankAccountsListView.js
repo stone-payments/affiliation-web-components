@@ -10,7 +10,7 @@ const keys = [
   'Dígito',
 ];
 
-export const merchantInfoListView = ({ state }) => html`
+export const getMerchantBankAccountsListView = ({ state }) => html`
   <sling-list cascadelist srcdata="${state.banks}"
     srckeys="${keys}">
   </sling-list>

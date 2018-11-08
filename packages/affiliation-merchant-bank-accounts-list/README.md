@@ -1,4 +1,4 @@
-# Affiliation Merchant Bank Info List Component
+# Affiliation Merchant Bank Accounts List Component
 
 This component renders a list element with the merchant bank information within.
 
@@ -8,9 +8,9 @@ This is how you set the component into the project html structure
 
 ```html
     <!-- component wrapper page location -->
-    <affiliation-merchant-bank-info-list
+    <affiliation-merchant-bank-accounts-list
         affiliationCode="">
-    </affiliation-merchant-bank-info-list>
+    </affiliation-merchant-bank-accounts-list>
 ```
 
 The *affiliationCode* atribute are mandatory for the component to make the correct request to the integrated api and populate it with data.
