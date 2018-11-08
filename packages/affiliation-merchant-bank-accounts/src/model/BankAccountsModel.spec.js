@@ -1,8 +1,8 @@
 import { expect } from 'Chai';
 import {
-  bankInfoModel,
-  bankInfoFormResponseModel,
-} from './BankInfoModel.js';
+  BankAccountsModel,
+  BankAccountsFormResponseModel,
+} from './BankAccountsModel.js';
 
 const infoData = [
   {
@@ -75,8 +75,8 @@ const apiResponsesValues = [
   },
 ];
 
-describe('Merchant Bank Info Model', () => {
-  it('Should return correct Merchant Bank Info model.', () => {
+describe('Merchant Bank Accounts Model', () => {
+  it('Should return correct Merchant Bank Accounts model.', () => {
     const modeledData = {
       banks: [{
         affiliationCode: 111,
@@ -110,10 +110,13 @@ describe('Merchant Bank Info Model', () => {
       }],
     };
 
-    expect(bankInfoModel(infoData)).to.deep.equal(modeledData);
+    expect(BankAccountsModel(infoData))
+      .to
+      .deep
+      .equal(modeledData);
   });
 
-  it('Should return correct Merchant Bank Info Form Response model', () => {
+  it('Should return correct Merchant Bank Accounts Form Response model', () => {
     const modeledData = [
       {
         bankName: 'test',
@@ -129,7 +132,7 @@ describe('Merchant Bank Info Model', () => {
       },
     ];
 
-    expect(bankInfoFormResponseModel(stateFormValue, apiResponsesValues))
+    expect(BankAccountsFormResponseModel(stateFormValue, apiResponsesValues))
       .to
       .deep
       .equal(modeledData);
