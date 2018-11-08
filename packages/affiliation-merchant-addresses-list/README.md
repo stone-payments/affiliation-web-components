@@ -1,6 +1,6 @@
 # Sling Merchant Addresses Business Card Component.
 
-This component renders a card element with the merchant contacts information within. It uses both card and list basic components as content wrappers.
+This component renders a card element with the merchant addresses information inside. It uses both card and list basic components as content wrappers.
 
 ## Usage
 
