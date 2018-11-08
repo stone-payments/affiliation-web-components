@@ -11,7 +11,7 @@ const keys = [
   'Bairro',
 ];
 
-export const merchantAddressesListView = ({
+export const getMerchantAddressesListView = ({
   state,
 }) => html`
     <sling-list
