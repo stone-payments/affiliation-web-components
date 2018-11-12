@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import {
   MerchantInfoListModel,
   MerchantInfoListPayloadModel,
-  MerchantInfoListresponseModel,
+  MerchantInfoListResponseModel,
 } from './MerchantInfoListModel.js';
 
 describe('Merchant Info List Model', () => {
@@ -51,7 +51,7 @@ describe('Merchant Info List Model', () => {
       .equal(modeledData);
   });
 
-  it('Should return correct MerchantInfoListresponseModel response', () => {
+  it('Should return correct MerchantInfoListResponseModel response', () => {
     const stateData = [{
       fantasyName: 'Flash',
       affiliationCode: '11111111',
@@ -76,7 +76,7 @@ describe('Merchant Info List Model', () => {
       mccDescription: 'test',
     }];
 
-    expect(MerchantInfoListresponseModel(requestResponseData, stateData))
+    expect(MerchantInfoListResponseModel(requestResponseData, stateData))
       .to
       .deep
       .equal(modeledData);

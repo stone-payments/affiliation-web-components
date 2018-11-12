@@ -4,7 +4,7 @@ import { getMerchantInfoListView } from '../views/MerchantInfoListView';
 import {
   MerchantInfoListPayloadModel,
   MerchantInfoListModel,
-  MerchantInfoListresponseModel,
+  MerchantInfoListResponseModel,
 } from '../model/MerchantInfoListModel.js';
 
 const notEmpty = arg => arg != null;
@@ -72,7 +72,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
           ])
           .then((responses) => {
             const data =
-              MerchantInfoListresponseModel(responses, this.state.info);
+              MerchantInfoListResponseModel(responses, this.state.info);
             this.setState({
               info: data,
             });

@@ -34,20 +34,7 @@ describe('Merchant Info List', () => {
     expect($merchantInfoList.handleStopEditing).to.be.callCount(1);
   });
 
-  it('Should start editing', () => {
-    const myEvent = new CustomEvent('myEvent', {
-      detail: {
-        value: 'test',
-      },
-    });
-
-    $merchantInfoList.handleFormUpdate = sinon.spy();
-    $merchantInfoList.handleStartEditing(myEvent);
-    expect($merchantInfoList.editing).to.be.true;
-    expect($merchantInfoList.handleFormUpdate).to.be.callCount(1);
-  });
-
-  it('Should top editing', (done) => {
+  it('Should stop editing', (done) => {
     $merchantInfoList.editing = true;
     $merchantInfoList.handleStopEditing();
 

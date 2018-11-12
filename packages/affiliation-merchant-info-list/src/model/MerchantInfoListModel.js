@@ -9,7 +9,7 @@ export const MerchantInfoListModel = ([data], affiliationCode) => [{
   mccDescription: data.data.mccDescription,
 }];
 
-export const MerchantInfoListresponseModel = ([data], [oldValue]) => {
+export const MerchantInfoListResponseModel = ([data], [oldValue]) => {
   const modeledData = {
     ...oldValue,
     fantasyName: data.data.fantasyName,
