@@ -53,8 +53,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
         sdk.headers.append('StoneCode', affiliationCode);
         this
           .request([
-            sdk.merchants.partners.get('', // we need the portal base URL here
-              { affiliationCode }),
+            sdk.merchants.partners.get(sdk.PORTAL_API_URL, { affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
