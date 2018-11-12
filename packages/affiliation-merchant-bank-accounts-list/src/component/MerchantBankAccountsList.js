@@ -5,7 +5,7 @@ import { BankAccountsListModel } from '../model/BankAccountsListModel.js';
 
 const notEmpty = arg => arg != null;
 
-export const AffiliarionMerchantBankAccountsList = (base = class {}) =>
+export const AffiliationMerchantBankAccountsList = (base = class {}) =>
   class extends withRequest(withSetState(base)) {
     constructor() {
       super();

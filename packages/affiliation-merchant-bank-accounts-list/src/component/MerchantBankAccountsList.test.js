@@ -1,9 +1,9 @@
 import { registerComponent } from 'sling-helpers';
 import { SlingElement } from 'sling-framework';
-import { AffiliarionMerchantBankAccountsList } from './MerchantBankAccountsList.js';
+import { AffiliationMerchantBankAccountsList } from './MerchantBankAccountsList.js';
 
 registerComponent('affiliation-merchant-bank-accounts-list',
-  AffiliarionMerchantBankAccountsList(SlingElement));
+  AffiliationMerchantBankAccountsList(SlingElement));
 
 let $el;
 
