@@ -1,6 +1,6 @@
 # Affiliation Merchant Contacts Business List Component
 
-This component renders a list element with the merchant contacts information within.
+This component renders a list element with the merchant contacts information inside.
 
 ## Usage
 
