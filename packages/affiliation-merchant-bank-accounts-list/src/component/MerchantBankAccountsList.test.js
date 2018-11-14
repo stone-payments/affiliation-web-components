@@ -1,15 +1,15 @@
 import { registerComponent } from 'sling-helpers';
 import { SlingElement } from 'sling-framework';
-import { AffiliationMerchantAddressesList } from './MerchantAddressesList.js';
+import { AffiliationMerchantBankAccountsList } from './MerchantBankAccountsList.js';
 
-registerComponent('affiliation-addresses-list',
-  AffiliationMerchantAddressesList(SlingElement));
+registerComponent('affiliation-merchant-bank-accounts-list',
+  AffiliationMerchantBankAccountsList(SlingElement));
 
-describe('Merchant Addresses list', () => {
-  let $el;
+let $el;
 
+describe('Merchant Bank Accounts list', () => {
   beforeEach(() => {
-    $el = document.createElement('affiliation-addresses-list');
+    $el = document.createElement('affiliation-merchant-bank-accounts-list');
     document.body.appendChild($el);
   });
 
@@ -21,3 +21,4 @@ describe('Merchant Addresses list', () => {
     expect(document.body.contains($el)).to.be.true;
   });
 });
+

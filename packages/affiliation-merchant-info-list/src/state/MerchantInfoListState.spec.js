@@ -1,0 +1,47 @@
+import { expect } from 'chai';
+import { getInfo } from './MerchantInfoListState.js';
+
+describe('Merchant Info List State.', () => {
+  it('Should return correct getInfo response', () => {
+    const stateData = {
+      info: [
+        {
+          affiliationCode: '11111111',
+          cnpj: '1111111',
+          companyName: 'test.',
+          fantasyName: 'test',
+          mccDescription: 'test',
+        },
+      ],
+      formData: {},
+      affiliationCode: '11111',
+    };
+
+    const modeledData = {
+      affiliationCode: '11111111',
+      cnpj: '1111111',
+      companyName: 'test.',
+      fantasyName: 'test',
+      mccDescription: 'test',
+    };
+
+    expect(getInfo(stateData))
+      .to
+      .deep
+      .equal(modeledData);
+  });
+  it('Should return correct getInfo response without info in ', () => {
+    const stateData = {
+      info: [],
+      formData: {},
+      affiliationCode: '',
+    };
+
+    const modeledData = '';
+
+    expect(getInfo(stateData))
+      .to
+      .deep
+      .equal(modeledData);
+  });
+});
