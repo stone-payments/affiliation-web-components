@@ -1,0 +1,10 @@
+# affiliation-merchant-contacts-list-v1.0.0 (2018-11-14)
+
+
+### Features
+
+* :sparkles: Add merchant contacts list component ([2aa6cbd](https://github.com/stone-payments/affiliation-web-components/commit/2aa6cbd))
+* :sparkles: Create new model. ([53ff86a](https://github.com/stone-payments/affiliation-web-components/commit/53ff86a))
+* :sparkles: Create view. ([d0b0716](https://github.com/stone-payments/affiliation-web-components/commit/d0b0716))
+* :sparkles: Update index to new register component. ([0179102](https://github.com/stone-payments/affiliation-web-components/commit/0179102))
+* :sparkles: Update index to register component. ([0b3af97](https://github.com/stone-payments/affiliation-web-components/commit/0b3af97))
