@@ -1,6 +1,6 @@
 # Sling Merchant Contacts Business Component.
 
-This component renders a card element with the merchant contacts within. It uses table basic component as content wrapper.
+This component renders a card element with the merchant contacts inside. It uses table basic component as content wrapper.
 
 ## Usage
 
