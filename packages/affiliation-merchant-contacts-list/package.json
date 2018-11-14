@@ -1,0 +1,15 @@
+{
+  "name": "affiliation-merchant-contacts-list",
+  "version": "0.0.0",
+  "description": "Merchant Contacts List business component",
+  "author": "Stone Pagamentos",
+  "module": "src/index.js",
+  "main": "dist/cjs/es5/index.js",
+  "jsnext:main": "dist/es/es6/index.js",
+  "dependencies": {
+    "customer-js-sdk": "^1.5.1",
+    "sling-framework": "^1.10.0",
+    "sling-helpers": "^1.10.0",
+    "sling-web-component-list": "^1.10.0"
+  }
+}

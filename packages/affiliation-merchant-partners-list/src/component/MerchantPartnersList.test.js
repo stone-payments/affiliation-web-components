@@ -1,15 +1,15 @@
 import { registerComponent } from 'sling-helpers';
 import { SlingElement } from 'sling-framework';
-import { AffiliationMerchantAddressesList } from './MerchantAddressesList.js';
+import { AffiliationMerchantPartnersList } from './MerchantPartnersList.js';
 
-registerComponent('affiliation-addresses-list',
-  AffiliationMerchantAddressesList(SlingElement));
+registerComponent('affiliation-merchant-partners-list',
+  AffiliationMerchantPartnersList(SlingElement));
 
-describe('Merchant Addresses list', () => {
+describe('Partners list', () => {
   let $el;
 
   beforeEach(() => {
-    $el = document.createElement('affiliation-addresses-list');
+    $el = document.createElement('sling-web-business-merchant-partners-list');
     document.body.appendChild($el);
   });
 

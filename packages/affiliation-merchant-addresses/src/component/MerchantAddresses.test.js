@@ -5,7 +5,7 @@ import { AffiliationMerchantAddresses } from './MerchantAddresses.js';
 registerComponent('affiliation-merchant-addresses',
   AffiliationMerchantAddresses(SlingElement));
 
-describe('Class AffiliationMerchantAddresses', () => {
+describe('Merchant Addresses', () => {
   let merchantAddresses;
 
   beforeEach(() => {
