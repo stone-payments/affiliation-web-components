@@ -1,3 +1,10 @@
+# [affiliation-merchant-bank-accounts-v1.1.0](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-bank-accounts-v1.0.0...affiliation-merchant-bank-accounts-v1.1.0) (2018-11-14)
+
+
+### Features
+
+* :white_check_mark: Update and add tests. ([68df27a](https://github.com/stone-payments/affiliation-web-components/commit/68df27a))
+
 # affiliation-merchant-bank-accounts-v1.0.0 (2018-11-08)
 
 
