@@ -1,6 +1,6 @@
 # Affiliation Merchant Info List Component
 
-This component renders a list element with the merchant information within.
+This component renders a list element with the merchant information inside.
 
 ## Usage
 
