@@ -1,7 +1,7 @@
 {
   "name": "affiliation-merchant-partners",
   "description": "Merchant Partners business component",
-  "version": "1.8.0",
+  "version": "1.0.0",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
   "main": "dist/cjs/es5/index.js",
