@@ -1,4 +1,4 @@
-import { expect } from 'Chai';
+import { expect } from 'chai';
 import { AddressesModel } from './MerchantAddressesModel.js';
 
 const mockData = [
