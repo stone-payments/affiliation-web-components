@@ -15,6 +15,6 @@ This is how you set the component into the project html structure
 
 The *affiliationCode* attribute is mandatory for the component to make the correct request to the integrated API and populate it with data.
 
-## Project Wiki:
+## Project Wiki
 
-https://stonepayments.atlassian.net/wiki/spaces/APICLIENTE
+https://github.com/stone-payments/affiliation-web-components/wiki

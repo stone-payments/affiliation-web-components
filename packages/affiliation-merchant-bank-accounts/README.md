@@ -18,4 +18,5 @@ The *affiliationCode* attribute is mandatory for the component to make the corre
 The *editable* attribute configures the component to be editable.
 
 ## Project Wiki
-https://stonepayments.atlassian.net/wiki/spaces/APICLIENTE
+
+https://github.com/stone-payments/affiliation-web-components/wiki

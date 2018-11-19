@@ -17,4 +17,4 @@ The *affiliationCode* antribute are mandatory for the component to make the corr
 
 ## Project Wiki
 
-https://stonepayments.atlassian.net/wiki/spaces/APICLIENTE
+https://github.com/stone-payments/affiliation-web-components/wiki
