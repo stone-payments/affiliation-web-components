@@ -1,3 +1,10 @@
+# [affiliation-merchant-bank-accounts-v1.1.2](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-bank-accounts-v1.1.1...affiliation-merchant-bank-accounts-v1.1.2) (2018-11-19)
+
+
+### Bug Fixes
+
+* :memo: Update README.md. ([62145c3](https://github.com/stone-payments/affiliation-web-components/commit/62145c3))
+
 # [affiliation-merchant-bank-accounts-v1.1.1](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-bank-accounts-v1.1.0...affiliation-merchant-bank-accounts-v1.1.1) (2018-11-19)
 
 
