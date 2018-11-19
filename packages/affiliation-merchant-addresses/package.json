@@ -1,7 +1,7 @@
 {
   "name": "affiliation-merchant-addresses",
   "description": "Merchant Addresses business component",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
   "main": "dist/cjs/es5/index.js",
