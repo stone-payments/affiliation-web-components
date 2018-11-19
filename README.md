@@ -3,6 +3,7 @@
 [![license](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/stone-payments/affiliation-web-components)
 [![Build Status](https://travis-ci.org/stone-payments/affiliation-web-components.svg?branch=master)](https://travis-ci.org/stone-payments/affiliation-web-components)
 [![Coverage Status](https://coveralls.io/repos/github/stone-payments/affiliation-web-components/badge.svg?branch=develop)](https://coveralls.io/github/stone-payments/affiliation-web-components?branch=develop)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 # Affiliation Web Components
 
@@ -25,6 +26,26 @@ to this repository.
 Thank you for your interest in contributing to the project. Read our guidelines for [contributing](./CONTRIBUTING.md).
 
 ## Packages
+
+* [affiliation-merchant-addresses-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-addresses-list)
+
+* [affiliation-merchant-addresses](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-addresses)
+
+* [affiliation-merchant-bank-accounts-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-bank-accounts-list)
+
+* [affiliation-merchant-bank-accounts](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-bank-accounts)
+
+* [affiliation-merchant-contacts-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-contacts-list)
+
+* [affiliation-merchant-contacts](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-contacts)
+
+* [affiliation-merchant-info-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-info-list)
+
+* [affiliation-merchant-partners-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-partners-list)
+
+* [affiliation-merchant-partners](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-partners)
+
+
 
 ### Core
 
