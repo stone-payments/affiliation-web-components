@@ -27,15 +27,23 @@ Thank you for your interest in contributing to the project. Read our guidelines 
 
 ## Packages
 
-[affiliation-merchant-addresses-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-addresses-list)
-[affiliation-merchant-addresses](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-addresses)
-[affiliation-merchant-bank-accounts-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-bank-accounts-list)
-[affiliation-merchant-bank-accounts](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-bank-accounts)
-[affiliation-merchant-contacts-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-contacts-list)
-[affiliation-merchant-contacts](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-contacts)
-[affiliation-merchant-info-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-info-list)
-[affiliation-merchant-partners-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-partners-list)
-[affiliation-merchant-partners](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-partners)
+* [affiliation-merchant-addresses-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-addresses-list)
+
+* [affiliation-merchant-addresses](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-addresses)
+
+* [affiliation-merchant-bank-accounts-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-bank-accounts-list)
+
+* [affiliation-merchant-bank-accounts](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-bank-accounts)
+
+* [affiliation-merchant-contacts-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-contacts-list)
+
+* [affiliation-merchant-contacts](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-contacts)
+
+* [affiliation-merchant-info-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-info-list)
+
+* [affiliation-merchant-partners-list](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-partners-list)
+
+* [affiliation-merchant-partners](https://github.com/stone-payments/affiliation-web-components/tree/master/packages/affiliation-merchant-partners)
 
 
 
