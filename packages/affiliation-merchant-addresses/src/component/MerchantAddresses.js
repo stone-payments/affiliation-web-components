@@ -44,7 +44,8 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
     if (affiliationCode) {
       this
         .request([
-          sdk.merchants.addresses.get({ affiliationCode }),
+          sdk.merchants.addresses.get('', // Base URL
+            { affiliationCode }),
         ])
         .then((responses) => {
           if (responses.every(notEmpty)) {

@@ -17,7 +17,7 @@ const columns = [{
   title: 'Cidade',
   field: 'city',
 }, {
-  title: 'Endereço',
+  title: 'Rua',
   field: 'street',
 }, {
   title: 'Nº',
