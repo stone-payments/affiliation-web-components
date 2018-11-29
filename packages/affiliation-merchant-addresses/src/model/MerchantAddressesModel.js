@@ -1,15 +1,12 @@
-export const AddressesModel = ([
-  data,
-]) => {
-  const modeledData = data.data.map(item => ({
-    description: item.typeName,
-    state: item.stateName,
-    city: item.cityName,
-    street: item.streetName,
-    number: item.streetNumber,
-    complement: item.complement,
-    neighborhood: item.neighborhood,
-  }));
-
-  return modeledData;
-};
+export const AddressesModel = ([data]) => data.map(item => ({
+  description: item.type.name,
+  descriptionTypeId: item.type.id,
+  state: item.city.countrySubdivision.name,
+  stateId: item.city.countrySubdivision.id,
+  city: item.city.name,
+  citId: item.city.id,
+  street: item.streetName,
+  number: item.entranceNumber,
+  complement: item.complement,
+  neighborhood: item.neighborhood,
+}));
