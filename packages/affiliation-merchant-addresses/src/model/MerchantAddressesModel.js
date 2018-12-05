@@ -1,15 +1,16 @@
-export const AddressesModel = ([
-  data,
-]) => {
-  const modeledData = data.data.map(item => ({
-    description: item.typeName,
-    state: item.stateName,
-    city: item.cityName,
+export const AddressesModel = (data) => {
+  data.data.map(item => ({
+    key: item.key,
+    typeId: item.type.id,
+    typeName: item.type.name,
+    postalCode: item.postalCode,
+    stateCode: item.city.countrySubdivision.iso31662Short,
+    cityName: item.city.name,
     street: item.streetName,
-    number: item.streetNumber,
+    number: item.entranceNumber,
     complement: item.complement,
     neighborhood: item.neighborhood,
+    cityDisplay: `${item.city.name} / ${item.city.countrySubdivision.iso31662Short}`,
+    streetDisplay: `${item.streetName}, ${item.entranceNumber} ${item.complement}`,
   }));
-
-  return modeledData;
 };
