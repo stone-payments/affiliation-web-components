@@ -11,7 +11,7 @@ const columns = [{
   field: 'rg',
 }, {
   title: 'CPF',
-  field: 'cpf',
+  field: 'document',
   type: 'cpf',
 }];
 
