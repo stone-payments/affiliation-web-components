@@ -2,13 +2,14 @@ import { html } from 'sling-framework';
 import 'sling-web-component-list';
 
 const keys = [
-  'Descrição',
-  'UF',
-  'Cidade',
+  'Tipo',
   'Endereço',
   'Número',
   'Complemento',
   'Bairro',
+  'Cidade',
+  'UF',
+  'CEP',
 ];
 
 export const getMerchantAddressesListView = ({
