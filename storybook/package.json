@@ -1,0 +1,29 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook -o .out"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.5.21",
+    "affiliation-merchant-addresses": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^4.1.4",
+    "@storybook/addon-links": "^4.1.4",
+    "@storybook/addons": "^4.1.4",
+    "@storybook/vue": "^4.1.4",
+    "babel-loader": "^8.0.4",
+    "babel-preset-vue": "^2.0.2",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

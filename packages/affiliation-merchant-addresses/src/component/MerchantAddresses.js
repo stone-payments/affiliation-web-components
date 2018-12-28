@@ -17,7 +17,7 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
 
   static get properties() {
     return {
-      state: {
+      state: {  
         type: Object,
         reflectToAttribute: false,
       },
