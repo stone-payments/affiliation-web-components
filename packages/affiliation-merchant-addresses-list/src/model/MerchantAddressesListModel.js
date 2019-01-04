@@ -1,7 +1,7 @@
 export const AddressesListModel = ([
   data,
 ]) => {
-  const modeledData = data.map(item => ({
+  const modeledData = data.data.map(item => ({
     type: item.type.name,
     street: item.streetName,
     number: item.entranceNumber,
