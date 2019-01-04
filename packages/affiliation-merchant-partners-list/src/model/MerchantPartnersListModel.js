@@ -1,5 +1,5 @@
 export const PartnersListModel = ([data]) =>
-  data.reduce((allPartners, partner) => {
+  data.data.reduce((allPartners, partner) => {
     if (partner.naturalPerson) {
       const modeledPartner = {
         name: partner.naturalPerson.name,
@@ -13,7 +13,6 @@ export const PartnersListModel = ([data]) =>
         documentType: partner.legalPerson.taxIdType.name,
         documentNumber: partner.legalPerson.taxId,
       };
-
       allPartners.push(modeledPartner);
     }
     return allPartners;
