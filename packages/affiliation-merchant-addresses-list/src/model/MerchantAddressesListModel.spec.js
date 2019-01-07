@@ -36,14 +36,12 @@ const mockData = [
 ];
 
 const expctedeData = [{
-  type: 'Test type name',
-  street: 'Test street name',
-  number: '15',
-  complement: 'Test complement',
+  typeName: 'Test type name',
+  streetDisplay: 'Test street name, 15 Test complement',
+  cityDisplay: 'Test city name / TS',
   neighborhood: 'Test neighborhood',
-  city: 'Test city name',
-  state: 'TS',
   postalCode: '11111-11',
+
 }];
 
 describe('Merchant Addresses Model List', () => {
