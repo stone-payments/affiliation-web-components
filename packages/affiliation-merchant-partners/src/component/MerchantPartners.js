@@ -15,66 +15,6 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       super();
 
       this.state = {
-        newData: [
-          [
-            {
-              naturalPerson: {
-                key: 'C20A3719-0804-4B91-B50F-24D33938087F',
-                name: 'José Alves Junior',
-                taxId: '97557466926',
-                taxIdType: {
-                  id: 2,
-                  name: 'CPF',
-                },
-                ownershipPercentage: 0.25,
-                birthdate: '1984-02-07T00:00:00Z',
-                birthPlace: 'Rio de Janeiro',
-                birthCountry: {
-                  id: 76,
-                  name: 'Brazil',
-                  iso31661Alpha3: 'BRA',
-                  iso31661Alpha2: 'BR',
-                },
-                fatherName: 'José Alves Camargo',
-                motherName: 'Maria Sandra Alves',
-                spouseName: 'Brenda Carvalho',
-                spouseTaxId: '13415229548',
-                spouseTaxIdType: {
-                  id: 2,
-                  name: 'CPF',
-                },
-              },
-            },
-            {
-              legalPerson: {
-                key: 'C20A3719-0804-4B91-B50F-24D33938087F',
-                name: 'José Alves Junior',
-                taxId: '71701384000118',
-                taxIdType: {
-                  id: 1,
-                  name: 'CNPJ',
-                },
-                ownershipPercentage: 0.25,
-                birthdate: '1984-02-07T00:00:00Z',
-                birthPlace: 'Rio de Janeiro',
-                birthCountry: {
-                  id: 76,
-                  name: 'Brazil',
-                  iso31661Alpha3: 'BRA',
-                  iso31661Alpha2: 'BR',
-                },
-                fatherName: 'José Alves Camargo',
-                motherName: 'Maria Sandra Alves',
-                spouseName: 'Brenda Carvalho',
-                spouseTaxId: '13415229548',
-                spouseTaxIdType: {
-                  id: 2,
-                  name: 'CPF',
-                },
-              },
-            },
-          ],
-        ],
         partners: [],
       };
 
@@ -116,7 +56,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
         sdk.headers.append('StoneCode', affiliationCode);
         this
           .request([
-            sdk.merchants.partners.get(sdk.PORTAL_API_URL, { affiliationCode }),
+            sdk.affiliation.partners.get(sdk.PORTAL_API_URL, { affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
