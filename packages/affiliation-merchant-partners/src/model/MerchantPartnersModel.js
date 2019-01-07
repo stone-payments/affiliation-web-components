@@ -7,7 +7,6 @@ export const PartnersModel = ([data]) => data.map(item => ({
 
 export const NewPartnersModel = ([data]) =>
   data.reduce((allPartners, partner) => {
-    console.log(partner);
     if (partner.naturalPerson) {
       const modeledPartner = {
         name: partner.naturalPerson.name,
@@ -25,6 +24,5 @@ export const NewPartnersModel = ([data]) =>
       };
       allPartners.push(modeledPartner);
     }
-    console.log('batman', allPartners);
     return allPartners;
   }, []);

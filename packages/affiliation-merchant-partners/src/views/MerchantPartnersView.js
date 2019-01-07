@@ -4,12 +4,6 @@ const columns = [{
   title: 'Nome',
   field: 'name',
 }, {
-  title: 'E-mail',
-  field: 'email',
-}, {
-  title: 'RG',
-  field: 'rg',
-}, {
   title: 'Tipo de documento',
   field: 'document',
 }, {
@@ -23,10 +17,7 @@ export const getMerchantPartnersView = ({
   addable,
   isLoading,
   requestErrors,
-}) => {
-  console.log(state);
-
-  return html`
+}) => html`
     <style>
       @import url('affiliation-merchant-partners/src/index.css');
     </style>
@@ -54,4 +45,3 @@ export const getMerchantPartnersView = ({
       </sling-table>
     </div>
   `;
-};
