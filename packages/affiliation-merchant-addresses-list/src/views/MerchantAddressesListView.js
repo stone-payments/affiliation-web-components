@@ -4,11 +4,8 @@ import 'sling-web-component-list';
 const keys = [
   'Tipo',
   'Endereço',
-  'Número',
-  'Complemento',
   'Bairro',
-  'Cidade',
-  'UF',
+  'Cidade / UF',
   'CEP',
 ];
 
