@@ -10,13 +10,21 @@ describe('Merchant Info List Model', () => {
     const affiliationCode = '123456789';
     const infoData = [
       {
-        data: {
-          prop: 'xpto',
-          stonecode: '1234567',
-          document: '111.111-11111',
-          companyName: 'Mock_xpto',
-          fantasyName: 'Mock fantasy',
-          mccDescription: 'mock mcc',
+        memberKey: 'test',
+        mcc: {
+          id: 1,
+          name: 'Test Name',
+        },
+        legalName: 'Test Legal Name',
+        tradeName: 'Test Trade Name',
+        legalPersonality: {
+          id: 1,
+          name: 'Test Name',
+        },
+        taxId: '1',
+        taxIdType: {
+          id: 1,
+          name: 'Test Document',
         },
       },
     ];
@@ -24,10 +32,10 @@ describe('Merchant Info List Model', () => {
     const modeledData = [
       {
         affiliationCode: '123456789',
-        cnpj: '111.111-11111',
-        companyName: 'Mock_xpto',
-        fantasyName: 'Mock fantasy',
-        mccDescription: 'mock mcc',
+        cnpj: '1',
+        legalName: 'Test Legal Name',
+        tradeName: 'Test Trade Name',
+        mccDescription: 'Test Name',
       },
     ];
 
@@ -40,10 +48,14 @@ describe('Merchant Info List Model', () => {
   it('Should return correct MerchantInfoListPayloadModel response', () => {
     // state.formdata.fantasyName
     const infoData = {
-      formData: { fantasyName: 'Mock fantasy' },
+      formData:
+      {
+        fantasyName: 'Mock fantasy',
+        mccId: 1,
+      },
     };
 
-    const modeledData = { fantasyName: 'Mock fantasy' };
+    const modeledData = { tradeName: 'Mock fantasy', mccId: 1 };
 
     expect(MerchantInfoListPayloadModel(infoData))
       .to
@@ -53,7 +65,7 @@ describe('Merchant Info List Model', () => {
 
   it('Should return correct MerchantInfoListResponseModel response', () => {
     const stateData = [{
-      fantasyName: 'Flash',
+      tradeName: 'Flash',
       affiliationCode: '11111111',
       cnpj: '1111',
       companyName: 'test',
@@ -69,7 +81,7 @@ describe('Merchant Info List Model', () => {
     ];
 
     const modeledData = [{
-      fantasyName: 'Superman',
+      tradeName: 'Superman',
       affiliationCode: '11111111',
       cnpj: '1111',
       companyName: 'test',
