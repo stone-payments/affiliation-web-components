@@ -98,7 +98,8 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            sdk.affiliation.merchant.get({ affiliationCode }),
+            // @TODO Update to new sdk medule "affiliation".
+            sdk.merchants.merchant.get({ affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
