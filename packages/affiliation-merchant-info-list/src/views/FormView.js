@@ -22,9 +22,15 @@ export const getFormView = (
     onformupdate="${handleFormUpdate}">
     <sling-input
       label="Nome Fantasia"
-      value="${info.fantasyName}"
+      value="${info.tradeName}"
       type="text"
-      name="fantasyName">${info.fantasyName}</sling-input>
+      name="fantasyName">${info.tradeName}
+    </sling-input>
+    <sling-input
+      type="hidden"
+      name="mccId"
+      value="${info.mccId}">
+    </sling-input>
     <sling-button
       color="success"
       type="submit">
