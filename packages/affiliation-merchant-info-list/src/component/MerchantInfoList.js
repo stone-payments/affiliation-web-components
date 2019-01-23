@@ -20,6 +20,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
 
       this.state = {
         info: [],
+        apiResponse: [],
         formData: {},
       };
     }
@@ -104,6 +105,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
               const data = MerchantInfoListModel(responses, affiliationCode);
               this.setState({
                 affiliationCode,
+                apiResponse: responses,
                 info: data,
               });
             }
