@@ -1,14 +1,6 @@
 export const MerchantInfoListPayloadModel = state =>
   ({ fantasyName: state.formData.fantasyName });
 
-export const MerchantInfoListModel = ([data], affiliationCode) => [{
-  affiliationCode,
-  cnpj: data.data.document,
-  companyName: data.data.companyName,
-  fantasyName: data.data.fantasyName,
-  mccDescription: data.data.mccDescription,
-}];
-
 export const MerchantInfoListResponseModel = ([data], [oldValue]) => {
   const modeledData = {
     ...oldValue,
@@ -18,3 +10,10 @@ export const MerchantInfoListResponseModel = ([data], [oldValue]) => {
   return [modeledData];
 };
 
+export const MerchantInfoListModel = ([data], affiliationCode) => [{
+  affiliationCode,
+  cnpj: data.taxId,
+  companyName: data.legalName,
+  fantasyName: data.tradeName,
+  mccDescription: data.mcc.name,
+}];
