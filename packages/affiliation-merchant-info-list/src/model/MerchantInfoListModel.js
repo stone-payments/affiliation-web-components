@@ -6,7 +6,7 @@ export const MerchantInfoListPayloadModel = state => ({
 export const MerchantInfoListResponseModel = ([data], [oldValue]) => {
   const modeledData = {
     ...oldValue,
-    fantasyName: data.data.fantasyName,
+    tradeName: data.data.fantasyName,
   };
 
   return [modeledData];
