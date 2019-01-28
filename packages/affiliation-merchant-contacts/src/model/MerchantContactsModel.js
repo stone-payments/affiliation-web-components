@@ -4,8 +4,10 @@ export const ContactsModel = contacts => contacts.map(contact => ({
   name: contact.friendlyName,
   typeName: contact.type.name,
   typeId: contact.type.id,
-  email: contact.emails[0].email,
-  phone: `${contact.phones[0].areaCode}${contact.phones[0].phoneNumber}`,
+  email: contact.emails[0] ? contact.emails[0].email : 'N/A',
+  phone: contact.phones[0]
+    ? `${contact.phones[0].areaCode}${contact.phones[0].phoneNumber}`
+    : 'N/A',
 }));
 
 export const MerchantContactsPayloadModel = data => ({

@@ -9,7 +9,7 @@ describe('', () => {
     const modeledResponse = [
       {
         name: 'teste tomador2',
-        email: 'test@email.com',
+        email: 'N/A',
         phone: '1112341234',
         typeName: 'Administrativo',
         typeId: 1,
@@ -37,10 +37,6 @@ describe('', () => {
           },
         ],
         emails: [
-          {
-            key: 'Test key',
-            email: 'test@email.com',
-          },
         ],
       }];
 
