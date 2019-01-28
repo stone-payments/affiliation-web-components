@@ -7,28 +7,28 @@ import 'sling-web-component-loader';
 import 'sling-web-component-message';
 import 'sling-web-component-button';
 
-const columns = [{
-  title: 'Descrição',
-  field: 'description',
-}, {
-  title: 'UF',
-  field: 'state',
-}, {
-  title: 'Cidade',
-  field: 'city',
-}, {
-  title: 'Endereço',
-  field: 'street',
-}, {
-  title: 'Nº',
-  field: 'number',
-}, {
-  title: 'Complem.',
-  field: 'complement',
-}, {
-  title: 'Bairro',
-  field: 'neighborhood',
-}];
+const columns = [
+  {
+    title: 'Descrição',
+    field: 'typeName',
+  },
+  {
+    title: 'Endereço',
+    field: 'streetDisplay',
+  },
+  {
+    title: 'Bairro',
+    field: 'neighborhood',
+  },
+  {
+    title: 'Cidade / UF',
+    field: 'cityDisplay',
+  },
+  {
+    title: 'CEP',
+    field: 'postalCode',
+  },
+];
 
 export const getMerchantAddressesView = ({
   requestErrors,
