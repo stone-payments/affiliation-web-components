@@ -32,7 +32,7 @@ export const AffiliationMerchantAddressesList = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            sdk.merchants.addresses.get({ affiliationCode }),
+            sdk.affiliation.addresses.get({ affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
