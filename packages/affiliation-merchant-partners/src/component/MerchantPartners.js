@@ -5,7 +5,7 @@ import 'sling-web-component-loader';
 import 'sling-web-component-message';
 import 'sling-web-component-button';
 import { getMerchantPartnersView } from '../views/MerchantPartnersView';
-import { PartnersModel } from '../model/MerchantPartnersModel';
+import { PartnersModel, NewPartnersModel } from '../model/MerchantPartnersModel';
 
 const notEmpty = arg => arg != null;
 
@@ -17,6 +17,9 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       this.state = {
         partners: [],
       };
+
+      const test = NewPartnersModel(this.state.newData);
+      this.setState({ partners: test });
     }
 
     static get properties() {
@@ -53,7 +56,8 @@ export const AffiliationMerchantPartners = (base = class {}) =>
         sdk.headers.append('StoneCode', affiliationCode);
         this
           .request([
-            sdk.merchants.partners.get(sdk.PORTAL_API_URL, { affiliationCode }),
+            sdk.affiliation.partners.get(
+              sdk.PORTAL_API_URL, { affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
