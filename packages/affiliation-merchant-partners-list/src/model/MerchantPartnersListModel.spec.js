@@ -4,25 +4,46 @@ import { PartnersListModel } from './MerchantPartnersListModel.js';
 describe('Merchant Partners Model', () => {
   it('Should return correct PartnersModel response.', () => {
     const dataResponse = [
-      [
-        {
-          object: 'test',
-          id: '11111',
-          name: 'test',
-          email: 'test@test.com',
-          rg: 'N/I',
-          cpf: '111111111111',
-          birthday: '1111-11-11',
-        },
-      ],
+      {
+        data: [
+          {
+            naturalPerson: {
+              key: 'KEY',
+              name: 'Natural name test',
+              taxId: '123456789',
+              taxIdType: {
+                id: 1,
+                name: 'CPF',
+              },
+              ownershipPercentage: 0.1,
+            },
+          },
+          {
+            legalPerson: {
+              key: 'KEY',
+              name: 'Legal name test',
+              taxId: '987654321',
+              taxIdType: {
+                id: 2,
+                name: 'CNPJ',
+              },
+              ownershipPercentage: 0.1,
+            },
+          },
+        ],
+      },
     ];
 
     const modeledData = [
       {
-        name: 'test',
-        email: 'test@test.com',
-        rg: 'N/I',
-        cpf: '111111111111',
+        name: 'Natural name test',
+        documentType: 'CPF',
+        documentNumber: '123456789',
+      },
+      {
+        name: 'Legal name test',
+        documentType: 'CNPJ',
+        documentNumber: '987654321',
       },
     ];
 
