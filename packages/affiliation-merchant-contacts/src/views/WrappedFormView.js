@@ -1,7 +1,7 @@
 import { html } from 'sling-framework';
-import { formView } from './FormView.js';
+import { getFormView } from './FormView.js';
 
-export const wrappedForm = (state, handleStopEditing, handleFormSubmit, handleFormUpdate) => html`
+export const getWrappedForm = (state, handleStopEditing, handleFormSubmit, handleFormUpdate) => html`
     <div class="business-component__form">
       <div class="business-component__inner">
         <svg
@@ -14,7 +14,7 @@ export const wrappedForm = (state, handleStopEditing, handleFormSubmit, handleFo
           <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           <path d="M0 0h24v24H0z" fill="none"/>
         </svg>
-        ${formView(state, handleFormSubmit, handleFormUpdate)}
+        ${getFormView(state, handleFormSubmit, handleFormUpdate)}
       </div>
     </div>
   `;

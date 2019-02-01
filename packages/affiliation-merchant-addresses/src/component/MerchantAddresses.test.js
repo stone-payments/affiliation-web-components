@@ -19,8 +19,11 @@ describe('Merchant Addresses', () => {
     merchantAddresses = null;
   });
 
-  it('Should reflect "affiliationCode" attribute to property ', () => {
-    merchantAddresses.setAttribute('affiliationCode', '0000000');
-    expect(merchantAddresses.hasAttribute('affiliationCode')).to.be.true;
+  it('Should reflect "editable" and "addable attributes to property ', () => {
+    merchantAddresses.setAttribute('editable', '');
+    merchantAddresses.setAttribute('addable', '');
+
+    expect(merchantAddresses.hasAttribute('editable')).to.be.true;
+    expect(merchantAddresses.hasAttribute('addable')).to.be.true;
   });
 });
