@@ -1,6 +1,6 @@
 import { replaceNonDigits } from 'sling-helpers';
 
-export const ContactsModel = contacts => contacts.map(contact => ({
+export const ContactsModel = ([data]) => data.map(contact => ({
   name: contact.friendlyName,
   typeName: contact.type.name,
   typeId: contact.type.id,
