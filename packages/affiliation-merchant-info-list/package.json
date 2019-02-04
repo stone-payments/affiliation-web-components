@@ -1,6 +1,6 @@
 {
   "name": "affiliation-merchant-info-list",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Merchant Info business component",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
