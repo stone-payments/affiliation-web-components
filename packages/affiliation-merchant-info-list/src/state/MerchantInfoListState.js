@@ -1,8 +1,12 @@
-export const getInfo = ({ info }) => {
-  const [modeledData] = info;
+export const getInfo = (state) => {
+  const [infoData] = state.info;
+  const [responseMerchant] = state.apiResponse;
 
-  if (modeledData) {
-    return modeledData;
+  if (infoData) {
+    return {
+      ...infoData,
+      mccId: responseMerchant.mcc.id,
+    };
   }
 
   return '';
