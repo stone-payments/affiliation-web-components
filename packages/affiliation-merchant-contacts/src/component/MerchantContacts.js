@@ -103,7 +103,7 @@ export const AffiliationMerchantContacts = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            sdk.merchants.contacts.get({ affiliationCode }),
+            sdk.affiliation.contacts.get({ affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
