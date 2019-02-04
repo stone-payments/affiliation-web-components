@@ -1,10 +1,10 @@
 import { withRequest, withSetState } from 'sling-framework';
 import { v0 as sdk } from 'customer-js-sdk';
-import { merchantContactsView } from '../views/MerchantContactsView';
+import { getMerchantContactsView } from '../views/MerchantContactsView';
 import {
-  contactsModel,
-  merchantContactsPayloadModel,
-  updateContactstList,
+  ContactsModel,
+  MerchantContactsPayloadModel,
+  UpdateContactstList,
 } from '../model/MerchantContactsModel';
 
 const notEmpty = arg => arg != null;
@@ -68,14 +68,15 @@ export const AffiliationMerchantContacts = (base = class {}) =>
           id: evt.detail.id,
         };
 
-        const payload = merchantContactsPayloadModel(evt.detail);
+        const payload = MerchantContactsPayloadModel(evt.detail);
 
         this
           .request([
+            // @TODO Change the sdk method to sdk.affiliation.contacts.put.
             sdk.merchants.contacts.put(requestParams, payload),
           ])
           .then((responses) => {
-            const data = updateContactstList(this.state.contacts, responses);
+            const data = UpdateContactstList(this.state.contacts, responses);
             this.setState({
               contacts: data,
             });
@@ -102,11 +103,11 @@ export const AffiliationMerchantContacts = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            sdk.merchants.contacts.get({ affiliationCode }),
+            sdk.affiliation.contacts.get({ affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
-              const data = contactsModel(responses);
+              const data = ContactsModel(responses);
               this.setState({
                 affiliationCode,
                 contacts: data,
@@ -121,6 +122,6 @@ export const AffiliationMerchantContacts = (base = class {}) =>
     }
 
     render() {
-      return merchantContactsView(this);
+      return getMerchantContactsView(this);
     }
   };

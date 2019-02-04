@@ -3,9 +3,8 @@ import 'sling-web-component-list';
 
 const keys = [
   'Nome',
-  'E-mail',
-  'RG',
-  'CPF',
+  'Tipo de documento',
+  'Nº documento',
 ];
 
 export const getMerchantPartnersListView = ({

@@ -21,7 +21,9 @@
     "cafe-es5": "./node_modules/.bin/cross-env ECMA=5 node ./scripts/cafe.js",
     "prespec": "npm run lint",
     "spec": "node ./scripts/spec.js",
-    "server": "node ./scripts/server.js"
+    "server": "node ./scripts/server.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -79,7 +81,10 @@
     "testcafe": "^0.22.0",
     "webpack": "^4.19.0",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "@storybook/polymer": "^4.1.4",
+    "babel-loader": "^8.0.4",
+    "polymer-webpack-loader": "^2.0.3"
   },
   "repository": {
     "type": "git",
@@ -92,5 +97,6 @@
   "homepage": "https://github.com/stone-payments/affiliation-web-components#readme",
   "resolutions": {
     "eslint-scope": "3.7.1"
-  }
+  },
+  "dependencies": {}
 }

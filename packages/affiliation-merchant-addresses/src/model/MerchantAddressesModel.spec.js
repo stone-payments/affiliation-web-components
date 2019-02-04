@@ -5,36 +5,48 @@ const mockData = [
   {
     data: [
       {
-        affiliationCode: 111111111,
-        id: 111111,
-        typeId: 1,
-        typeName: 'test',
-        cityId: 1,
-        cityName: 'test',
-        stateName: 'test',
-        countryId: 1,
-        countryName: 'test',
-        complement: 'test',
-        locatedInShopping: false,
-        neighborhood: 'test',
-        postalCode: '1111111',
-        reference: 'test',
+        key: 'test',
+        entranceNumber: 1,
         streetName: 'test',
-        streetNumber: 1,
-        streetTypeId: 1,
+        neighborhood: 'test',
+        postalCode: 'test',
+        city: {
+          id: 1,
+          name: 'test',
+          countrySubdivision: {
+            id: 'test',
+            name: 'test',
+            iso31662Short: 'test',
+            country: {
+              id: 1,
+              name: 'test',
+              iso31661Alpha3: 'test',
+              iso31661Alpha2: 'test',
+            },
+          },
+        },
+        type: {
+          id: 1,
+          name: 'test',
+        },
       },
     ],
   },
 ];
 
 const expctedeData = [{
-  description: 'test',
-  state: 'test',
-  city: 'test',
+  key: 'test',
+  typeId: 1,
+  typeName: 'test',
+  postalCode: 'test',
+  stateCode: 'test',
+  cityName: 'test',
   street: 'test',
   number: 1,
-  complement: 'test',
+  complement: 'N/A',
   neighborhood: 'test',
+  cityDisplay: 'test / test',
+  streetDisplay: 'test, 1 N/A',
 }];
 
 describe('Merchant Addresses Model', () => {

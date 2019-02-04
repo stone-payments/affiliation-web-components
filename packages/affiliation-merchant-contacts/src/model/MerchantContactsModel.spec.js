@@ -1,31 +1,46 @@
 import { expect } from 'chai';
 import {
-  merchantContactsPayloadModel,
-  contactsModel,
+  MerchantContactsPayloadModel,
+  ContactsModel,
 } from './MerchantContactsModel.js';
 
 describe('', () => {
   it('Should return correct Merchant Contacts model.', () => {
-    const modeledResponse = {
-      name: 'xpto',
-      email: 'xpto@stone.com.br',
-      phone: '22222222',
-      mobilePhone: '12345678',
-      typeName: '12345',
-    };
+    const modeledResponse = [
+      {
+        name: 'teste tomador2',
+        email: 'N/A',
+        phone: '1112341234',
+        typeName: 'Administrativo',
+        typeId: 1,
+      },
+    ];
 
     const contactsData = [
-      {
-        data: {
-          name: 'xpto',
-          email: 'xpto@stone.com.br',
-          phone: '22222222',
-          mobilePhone: '12345678',
-          typeName: '12345',
+      [{
+        key: 'Test key',
+        type: {
+          id: 1,
+          name: 'Administrativo',
         },
-      }];
+        friendlyName: 'teste tomador2',
+        phones: [
+          {
+            key: 'Test key',
+            type: {
+              id: 1,
+              name: 'Desconhecido',
+            },
+            countryCode: 11,
+            areaCode: 11,
+            phoneNumber: 12341234,
+          },
+        ],
+        emails: [],
+      }],
+    ];
 
-    expect(contactsModel(contactsData))
+    expect(ContactsModel(contactsData))
       .to.deep.equal(modeledResponse);
   });
 
@@ -34,7 +49,6 @@ describe('', () => {
       name: 'xpto',
       email: 'xpto@stone.com.br',
       phone: '2199999999',
-      mobilePhone: '21999999999',
       typeId: 1,
     };
 
@@ -42,11 +56,10 @@ describe('', () => {
       name: 'xpto',
       email: 'xpto@stone.com.br',
       phone: '(21) 9999-9999',
-      mobilePhone: '(21) 99999-9999',
       typeId: '1',
     };
 
-    expect(merchantContactsPayloadModel(contactsData))
+    expect(MerchantContactsPayloadModel(contactsData))
       .to.deep.equal(modeledResponse);
   });
 });
