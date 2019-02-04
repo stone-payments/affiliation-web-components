@@ -1,3 +1,11 @@
+# [affiliation-merchant-partners-v1.1.0](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-partners-v1.0.1...affiliation-merchant-partners-v1.1.0) (2019-02-04)
+
+
+### Features
+
+* :construction: Update model. ([190adfb](https://github.com/stone-payments/affiliation-web-components/commit/190adfb))
+* :rotating_light: Update sdk method. ([7244fff](https://github.com/stone-payments/affiliation-web-components/commit/7244fff))
+
 # [affiliation-merchant-partners-v1.0.1](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-partners-v1.0.0...affiliation-merchant-partners-v1.0.1) (2018-11-19)
 
 
