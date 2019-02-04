@@ -32,7 +32,7 @@ describe('Merchant Info List Model', () => {
     const modeledData = [
       {
         affiliationCode: '123456789',
-        cnpj: '1',
+        documentNumber: '1',
         legalName: 'Test Legal Name',
         tradeName: 'Test Trade Name',
         mccDescription: 'Test Name',
@@ -67,7 +67,7 @@ describe('Merchant Info List Model', () => {
     const stateData = [{
       tradeName: 'Flash',
       affiliationCode: '11111111',
-      cnpj: '1111',
+      documentNumber: '1111',
       companyName: 'test',
       mccDescription: 'test',
     }];
@@ -83,7 +83,7 @@ describe('Merchant Info List Model', () => {
     const modeledData = [{
       tradeName: 'Superman',
       affiliationCode: '11111111',
-      cnpj: '1111',
+      documentNumber: '1111',
       companyName: 'test',
       mccDescription: 'test',
     }];

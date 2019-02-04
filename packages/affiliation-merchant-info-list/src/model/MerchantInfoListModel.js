@@ -14,7 +14,7 @@ export const MerchantInfoListResponseModel = ([data], [oldValue]) => {
 
 export const MerchantInfoListModel = ([data], affiliationCode) => [{
   affiliationCode,
-  cnpj: data.taxId,
+  documentNumber: data.taxId,
   legalName: data.legalName,
   tradeName: data.tradeName,
   mccDescription: data.mcc.name,

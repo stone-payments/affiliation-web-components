@@ -7,7 +7,7 @@ describe('Merchant Info List State.', () => {
       info: [
         {
           affiliationCode: '11111111',
-          cnpj: '1111111',
+          documentNumber: '1111111',
           companyName: 'test.',
           fantasyName: 'test',
           mccDescription: 'test',
@@ -20,7 +20,7 @@ describe('Merchant Info List State.', () => {
 
     const modeledData = {
       affiliationCode: '11111111',
-      cnpj: '1111111',
+      documentNumber: '1111111',
       companyName: 'test.',
       fantasyName: 'test',
       mccDescription: 'test',
