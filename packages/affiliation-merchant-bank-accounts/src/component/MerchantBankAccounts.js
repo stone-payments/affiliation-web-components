@@ -114,7 +114,7 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
         this
           .request([
             sdk.merchants.availableBanks.get({ affiliationCode }),
-            sdk.merchants.bankAccounts.get({ affiliationCode }),
+            sdk.affiliation.bankAccounts.get({ affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
