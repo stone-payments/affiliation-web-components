@@ -17,7 +17,7 @@ describe('', () => {
     ];
 
     const contactsData = [
-      {
+      [{
         key: 'Test key',
         type: {
           id: 1,
@@ -36,9 +36,9 @@ describe('', () => {
             phoneNumber: 12341234,
           },
         ],
-        emails: [
-        ],
-      }];
+        emails: [],
+      }],
+    ];
 
     expect(ContactsModel(contactsData))
       .to.deep.equal(modeledResponse);
