@@ -1,4 +1,4 @@
-export const BankAccountsModel = (responses) => {
+export const BankAccountsModelWithAvailableBanks = (responses) => {
   const [availableBanks, banks] = responses;
   const modeledData = {
     banks: banks.data,
@@ -21,6 +21,21 @@ export const BankAccountsModel = (responses) => {
 
   return modeledData;
 };
+
+export const BankAccountsModel = ([banks]) => banks.map(bank => ({
+  key: bank.key,
+  bankId: bank.bank.id,
+  bankName: bank.bank.name,
+  branchCode: bank.branchCode,
+  accountNumber: bank.accountNumber,
+  accountNumberCheckDigit: bank.accountNumberCheckDigit,
+  accountTypeId: bank.accountType.id,
+  accountTypeName: bank.accountType.name,
+  statusId: bank.status.id,
+  statusName: bank.status.name,
+
+  accountDisplayNmae: `${bank.accountNumber}-${bank.accountNumberCheckDigit}`,
+}));
 
 export const BankAccountsFormResponseModel = (state, responses) => {
   const [oldValue] = state;
