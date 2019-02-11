@@ -10,19 +10,13 @@ const columns = [{
   field: 'bankName',
 }, {
   title: 'Tipo',
-  field: 'typeName',
+  field: 'accountTypeName',
 }, {
   title: 'Agência',
-  field: 'agencyNumber',
-}, {
-  title: 'Dígito',
-  field: 'agencyNumberVerificationCode',
+  field: 'branchCode',
 }, {
   title: 'Conta',
-  field: 'accountNumber',
-}, {
-  title: 'Dígito',
-  field: 'accountNumberVerificationCode',
+  field: 'accountDisplayNmae',
 }];
 
 export const getMerchantBankAccountsView = ({
