@@ -150,6 +150,7 @@ describe('Merchant Bank Accounts Model', () => {
             name: 'test',
           },
           branchCode: 'test',
+          branchCodeCheckDigit: 'test',
           accountNumber: 'test',
           accountNumberCheckDigit: 'test',
           accountType: {
@@ -169,6 +170,7 @@ describe('Merchant Bank Accounts Model', () => {
       bankId: 'test',
       bankName: 'test',
       branchCode: 'test',
+      branchCodeCheckDigit: 'test',
       accountNumber: 'test',
       accountNumberCheckDigit: 'test',
       accountTypeId: 'test',
@@ -176,6 +178,7 @@ describe('Merchant Bank Accounts Model', () => {
       statusId: 'test',
       statusName: 'test',
       accountDisplayNmae: 'test-test',
+      branchCodeDisplay: 'test-test',
     }];
 
     expect(BankAccountsModel(mock))
