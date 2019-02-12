@@ -6,11 +6,11 @@ import 'sling-web-component-button';
 import { getWrappedFormView } from './WrappedFormView.js';
 
 const columns = [{
-  title: 'Banco',
-  field: 'bankName',
-}, {
   title: 'Tipo',
   field: 'accountTypeName',
+}, {
+  title: 'Banco',
+  field: 'bankName',
 }, {
   title: 'Agência',
   field: 'branchCodeDisplay',

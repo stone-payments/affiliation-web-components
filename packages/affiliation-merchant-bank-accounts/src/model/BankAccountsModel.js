@@ -41,6 +41,17 @@ export const BankAccountsModel = ([banks]) => banks.map(bank => ({
   accountDisplayNmae: `${bank.accountNumber}-${bank.accountNumberCheckDigit}`,
 }));
 
+export const PayloadModel = payload => ({
+  accountNumber: payload.accountNumber,
+  accountNumberVerificationCode: payload.accountNumberVerificationCode,
+  agencyNumber: payload.agencyNumber,
+  agencyNumberVerificationCode: payload.agencyNumberVerificationCode,
+  bankId: Number(payload.bankId),
+  statusId: payload.statusId,
+  typeId: Number(payload.typeId),
+  centralizedPayment: payload.centralizedPayment,
+});
+
 export const BankAccountsFormResponseModel = (state, responses) => {
   const [oldValue] = state;
   const [data] = responses;

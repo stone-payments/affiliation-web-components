@@ -25,6 +25,7 @@ export const getRenderForm = (
   handleFormSubmit,
   handleFormUpdate,
 ) => {
+  console.log('RENDER FORM STATE', state);
   const fields = state.formdata || {};
   const accType = findAccountType(state.availableBanks || [], fields.bankId);
 
@@ -47,17 +48,17 @@ export const getRenderForm = (
       </sling-select>
       <sling-input
         type="digits"
-        name="agencyNumber"
+        name="branchCode"
         label="Agencia"
         maxLength="5"
-        value="${fields.agencyNumber}">
+        value="${fields.branchCode}">
       </sling-input>
       <sling-input
         type="text"
-        name="agencyNumberVerificationCode"
+        name="branchCodeCheckDigit"
         label="Dígito"
         maxLength="2"
-        value="${fields.agencyNumberVerificationCode}">
+        value="${fields.branchCodeCheckDigit}">
       </sling-input>
       <sling-input
         type="digits"
@@ -68,10 +69,10 @@ export const getRenderForm = (
       </sling-input>
       <sling-input
         type="text"
-        name="accountNumberVerificationCode"
+        name="accountNumberCheckDigit"
         label="Dígito"
         maxLength="2"
-        value="${fields.accountNumberVerificationCode}">
+        value="${fields.accountNumberCheckDigit}">
       </sling-input>
       <sling-input
         type="hidden"

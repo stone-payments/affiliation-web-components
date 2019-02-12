@@ -4,6 +4,7 @@ import { getMerchantBankAccountsView } from '../views/MerchantBankAccountsView.j
 import {
   BankAccountsModel,
   BankAccountsFormResponseModel,
+  PayloadModel,
 } from '../model/BankAccountsModel.js';
 
 const notEmpty = arg => arg != null;
@@ -24,6 +25,32 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
         formdata: {},
         instanceName: this.localName,
       };
+
+      this.mock = [
+        [
+          {
+            key: 'test',
+            bank: {
+              id: 1,
+              name: 'test',
+            },
+            branchCode: '123',
+            branchCodeCheckDigit: 1,
+            accountNumber: '1234',
+            accountNumberCheckDigit: 1,
+            accountType: {
+              id: 1,
+              name: 'test',
+            },
+            status: {
+              id: 1,
+              name: 'test',
+            },
+          }],
+        [],
+      ];
+
+      this.setState({ banks: BankAccountsModel(this.mock) });
     }
 
     static get properties() {
@@ -56,6 +83,7 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
     }
 
     handleFormUpdate(evt) {
+      console.log(evt.detail);
       this.setState({
         formdata: evt.detail,
       });
@@ -68,18 +96,8 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
           id: evt.detail.id,
         };
 
-        const payload = {
-          accountNumber: evt.detail.accountNumber,
-          accountNumberVerificationCode:
-            evt.detail.accountNumberVerificationCode,
-          agencyNumber: evt.detail.agencyNumber,
-          agencyNumberVerificationCode: evt.detail.agencyNumberVerificationCode,
-          bankId: Number(evt.detail.bankId),
-          statusId: evt.detail.statusId,
-          typeId: Number(evt.detail.typeId),
-          centralizedPayment: evt.detail.centralizedPayment,
-        };
-
+        const payload = PayloadModel(evt.detail);
+        console.log(payload);
         this
           .request([
             sdk.merchants.bankAccounts.put(requestParams, payload),
@@ -97,6 +115,7 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
     }
 
     handleStartEditing(evt) {
+      console.log('startEditing', evt);
       this.editing = true;
       this.handleFormUpdate(evt);
     }
