@@ -13,7 +13,7 @@ const columns = [{
   field: 'accountTypeName',
 }, {
   title: 'Agência',
-  field: 'branchCode',
+  field: 'branchCodeDisplay',
 }, {
   title: 'Conta',
   field: 'accountDisplayNmae',
