@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import {
   BankAccountsModel,
   BankAccountsFormResponseModel,
+  BankAccountsModelWithAvailableBanks,
 } from './BankAccountsModel.js';
 
 const infoData = [
@@ -76,7 +77,8 @@ const apiResponsesValues = [
 ];
 
 describe('Merchant Bank Accounts Model', () => {
-  it('Should return correct Merchant Bank Accounts model.', () => {
+  it('Should return correct Merchant Bank Accounts' +
+  ' with available banks model.', () => {
     const modeledData = {
       banks: [{
         affiliationCode: 111,
@@ -110,13 +112,13 @@ describe('Merchant Bank Accounts Model', () => {
       }],
     };
 
-    expect(BankAccountsModel(infoData))
+    expect(BankAccountsModelWithAvailableBanks(infoData))
       .to
       .deep
       .equal(modeledData);
   });
 
-  it('Should return correct Merchant Bank Accounts Form Response model', () => {
+  it('Should return correct Merchant Bank Accounts form Response model', () => {
     const modeledData = [
       {
         bankName: 'test',
@@ -133,6 +135,53 @@ describe('Merchant Bank Accounts Model', () => {
     ];
 
     expect(BankAccountsFormResponseModel(stateFormValue, apiResponsesValues))
+      .to
+      .deep
+      .equal(modeledData);
+  });
+
+  it('Should return correct Merchant Bank Accounts', () => {
+    const mock = [
+      [
+        {
+          key: 'test',
+          bank: {
+            id: 'test',
+            name: 'test',
+          },
+          branchCode: 'test',
+          branchCodeCheckDigit: 'test',
+          accountNumber: 'test',
+          accountNumberCheckDigit: 'test',
+          accountType: {
+            id: 'test',
+            name: 'test',
+          },
+          status: {
+            id: 'test',
+            name: 'test',
+          },
+        }],
+      [],
+    ];
+
+    const modeledData = [{
+      key: 'test',
+      bankId: 'test',
+      bankName: 'test',
+      branchCode: 'test',
+      branchCodeCheckDigit: 'test',
+      accountNumber: 'test',
+      accountNumberCheckDigit: 'test',
+      accountTypeId: 'test',
+      accountTypeName: 'test',
+      statusId: 'test',
+      statusName: 'test',
+      accountDisplayNmae: 'test-test',
+      branchCodeDisplay: 'test-test',
+    }];
+
+    expect(BankAccountsModel(mock))
       .to
       .deep
       .equal(modeledData);

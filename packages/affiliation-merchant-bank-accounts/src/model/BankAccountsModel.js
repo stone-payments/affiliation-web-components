@@ -27,6 +27,7 @@ export const BankAccountsModel = ([banks]) => banks.map(bank => ({
   bankId: bank.bank.id,
   bankName: bank.bank.name,
   branchCode: bank.branchCode,
+  branchCodeCheckDigit: bank.branchCodeCheckDigit,
   accountNumber: bank.accountNumber,
   accountNumberCheckDigit: bank.accountNumberCheckDigit,
   accountTypeId: bank.accountType.id,
@@ -34,6 +35,9 @@ export const BankAccountsModel = ([banks]) => banks.map(bank => ({
   statusId: bank.status.id,
   statusName: bank.status.name,
 
+  branchCodeDisplay: bank.branchCodeCheckDigit
+    ? `${bank.branchCode}-${bank.branchCodeCheckDigit}`
+    : bank.branchCode,
   accountDisplayNmae: `${bank.accountNumber}-${bank.accountNumberCheckDigit}`,
 }));
 

@@ -77,7 +77,6 @@ describe('Merchant Bank Accounts', () => {
 
   it('Should reflect "affiliationCode", "state", "isLoading", "requestErrors"' +
    ', "addable", "editable", "editing" attributes to properties.', () => {
-    merchantBankAccounts.setAttribute('affiliationCode', '111111111');
     merchantBankAccounts.setAttribute('state', []);
     merchantBankAccounts.setAttribute('isLoading', '');
     merchantBankAccounts.setAttribute('requestErrors', {});
@@ -85,7 +84,6 @@ describe('Merchant Bank Accounts', () => {
     merchantBankAccounts.setAttribute('editable', '');
     merchantBankAccounts.setAttribute('editing', '');
 
-    expect(merchantBankAccounts.hasAttribute('affiliationCode')).to.be.true;
     expect(merchantBankAccounts.hasAttribute('state')).to.be.true;
     expect(merchantBankAccounts.hasAttribute('isLoading')).to.be.true;
     expect(merchantBankAccounts.hasAttribute('requestErrors')).to.be.true;
@@ -97,7 +95,6 @@ describe('Merchant Bank Accounts', () => {
 
   it('Should reflect "affiliationCode", "state", "isLoading", "requestErrors"' +
   ', "addable", "editable", "editing" properties to atributes.', (done) => {
-    merchantBankAccounts.affiliationCode = false;
     merchantBankAccounts.state = false;
     merchantBankAccounts.isLoading = false;
     merchantBankAccounts.requestErrors = false;
@@ -106,7 +103,6 @@ describe('Merchant Bank Accounts', () => {
     merchantBankAccounts.editing = false;
 
     setTimeout(() => {
-      expect(merchantBankAccounts.hasAttribute('affiliationCode')).to.be.false;
       expect(merchantBankAccounts.hasAttribute('state')).to.be.false;
       expect(merchantBankAccounts.hasAttribute('isLoading')).to.be.false;
       expect(merchantBankAccounts.hasAttribute('requestErrors')).to.be.false;
