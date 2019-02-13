@@ -9,15 +9,15 @@ const validation = [
   isNotEmpty('bankId'),
   isValidBankId('bankId'),
 
-  isNotEmpty('typeId'),
+  isNotEmpty('accountTypeId'),
 
-  isNotEmpty('agencyNumber'),
-  isValidBankAgencyNumber('agencyNumber'),
+  isNotEmpty('branchCode'),
+  isValidBankAgencyNumber('branchCodeCheckDigit'),
 
   isNotEmpty('accountNumber'),
   isValidBankAccountNumber('accountNumber'),
 
-  isNotEmpty('accountNumberVerificationCode'),
+  isNotEmpty('accountNumberCheckDigit'),
 ];
 
 export const getRenderForm = (
@@ -25,6 +25,7 @@ export const getRenderForm = (
   handleFormSubmit,
   handleFormUpdate,
 ) => {
+  console.log('state render form', state);
   const fields = state.formdata || {};
   const accType = findAccountType(state.availableBanks || [], fields.bankId);
 
@@ -41,23 +42,23 @@ export const getRenderForm = (
       </sling-select>
         <sling-select
         label="Tipo"
-        name="typeId"
-        value="${fields.typeId}"
+        name="accountTypeId"
+        value="${fields.accountTypeId}"
         srcoptions="${accType}">
       </sling-select>
       <sling-input
         type="digits"
-        name="agencyNumber"
+        name="branchCode"
         label="Agencia"
         maxLength="5"
-        value="${fields.agencyNumber}">
+        value="${fields.branchCode}">
       </sling-input>
       <sling-input
         type="text"
-        name="agencyNumberVerificationCode"
+        name="branchCodeCheckDigit"
         label="Dígito"
         maxLength="2"
-        value="${fields.agencyNumberVerificationCode}">
+        value="${fields.branchCodeCheckDigit}">
       </sling-input>
       <sling-input
         type="digits"
@@ -68,10 +69,10 @@ export const getRenderForm = (
       </sling-input>
       <sling-input
         type="text"
-        name="accountNumberVerificationCode"
+        name="accountNumberCheckDigit"
         label="Dígito"
         maxLength="2"
-        value="${fields.accountNumberVerificationCode}">
+        value="${fields.accountNumberCheckDigit}">
       </sling-input>
       <sling-input
         type="hidden"
@@ -81,7 +82,7 @@ export const getRenderForm = (
       <sling-input
         type="hidden"
         name="centralizedPayment"
-        value="${fields.centralizedPayment}">
+        value="${fields.account}">
       </sling-input>
       <sling-input
         type="hidden"
