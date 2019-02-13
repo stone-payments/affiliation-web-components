@@ -20,6 +20,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
 
       this.state = {
         info: [],
+        apiResponse: [],
         formData: {},
       };
     }
@@ -97,6 +98,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
+            // @TODO Update to new sdk medule "affiliation".
             sdk.merchants.merchant.get({ affiliationCode }),
           ])
           .then((responses) => {
@@ -104,6 +106,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
               const data = MerchantInfoListModel(responses, affiliationCode);
               this.setState({
                 affiliationCode,
+                apiResponse: responses,
                 info: data,
               });
             }

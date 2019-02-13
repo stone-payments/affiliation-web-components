@@ -25,7 +25,7 @@ describe('Merchant Partners Model', () => {
               taxId: '987654321',
               taxIdType: {
                 id: 2,
-                name: 'CNPJ',
+                name: 'documentNumber',
               },
               ownershipPercentage: 0.1,
             },
@@ -42,7 +42,7 @@ describe('Merchant Partners Model', () => {
       },
       {
         name: 'Legal name test',
-        documentType: 'CNPJ',
+        documentType: 'documentNumber',
         documentNumber: '987654321',
       },
     ];

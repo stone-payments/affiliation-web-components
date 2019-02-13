@@ -7,22 +7,24 @@ describe('Merchant Info List State.', () => {
       info: [
         {
           affiliationCode: '11111111',
-          cnpj: '1111111',
+          documentNumber: '1111111',
           companyName: 'test.',
           fantasyName: 'test',
           mccDescription: 'test',
         },
       ],
+      apiResponse: [{ mcc: { id: 1 } }],
       formData: {},
       affiliationCode: '11111',
     };
 
     const modeledData = {
       affiliationCode: '11111111',
-      cnpj: '1111111',
+      documentNumber: '1111111',
       companyName: 'test.',
       fantasyName: 'test',
       mccDescription: 'test',
+      mccId: 1,
     };
 
     expect(getInfo(stateData))
@@ -34,6 +36,7 @@ describe('Merchant Info List State.', () => {
     const stateData = {
       info: [],
       formData: {},
+      apiResponse: [],
       affiliationCode: '',
     };
 
