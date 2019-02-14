@@ -24,6 +24,51 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
         formdata: {},
         instanceName: this.localName,
       };
+
+      this.mock = [
+        [
+          {
+            key: 'test',
+            bank: {
+              id: 2,
+              name: 'test',
+            },
+            branchCode: '1122',
+            branchCodeCheckDigit: 1,
+            accountNumber: '2233',
+            accountNumberCheckDigit: 2,
+            accountType: {
+              id: 2,
+              name: 'test',
+            },
+            status: {
+              id: 2,
+              name: 'test',
+            },
+          }],
+        [],
+      ];
+
+      this.mockAvailableBanks = [
+        {
+          id: 1,
+          name: 'test1',
+        }, {
+          id: 2,
+          name: 'test2',
+        }, {
+          id: 3,
+          name: 'test3',
+        }, {
+          id: 4,
+          name: 'test4',
+        },
+      ];
+
+      this.setState({
+        banks: BankAccountsModel(this.mock),
+        availableBanks: this.mockAvailableBanks,
+      });
     }
 
     static get properties() {
