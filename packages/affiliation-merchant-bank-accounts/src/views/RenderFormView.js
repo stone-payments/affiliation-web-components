@@ -25,7 +25,6 @@ export const getRenderForm = (
   handleFormSubmit,
   handleFormUpdate,
 ) => {
-  console.log('state render form', state);
   const fields = state.formdata || {};
 
   return html`
