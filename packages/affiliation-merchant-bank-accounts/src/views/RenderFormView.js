@@ -3,7 +3,7 @@ import { isNotEmpty, isValidBankId, isValidBankAgencyNumber, isValidBankAccountN
 import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
-import { findAccountType } from '../state/MerchantBankAccountsState.js';
+import { accountType } from '../state/MerchantBankAccountsState.js';
 
 const validation = [
   isNotEmpty('bankId'),
@@ -27,7 +27,6 @@ export const getRenderForm = (
 ) => {
   console.log('state render form', state);
   const fields = state.formdata || {};
-  const accType = findAccountType(state.availableBanks || [], fields.bankId);
 
   return html`
     <sling-form
@@ -44,7 +43,7 @@ export const getRenderForm = (
         label="Tipo"
         name="accountTypeId"
         value="${fields.accountTypeId}"
-        srcoptions="${accType}">
+        srcoptions="${accountType}">
       </sling-select>
       <sling-input
         type="digits"
