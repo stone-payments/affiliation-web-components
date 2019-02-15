@@ -69,10 +69,8 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
           key: evt.detail.key,
         };
 
-        console.log('request', requestParams);
-
         const payload = PayloadModel(evt.detail);
-        console.log('PAYLOAD', payload);
+
         this
           .request([
             sdk.affiliation.bankAccounts.put(requestParams, payload),
@@ -110,10 +108,8 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
             sdk.affiliation.bankAccounts.get({ affiliationCode }),
           ])
           .then((responses) => {
-            console.log(responses);
             if (responses.every(notEmpty)) {
               const data = BankAccountsModel(responses);
-              console.log('data1', data);
               this.setState({
                 affiliationCode,
                 banks: data.banks,

@@ -1,5 +1,5 @@
 import { html } from 'sling-framework';
-import { isNotEmpty, isValidBankId, isValidBankAgencyNumber, isValidBankAccountNumber } from 'sling-helpers';
+import { isNotEmpty, isValidBankId, isValidBankAccountNumber } from 'sling-helpers';
 import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
