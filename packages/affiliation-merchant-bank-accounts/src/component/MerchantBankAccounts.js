@@ -4,6 +4,7 @@ import { getMerchantBankAccountsView } from '../views/MerchantBankAccountsView.j
 import {
   BankAccountsModel,
   BankAccountsFormResponseModel,
+  PayloadModel,
 } from '../model/BankAccountsModel.js';
 
 const notEmpty = arg => arg != null;
@@ -24,51 +25,6 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
         formdata: {},
         instanceName: this.localName,
       };
-
-      this.mock = [
-        [
-          {
-            key: 'test',
-            bank: {
-              id: 2,
-              name: 'test',
-            },
-            branchCode: '1122',
-            branchCodeCheckDigit: 1,
-            accountNumber: '2233',
-            accountNumberCheckDigit: 2,
-            accountType: {
-              id: 2,
-              name: 'test',
-            },
-            status: {
-              id: 2,
-              name: 'test',
-            },
-          }],
-        [],
-      ];
-
-      this.mockAvailableBanks = [
-        {
-          id: 1,
-          name: 'test1',
-        }, {
-          id: 2,
-          name: 'test2',
-        }, {
-          id: 3,
-          name: 'test3',
-        }, {
-          id: 4,
-          name: 'test4',
-        },
-      ];
-
-      this.setState({
-        banks: BankAccountsModel(this.mock),
-        availableBanks: this.mockAvailableBanks,
-      });
     }
 
     static get properties() {
@@ -110,24 +66,16 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
       if (evt.detail) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
-          id: evt.detail.id,
+          key: evt.detail.key,
         };
 
-        const payload = {
-          accountNumber: evt.detail.accountNumber,
-          accountNumberVerificationCode:
-            evt.detail.accountNumberVerificationCode,
-          agencyNumber: evt.detail.agencyNumber,
-          agencyNumberVerificationCode: evt.detail.agencyNumberVerificationCode,
-          bankId: Number(evt.detail.bankId),
-          statusId: evt.detail.statusId,
-          typeId: Number(evt.detail.typeId),
-          centralizedPayment: evt.detail.centralizedPayment,
-        };
+        console.log('request', requestParams);
 
+        const payload = PayloadModel(evt.detail);
+        console.log('PAYLOAD', payload);
         this
           .request([
-            sdk.merchants.bankAccounts.put(requestParams, payload),
+            sdk.affiliation.bankAccounts.put(requestParams, payload),
           ])
           .then((responses) => {
             const data =
@@ -158,12 +106,14 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            sdk.merchants.availableBanks.get({ affiliationCode }),
+            sdk.affiliation.banks.get({ affiliationCode }),
             sdk.affiliation.bankAccounts.get({ affiliationCode }),
           ])
           .then((responses) => {
+            console.log(responses);
             if (responses.every(notEmpty)) {
               const data = BankAccountsModel(responses);
+              console.log('data1', data);
               this.setState({
                 affiliationCode,
                 banks: data.banks,
