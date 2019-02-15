@@ -12,7 +12,6 @@ const validation = [
   isNotEmpty('accountTypeId'),
 
   isNotEmpty('branchCode'),
-  isValidBankAgencyNumber('branchCodeCheckDigit'),
 
   isNotEmpty('accountNumber'),
   isValidBankAccountNumber('accountNumber'),
@@ -79,13 +78,8 @@ export const getRenderForm = (
       </sling-input>
       <sling-input
         type="hidden"
-        name="centralizedPayment"
-        value="${fields.account}">
-      </sling-input>
-      <sling-input
-        type="hidden"
-        name="id"
-        value="${fields.id}">
+        name="key"
+        value="${fields.key}">
       </sling-input>
       <sling-button
         color="success"
