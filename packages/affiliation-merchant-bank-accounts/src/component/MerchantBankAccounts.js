@@ -19,7 +19,26 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
       this.handleStopEditing = this.handleStopEditing.bind(this);
 
       this.state = {
-        banks: [],
+        banks: [
+          {
+          key: "01A4CD11-CB8A-441E-8268-E7A07C8ABE89",
+          bank: {
+          id: 104,
+          name: "Caixa Econômica Federal"
+          },
+          branchCode: "2953",
+          accountNumber: "00300001599",
+          accountNumberCheckDigit: "9",
+          accountType: {
+          id: 1,
+          name: "Conta Corrente"
+          },
+          status: {
+          id: 2,
+          name: "Válida"
+          }
+          }
+          ],
         availableBanks: [],
         formdata: {},
         instanceName: this.localName,
