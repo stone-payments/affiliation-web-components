@@ -244,44 +244,69 @@ describe('Merchant Bank Accounts Model', () => {
 
   it('Should return correct Merchant Bank Accounts', () => {
     const mock = [
-      [
-        {
-          key: 'test',
-          bank: {
-            id: 'test',
+      {
+        data: [
+          {
+            id: 1,
+            name: 'test',
+          }, {
+            id: 2,
             name: 'test',
           },
+        ],
+      },
+      {
+        data: [
+          {
+            key: 'test',
+            bank: {
+              id: 'test',
+              name: 'test',
+            },
+            branchCode: 'test',
+            branchCodeCheckDigit: 'test',
+            accountNumber: 'test',
+            accountNumberCheckDigit: 'test',
+            accountType: {
+              id: 'test',
+              name: 'test',
+            },
+            status: {
+              id: 'test',
+              name: 'test',
+            },
+          },
+        ],
+      },
+    ];
+
+    const modeledData = {
+      banks: [
+        {
+          key: 'test',
+          bankId: 'test',
+          bankName: 'test',
           branchCode: 'test',
           branchCodeCheckDigit: 'test',
           accountNumber: 'test',
           accountNumberCheckDigit: 'test',
-          accountType: {
-            id: 'test',
-            name: 'test',
-          },
-          status: {
-            id: 'test',
-            name: 'test',
-          },
+          accountTypeId: 'test',
+          accountTypeName: 'test',
+          statusId: 'test',
+          statusName: 'test',
+          accountDisplayNmae: 'test-test',
+          branchCodeDisplay: 'test-test',
         }],
-      [],
-    ];
-
-    const modeledData = [{
-      key: 'test',
-      bankId: 'test',
-      bankName: 'test',
-      branchCode: 'test',
-      branchCodeCheckDigit: 'test',
-      accountNumber: 'test',
-      accountNumberCheckDigit: 'test',
-      accountTypeId: 'test',
-      accountTypeName: 'test',
-      statusId: 'test',
-      statusName: 'test',
-      accountDisplayNmae: 'test-test',
-      branchCodeDisplay: 'test-test',
-    }];
+      availableBanks: [
+        {
+          id: 1,
+          name: 'test',
+        }, {
+          id: 2,
+          name: 'test',
+        },
+      ],
+    };
 
     expect(BankAccountsModel(mock))
       .to
