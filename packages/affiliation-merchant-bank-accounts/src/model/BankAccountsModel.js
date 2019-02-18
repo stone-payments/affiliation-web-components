@@ -52,23 +52,38 @@ export const BankAccountsModel = (responses) => {
 };
 
 export const BankAccountsFormResponseModel = (state, responses) => {
-  const [oldValue] = state;
   const [data] = responses;
+  const modeledArray = [];
 
-  const modeledData = {
-    bankName: data.data.bankName || oldValue.bankName,
-    typeName: data.data.typeName ? data.data.typeName : oldValue.typeName,
-    accountNumber: data.data.accountNumber,
-    accountNumberVerificationCode: data.data.accountNumberVerificationCode,
-    agencyNumber: data.data.agencyNumber,
-    agencyNumberVerificationCode: data.data.agencyNumberVerificationCode,
-    bankId: data.data.bankId,
-    statusId: data.data.statusId,
-    typeId: data.data.typeId,
-    centralizedPayment: data.data.centralizedPayment,
-  };
+  state.map((el) => {
+    if (el.key === data.key) {
+      const newEl = {
+        ...el,
+        key: data.key,
+        bankId: data.bank.id,
+        bankName: data.bank.name,
+        branchCode: data.branchCode,
+        branchCodeCheckDigit: data.branchCodeCheckDigit,
+        accountNumber: data.accountNumber,
+        accountNumberCheckDigit: data.accountNumberCheckDigit,
+        accountTypeId: data.accountType.id,
+        accountTypeName: data.accountType.name,
+        statusId: data.status.id,
+        statusName: data.status.name,
 
-  return [modeledData];
+        branchCodeDisplay: data.branchCodeCheckDigit
+          ? `${data.branchCode}-${data.branchCodeCheckDigit}`
+          : data.branchCode,
+        accountDisplayNmae: `${data.accountNumber}-${data.accountNumberCheckDigit}`,
+      };
+
+      return modeledArray.push(newEl);
+    }
+
+    return modeledArray.push(el);
+  });
+
+  return modeledArray;
 };
 
 export const PayloadModel = payloadData => ({
