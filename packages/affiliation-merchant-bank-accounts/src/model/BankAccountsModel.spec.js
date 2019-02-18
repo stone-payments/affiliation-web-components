@@ -42,37 +42,51 @@ const infoData = [
   },
 ];
 
-const stateFormValue = [
+const newStateDataMock = [
   {
-    affiliationCode: '11111',
-    id: 1111,
-    accountNumber: '1111',
-    accountNumberVerificationCode: '1',
-    agencyNumber: '1',
-    agencyNumberVerificationCode: '1',
-    bankId: 111,
+    key: '1',
+    bankId: 'test',
     bankName: 'test',
-    statusId: 1,
-    typeId: 1,
-    typeName: 'test',
-    centralizedPayment: false,
+    branchCode: 'test',
+    accountNumber: 'test',
+    accountNumberCheckDigit: 'test',
+    accountTypeId: 'test',
+    accountTypeName: 'test',
+    statusId: 'test',
+    statusName: 'test',
+    branchCodeDisplay: 'test',
+    accountDisplayNmae: 'test',
+  },
+  {
+    key: '2',
+    bankId: 'test',
+    bankName: 'test',
+    branchCode: 'test',
+    accountNumber: 'test',
+    accountNumberCheckDigit: 'test',
+    accountTypeId: 'test',
+    accountTypeName: 'test',
+    statusId: 'test',
+    statusName: 'test',
+    branchCodeDisplay: 'test',
+    accountDisplayNmae: 'test',
   },
 ];
 
-const apiResponsesValues = [
+const newResponseDataMock = [
   {
-    data: {
-      bankId: 111,
-      accountNumber: '1111',
-      accountNumberVerificationCode: '1',
-      agencyNumber: '1111',
-      agencyNumberVerificationCode: '1',
-      centralizedPayment: false,
-      id: 111111,
-      statusId: 1,
-      typeId: 1,
-    },
-    messages: [],
+    key: '2',
+    bank: { id: 1, name: 'test response' },
+    bankName: 'test response',
+    branchCode: 'test response',
+    accountNumber: 'test response',
+    accountNumberCheckDigit: 'test response',
+    accountType: { id: 1, name: 'test response' },
+    accountTypeName: 'test response',
+    status: { id: 1, name: 'test response' },
+    statusName: 'test response',
+    branchCodeDisplay: 'test response',
+    accountDisplayNmae: 'test response',
   },
 ];
 
@@ -121,20 +135,36 @@ describe('Merchant Bank Accounts Model', () => {
   it('Should return correct Merchant Bank Accounts form Response model', () => {
     const modeledData = [
       {
+        key: '1',
+        bankId: 'test',
         bankName: 'test',
-        typeName: 'test',
-        accountNumber: '1111',
-        accountNumberVerificationCode: '1',
-        agencyNumber: '1111',
-        agencyNumberVerificationCode: '1',
-        bankId: 111,
+        branchCode: 'test',
+        accountNumber: 'test',
+        accountNumberCheckDigit: 'test',
+        accountTypeId: 'test',
+        accountTypeName: 'test',
+        statusId: 'test',
+        statusName: 'test',
+        branchCodeDisplay: 'test',
+        accountDisplayNmae: 'test',
+      }, {
+        key: '2',
+        bankId: 1,
+        bankName: 'test response',
+        branchCode: 'test response',
+        branchCodeCheckDigit: undefined,
+        accountNumber: 'test response',
+        accountNumberCheckDigit: 'test response',
+        accountTypeId: 1,
+        accountTypeName: 'test response',
         statusId: 1,
-        typeId: 1,
-        centralizedPayment: false,
+        statusName: 'test response',
+        branchCodeDisplay: 'test response',
+        accountDisplayNmae: 'test response-test response',
       },
     ];
 
-    expect(BankAccountsFormResponseModel(stateFormValue, apiResponsesValues))
+    expect(BankAccountsFormResponseModel(newStateDataMock, newResponseDataMock))
       .to
       .deep
       .equal(modeledData);
@@ -142,44 +172,69 @@ describe('Merchant Bank Accounts Model', () => {
 
   it('Should return correct Merchant Bank Accounts', () => {
     const mock = [
-      [
-        {
-          key: 'test',
-          bank: {
-            id: 'test',
+      {
+        data: [
+          {
+            id: 1,
+            name: 'test',
+          }, {
+            id: 2,
             name: 'test',
           },
+        ],
+      },
+      {
+        data: [
+          {
+            key: 'test',
+            bank: {
+              id: 'test',
+              name: 'test',
+            },
+            branchCode: 'test',
+            branchCodeCheckDigit: 'test',
+            accountNumber: 'test',
+            accountNumberCheckDigit: 'test',
+            accountType: {
+              id: 'test',
+              name: 'test',
+            },
+            status: {
+              id: 'test',
+              name: 'test',
+            },
+          },
+        ],
+      },
+    ];
+
+    const modeledData = {
+      banks: [
+        {
+          key: 'test',
+          bankId: 'test',
+          bankName: 'test',
           branchCode: 'test',
           branchCodeCheckDigit: 'test',
           accountNumber: 'test',
           accountNumberCheckDigit: 'test',
-          accountType: {
-            id: 'test',
-            name: 'test',
-          },
-          status: {
-            id: 'test',
-            name: 'test',
-          },
+          accountTypeId: 'test',
+          accountTypeName: 'test',
+          statusId: 'test',
+          statusName: 'test',
+          accountDisplayNmae: 'test-test',
+          branchCodeDisplay: 'test-test',
         }],
-      [],
-    ];
-
-    const modeledData = [{
-      key: 'test',
-      bankId: 'test',
-      bankName: 'test',
-      branchCode: 'test',
-      branchCodeCheckDigit: 'test',
-      accountNumber: 'test',
-      accountNumberCheckDigit: 'test',
-      accountTypeId: 'test',
-      accountTypeName: 'test',
-      statusId: 'test',
-      statusName: 'test',
-      accountDisplayNmae: 'test-test',
-      branchCodeDisplay: 'test-test',
-    }];
+      availableBanks: [
+        {
+          id: 1,
+          name: 'test',
+        }, {
+          id: 2,
+          name: 'test',
+        },
+      ],
+    };
 
     expect(BankAccountsModel(mock))
       .to
