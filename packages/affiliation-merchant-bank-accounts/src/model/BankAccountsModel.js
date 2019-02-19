@@ -46,7 +46,7 @@ export const BankAccountsModel = (responses) => {
     branchCodeDisplay: bank.branchCodeCheckDigit
       ? `${bank.branchCode}-${bank.branchCodeCheckDigit}`
       : bank.branchCode,
-    accountDisplayNmae: `${bank.accountNumber}-${bank.accountNumberCheckDigit}`,
+    accountDisplayName: `${bank.accountNumber}-${bank.accountNumberCheckDigit}`,
   }));
   return modeledData;
 };
