@@ -2,45 +2,7 @@ import { expect } from 'chai';
 import {
   BankAccountsModel,
   BankAccountsFormResponseModel,
-  BankAccountsModelWithAvailableBanks,
 } from './BankAccountsModel.js';
-
-const infoData = [
-  {
-    data: [{
-      id: 111,
-      compeCode: 111,
-      ispbCode: 11111,
-      name: 'test',
-      accountTypes: [
-        {
-          id: 2,
-          name: 'test',
-        },
-        {
-          id: 1,
-          name: 'test',
-        },
-      ],
-    }],
-  },
-  {
-    data: [{
-      affiliationCode: 111,
-      id: 111,
-      accountNumber: 2222,
-      accountNumberVerificationCode: 2,
-      agencyNumber: 1111,
-      agencyNumberVerificationCode: 2,
-      bankId: 4,
-      bankName: 'test',
-      statusId: 4,
-      typeId: 1,
-      typeName: 'test',
-      centralizedPayment: false,
-    }],
-  },
-];
 
 const newStateDataMock = [
   {
@@ -49,13 +11,13 @@ const newStateDataMock = [
     bankName: 'test',
     branchCode: 'test',
     accountNumber: 'test',
-    accountNumberCheckDigit: 'test',
+    accountNumberCheckDigit: '1',
     accountTypeId: 'test',
     accountTypeName: 'test',
     statusId: 'test',
     statusName: 'test',
     branchCodeDisplay: 'test',
-    accountDisplayNmae: 'test',
+    accountDisplayName: 'test',
   },
   {
     key: '2',
@@ -68,8 +30,6 @@ const newStateDataMock = [
     accountTypeName: 'test',
     statusId: 'test',
     statusName: 'test',
-    branchCodeDisplay: 'test',
-    accountDisplayNmae: 'test',
   },
 ];
 
@@ -80,58 +40,15 @@ const newResponseDataMock = [
     bankName: 'test response',
     branchCode: 'test response',
     accountNumber: 'test response',
-    accountNumberCheckDigit: 'test response',
+    accountNumberCheckDigit: '1',
     accountType: { id: 1, name: 'test response' },
     accountTypeName: 'test response',
     status: { id: 1, name: 'test response' },
     statusName: 'test response',
-    branchCodeDisplay: 'test response',
-    accountDisplayNmae: 'test response',
   },
 ];
 
 describe('Merchant Bank Accounts Model', () => {
-  it('Should return correct Merchant Bank Accounts' +
-  ' with available banks model.', () => {
-    const modeledData = {
-      banks: [{
-        affiliationCode: 111,
-        id: 111,
-        accountNumber: 2222,
-        accountNumberVerificationCode: 2,
-        agencyNumber: 1111,
-        agencyNumberVerificationCode: 2,
-        bankId: 4,
-        bankName: 'test',
-        statusId: 4,
-        typeId: 1,
-        typeName: 'test',
-        centralizedPayment: false,
-      }],
-      availableBanks: [{
-        id: 111,
-        compeCode: 111,
-        ispbCode: 11111,
-        name: 'test',
-        accountTypes: [
-          {
-            id: 2,
-            name: 'test',
-          },
-          {
-            id: 1,
-            name: 'test',
-          },
-        ],
-      }],
-    };
-
-    expect(BankAccountsModelWithAvailableBanks(infoData))
-      .to
-      .deep
-      .equal(modeledData);
-  });
-
   it('Should return correct Merchant Bank Accounts form Response model', () => {
     const modeledData = [
       {
@@ -140,13 +57,13 @@ describe('Merchant Bank Accounts Model', () => {
         bankName: 'test',
         branchCode: 'test',
         accountNumber: 'test',
-        accountNumberCheckDigit: 'test',
+        accountNumberCheckDigit: '1',
         accountTypeId: 'test',
         accountTypeName: 'test',
         statusId: 'test',
         statusName: 'test',
         branchCodeDisplay: 'test',
-        accountDisplayNmae: 'test',
+        accountDisplayName: 'test',
       }, {
         key: '2',
         bankId: 1,
@@ -154,13 +71,13 @@ describe('Merchant Bank Accounts Model', () => {
         branchCode: 'test response',
         branchCodeCheckDigit: undefined,
         accountNumber: 'test response',
-        accountNumberCheckDigit: 'test response',
+        accountNumberCheckDigit: '1',
         accountTypeId: 1,
         accountTypeName: 'test response',
         statusId: 1,
         statusName: 'test response',
         branchCodeDisplay: 'test response',
-        accountDisplayNmae: 'test response-test response',
+        accountDisplayName: 'test response-1',
       },
     ];
 
@@ -211,6 +128,15 @@ describe('Merchant Bank Accounts Model', () => {
     const modeledData = {
       banks: [
         {
+          id: 1,
+          name: 'test',
+        }, {
+          id: 2,
+          name: 'test',
+        },
+      ],
+      bankAccounts: [
+        {
           key: 'test',
           bankId: 'test',
           bankName: 'test',
@@ -222,18 +148,9 @@ describe('Merchant Bank Accounts Model', () => {
           accountTypeName: 'test',
           statusId: 'test',
           statusName: 'test',
-          accountDisplayNmae: 'test-test',
+          accountDisplayName: 'test-test',
           branchCodeDisplay: 'test-test',
         }],
-      availableBanks: [
-        {
-          id: 1,
-          name: 'test',
-        }, {
-          id: 2,
-          name: 'test',
-        },
-      ],
     };
 
     expect(BankAccountsModel(mock))
@@ -283,6 +200,15 @@ describe('Merchant Bank Accounts Model', () => {
     const modeledData = {
       banks: [
         {
+          id: 1,
+          name: 'test',
+        }, {
+          id: 2,
+          name: 'test',
+        },
+      ],
+      bankAccounts: [
+        {
           key: 'test',
           bankId: 'test',
           bankName: 'test',
@@ -294,18 +220,9 @@ describe('Merchant Bank Accounts Model', () => {
           accountTypeName: 'test',
           statusId: 'test',
           statusName: 'test',
-          accountDisplayNmae: 'test-test',
+          accountDisplayName: 'test-test',
           branchCodeDisplay: 'test-test',
         }],
-      availableBanks: [
-        {
-          id: 1,
-          name: 'test',
-        }, {
-          id: 2,
-          name: 'test',
-        },
-      ],
     };
 
     expect(BankAccountsModel(mock))
