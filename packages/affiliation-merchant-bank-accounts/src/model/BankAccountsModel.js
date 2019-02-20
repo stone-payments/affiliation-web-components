@@ -1,52 +1,28 @@
-export const BankAccountsModelWithAvailableBanks = (responses) => {
-  const [availableBanks, banks] = responses;
-  const modeledData = {
-    banks: banks.data,
-    availableBanks: availableBanks.data,
-  };
-
-  modeledData.banks = modeledData.banks.reduce((result, current) => {
-    const repeatedAccountNumbers = result.map(item => item.accountNumber);
-    const repeatedAgencyNumbers = result.map(item => item.agencyNumber);
-    const repeatedBankIds = result.map(item => item.bankId);
-
-    if (repeatedAccountNumbers.includes(current.accountNumber) &&
-      repeatedAgencyNumbers.includes(current.agencyNumber) &&
-      repeatedBankIds.includes(current.bankId)) {
-      return result;
-    }
-
-    return [...result, current];
-  }, []);
-
-  return modeledData;
-};
-
 export const BankAccountsModel = (responses) => {
-  const [availableBanks, banks] = responses;
+  const [banks, bankAccounts] = responses;
 
   const modeledData = {
+    bankAccounts: bankAccounts.data,
     banks: banks.data,
-    availableBanks: availableBanks.data,
   };
 
-  modeledData.banks = modeledData.banks.map(bank => ({
-    key: bank.key,
-    bankId: bank.bank.id,
-    bankName: bank.bank.name,
-    branchCode: bank.branchCode,
-    branchCodeCheckDigit: bank.branchCodeCheckDigit,
-    accountNumber: bank.accountNumber,
-    accountNumberCheckDigit: bank.accountNumberCheckDigit,
-    accountTypeId: bank.accountType.id,
-    accountTypeName: bank.accountType.name,
-    statusId: bank.status.id,
-    statusName: bank.status.name,
+  modeledData.bankAccounts = modeledData.bankAccounts.map(item => ({
+    key: item.key,
+    bankId: item.bank.id,
+    bankName: item.bank.name,
+    branchCode: item.branchCode,
+    branchCodeCheckDigit: item.branchCodeCheckDigit,
+    accountNumber: item.accountNumber,
+    accountNumberCheckDigit: item.accountNumberCheckDigit,
+    accountTypeId: item.accountType.id,
+    accountTypeName: item.accountType.name,
+    statusId: item.status.id,
+    statusName: item.status.name,
 
-    branchCodeDisplay: bank.branchCodeCheckDigit
-      ? `${bank.branchCode}-${bank.branchCodeCheckDigit}`
-      : bank.branchCode,
-    accountDisplayName: `${bank.accountNumber}-${bank.accountNumberCheckDigit}`,
+    branchCodeDisplay: item.branchCodeCheckDigit
+      ? `${item.branchCode}-${item.branchCodeCheckDigit}`
+      : item.branchCode,
+    accountDisplayName: `${item.accountNumber}-${item.accountNumberCheckDigit}`,
   }));
   return modeledData;
 };
@@ -74,7 +50,7 @@ export const BankAccountsFormResponseModel = (state, responses) => {
         branchCodeDisplay: data.branchCodeCheckDigit
           ? `${data.branchCode}-${data.branchCodeCheckDigit}`
           : data.branchCode,
-        accountDisplayNmae: `${data.accountNumber}-${data.accountNumberCheckDigit}`,
+        accountDisplayName: `${data.accountNumber}-${data.accountNumberCheckDigit}`,
       };
 
       return modeledArray.push(newEl);

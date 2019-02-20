@@ -35,7 +35,7 @@ export const getRenderForm = (
         label="Banco"
         name="bankId"
         value="${fields.bankId}"
-        srcoptions="${state.availableBanks}">
+        srcoptions="${state.banks}">
       </sling-select>
         <sling-select
         label="Tipo"

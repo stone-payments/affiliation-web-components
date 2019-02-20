@@ -20,8 +20,8 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
       this.handleStopEditing = this.handleStopEditing.bind(this);
 
       this.state = {
+        bankAccounts: [],
         banks: [],
-        availableBanks: [],
         formdata: {},
         instanceName: this.localName,
       };
@@ -68,7 +68,6 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
           affiliationCode: this.state.affiliationCode,
           key: evt.detail.key,
         };
-
         const payload = PayloadModel(evt.detail);
 
         this
@@ -77,9 +76,9 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
           ])
           .then((responses) => {
             const data =
-              BankAccountsFormResponseModel(this.state.banks, responses);
+              BankAccountsFormResponseModel(this.state.bankAccounts, responses);
             this.setState({
-              banks: data,
+              bankAccounts: data,
             });
           });
       }
@@ -113,7 +112,7 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
               this.setState({
                 affiliationCode,
                 banks: data.banks,
-                availableBanks: data.availableBanks,
+                bankAccounts: data.bankAccounts,
               });
             }
           });
