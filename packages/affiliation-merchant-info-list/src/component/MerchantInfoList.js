@@ -51,6 +51,14 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
           type: Boolean,
           reflectToAttribute: true,
         },
+        showAdditionalData: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
+        showBasicData: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
       };
     }
 
@@ -98,7 +106,6 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            // @TODO Update to new sdk medule "affiliation".
             sdk.merchants.merchant.get({ affiliationCode }),
           ])
           .then((responses) => {
