@@ -6,7 +6,6 @@ import { AffiliationMerchantInfoList } from './MerchantInfoList.js';
 registerComponent('affiliation-merchant-info-list',
   AffiliationMerchantInfoList(SlingElement));
 
-
 describe('Merchant Info List', () => {
   let $merchantInfoList;
 
@@ -26,11 +25,14 @@ describe('Merchant Info List', () => {
   it('Should start submit form', () => {
     const myEvent = new CustomEvent('myEvent', {
       detail: {
+        tradeName: 'test',
       },
     });
 
     $merchantInfoList.handleStopEditing = sinon.spy();
+
     $merchantInfoList.handleFormSubmit(myEvent);
+
     expect($merchantInfoList.handleStopEditing).to.be.callCount(1);
   });
 

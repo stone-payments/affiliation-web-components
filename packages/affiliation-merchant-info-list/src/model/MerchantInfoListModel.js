@@ -1,6 +1,5 @@
 const formatDocument = (document) => {
   let formatedDocument;
-
   if (document.length === 14) {
     formatedDocument = document.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1 $2 $3/$4-$5');
 
@@ -43,17 +42,19 @@ export const MerchantInfoListResponseModel = ([data], [oldValue]) => {
 };
 
 export const MerchantInfoListModel = (
-  [data], affiliationCode, showAdditionalData, showBasicData) => {
+  [{ data }], affiliationCode, showBasicData, showAdditionalData) => {
   const modeledData = {
     basicData: [],
     additionalData: [],
   };
 
-  console.log(data);
+  console.log('1', showAdditionalData);
+  console.log('2', showBasicData);
 
   if (showAdditionalData && showBasicData) {
     modeledData.basicData.push({
       affiliationCode,
+      documentType: data.taxIdType.name,
       documentNumber: formatDocument(data.taxId),
       legalName: data.legalName,
       tradeName: data.tradeName,
@@ -62,39 +63,51 @@ export const MerchantInfoListModel = (
 
     modeledData.additionalData.push({
       // @TODO Update logic to be generic to all additional data array
+      additionalDocumentType: data.additionalDocuments[0].documentType.name,
       additionalDocumentIdentifier:
-        formatDocument(data.additionalDocuments.documentIdentifier),
-      issueBy: data.additionalDocuments.issueBy,
-      issueDate: formatDate(data.additionalDocuments.issueDate),
-      expirationDate: formatDate(data.additionalDocuments.expirationDate),
-      extimatedMonthlyBilling: `R$ ${data.additionalDocuments.extimatedMonthlyBilling}`,
-      birthDate: formatDate(data.additionalDocuments.birthDate),
-      birthPlace: data.additionalDocuments.birthPlace,
-      birthCountry: data.additionalDocuments.birthCountry.name,
+        formatDocument(data.additionalDocuments[0].documentIdentifier),
+      issueBy: data.additionalDocuments[0].issuedBy,
+      issueDate: formatDate(data.additionalDocuments[0].issueDate),
+      expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
+      extimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
+      birthDate: formatDate(data.birthDate),
+      birthPlace: data.birthPlace,
+      birthCountry: data.birthCountry.name,
+      motherName: data.motherName,
     });
 
     return modeledData;
   }
 
   if (showAdditionalData && !showBasicData) {
-    return [{
+    modeledData.additionalData.push({
       // @TODO Update logic to be generic to all additional data array
-      additionalDocumentIdentifier: data.additionalDocumentIdentifier,
-      issueBy: data.issueBy,
-      issueDate: data.issueDate,
-      expirationDate: data.expirationDate,
-      extimatedMonthlyBilling: `R$ ${data.extimatedMonthlyBilling}`,
-      birthDate: data.birthDate,
+      additionalDocumentType: data.additionalDocuments[0].documentType.name,
+      additionalDocumentIdentifier:
+        formatDocument(data.additionalDocuments[0].documentIdentifier),
+      issueBy: data.additionalDocuments[0].issuedBy,
+      issueDate: formatDate(data.additionalDocuments[0].issueDate),
+      expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
+      extimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
+      birthDate: formatDate(data.birthDate),
       birthPlace: data.birthPlace,
       birthCountry: data.birthCountry.name,
-    }];
+      motherName: data.motherName,
+    });
+
+    return modeledData;
+  }
+  if (showBasicData && !showAdditionalData) {
+    modeledData.basicData.push({
+      affiliationCode,
+      documentNumber: formatDocument(data.taxId),
+      legalName: data.legalName,
+      tradeName: data.tradeName,
+      mccDescription: data.mcc.name,
+    });
+
+    return modeledData;
   }
 
-  return [{
-    affiliationCode,
-    documentNumber: formatDocument(data.taxId),
-    legalName: data.legalName,
-    tradeName: data.tradeName,
-    mccDescription: data.mcc.name,
-  }];
+  return [];
 };

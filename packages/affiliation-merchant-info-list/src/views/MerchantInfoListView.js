@@ -8,6 +8,7 @@ import { getWrappedFormView } from './WrappedFormView.js';
 
 const basicDataKeys = [
   'StoneCode',
+  'Tipo de documento',
   'Documento',
   'Razão Social',
   'Nome Fantasia',
@@ -15,7 +16,8 @@ const basicDataKeys = [
 ];
 
 const additionalDataKeys = [
-  'Documento adicional',
+  'Tipo de documento',
+  'Documento',
   'Publicador',
   'Data de publicação',
   'Data de validade',
@@ -23,6 +25,7 @@ const additionalDataKeys = [
   'Data de Nascimento',
   'Local de nascimento',
   'País de nascimento',
+  'Nome da mãe',
 ];
 
 export const getMerchantInfoListView = ({
@@ -37,7 +40,11 @@ export const getMerchantInfoListView = ({
   handleFormUpdate,
   handleStartEditing,
   handleStopEditing,
-}) => html`
+}) => {
+  console.log('state', state);
+  console.log('additional', showAdditionalData);
+  console.log('basic', showBasicData);
+  return html`
     <style>
       @import url('affiliation-merchant-info-list/src/index.css');
     </style>
@@ -60,6 +67,10 @@ export const getMerchantInfoListView = ({
     : ''}
     ${showAdditionalData
     ? html`
+      <h2
+        class="business-component_paragraph">
+        Dados adicionais
+      </h2>
       <sling-list
         cascadelist="${cascadelist}"
         srcdata="${state.info.additionalData}"
@@ -77,3 +88,4 @@ export const getMerchantInfoListView = ({
     : ''}
     </div>
   `;
+};

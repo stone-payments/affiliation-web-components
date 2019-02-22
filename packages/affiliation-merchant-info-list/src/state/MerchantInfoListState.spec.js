@@ -4,23 +4,25 @@ import { getInfo } from './MerchantInfoListState.js';
 describe('Merchant Info List State.', () => {
   it('Should return correct getInfo response', () => {
     const stateData = {
-      info: [
-        {
-          affiliationCode: '11111111',
-          documentNumber: '1111111',
-          companyName: 'test.',
-          fantasyName: 'test',
-          mccDescription: 'test',
-        },
-      ],
+      info: {
+        basicData: [
+          {
+            affiliationCode: '11111111111',
+            documentNumber: '11111111111',
+            companyName: 'test.',
+            fantasyName: 'test',
+            mccDescription: 'test',
+          },
+        ],
+      },
       apiResponse: [{ mcc: { id: 1 } }],
       formData: {},
       affiliationCode: '11111',
     };
 
     const modeledData = {
-      affiliationCode: '11111111',
-      documentNumber: '1111111',
+      affiliationCode: '11111111111',
+      documentNumber: '11111111111',
       companyName: 'test.',
       fantasyName: 'test',
       mccDescription: 'test',

@@ -21,10 +21,29 @@ describe('Merchant Info List Model', () => {
           id: 1,
           name: 'Test Name',
         },
-        taxId: '1',
+        taxId: '11111111111',
         taxIdType: {
           id: 1,
           name: 'Test Document',
+        },
+        additionalDocuments: [
+          {
+            documentType: {
+              id: 1,
+              name: 'test',
+            },
+            documentIdentifier: '11111111111111',
+            issuedBy: 'test',
+            issueDate: new Date(),
+            expirationDate: new Date(),
+          },
+        ],
+        estimatedMonthlyBilling: 1,
+        birthDate: new Date(),
+        birthPlace: 'test',
+        birthCountry: {
+          id: 1,
+          name: 'test',
         },
       },
     ];
@@ -32,21 +51,20 @@ describe('Merchant Info List Model', () => {
     const modeledData = [
       {
         affiliationCode: '123456789',
-        documentNumber: '1',
+        documentNumber: '111.111.111-11',
         legalName: 'Test Legal Name',
         tradeName: 'Test Trade Name',
         mccDescription: 'Test Name',
       },
     ];
 
-    expect(MerchantInfoListModel(infoData, affiliationCode))
+    expect(MerchantInfoListModel(infoData, affiliationCode, true, true))
       .to
       .deep
       .equal(modeledData);
   });
 
   it('Should return correct MerchantInfoListPayloadModel response', () => {
-    // state.formdata.fantasyName
     const infoData = {
       formData:
       {

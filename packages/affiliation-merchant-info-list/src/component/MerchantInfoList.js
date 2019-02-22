@@ -9,7 +9,7 @@ import {
 
 const notEmpty = arg => arg != null;
 
-export const AffiliationMerchantInfoList = (base = class {}) =>
+export const AffiliationMerchantInfoList = (base = class { }) =>
   class extends withRequest(withSetState(base)) {
     constructor() {
       super();
@@ -23,6 +23,54 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
         apiResponse: [],
         formData: {},
       };
+
+      this.test = [
+        {
+          data: {
+            memberKey: 'test',
+            mcc: {
+              id: 1,
+              name: 'Test Name',
+            },
+            legalName: 'Test Legal Name',
+            tradeName: 'Test Trade Name',
+            legalPersonality: {
+              id: 1,
+              name: 'Test Name',
+            },
+            taxId: '12345678911',
+            taxIdType: {
+              id: 1,
+              name: 'CPF',
+            },
+            additionalDocuments: [
+              {
+                documentType: {
+                  id: 1,
+                  name: 'CNPJ',
+                },
+                documentIdentifier: '11111111111111',
+                issuedBy: 'test',
+                issueDate: new Date(),
+                expirationDate: new Date(),
+              },
+            ],
+            estimatedMonthlyBilling: 10000,
+            birthDate: new Date(),
+            birthPlace: 'test',
+            motherName: 'izabel',
+            birthCountry: {
+              id: 1,
+              name: 'test',
+            },
+          },
+        },
+      ];
+
+      this.setState({
+        info: MerchantInfoListModel(this.test, '1234123', true, true),
+        apiResponse: this.test,
+      });
     }
 
     static get properties() {
@@ -106,7 +154,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            sdk.merchants.merchant.get({ affiliationCode }),
+            sdk.affiliation.merchant.get({ affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
