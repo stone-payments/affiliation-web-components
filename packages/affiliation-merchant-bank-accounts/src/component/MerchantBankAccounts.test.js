@@ -92,7 +92,7 @@ describe('Merchant Bank Accounts', () => {
   });
 
 
-  it('Should reflect "affiliationCode", "state", "isLoading", "requestErrors"' +
+   it('Should reflect "state", "isLoading", "requestErrors"' +
   ', "addable", "editable", "editing" properties to atributes.', (done) => {
     merchantBankAccounts.state = false;
     merchantBankAccounts.isLoading = false;
