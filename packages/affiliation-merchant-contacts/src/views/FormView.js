@@ -12,13 +12,9 @@ const validation = [
 
   isNotEmpty('phone'),
   isValidPhone('phone'),
-
-  isNotEmpty('mobilePhone'),
-  isValidPhone('mobilePhone'),
-
 ];
 
-export const formView = (state, handleFormSubmit, handleFormUpdate) => {
+export const getFormView = (state, handleFormSubmit, handleFormUpdate) => {
   const fields = state.formdata || {};
 
   return html`
@@ -48,12 +44,6 @@ export const formView = (state, handleFormSubmit, handleFormUpdate) => {
         name="phone"
         label="Telefone"
         value="${fields.phone}">
-      </sling-input>
-      <sling-input
-        type="phone"
-        name="mobilePhone"
-        label="Celular"
-        value="${fields.mobilePhone}">
       </sling-input>
       <sling-input
         type="hidden"

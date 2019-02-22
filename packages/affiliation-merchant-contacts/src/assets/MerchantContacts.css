@@ -61,14 +61,10 @@ sling-input[name="email"] {
 }
 
 sling-input[name="phone"] {
-  grid-column: 1 / 5;
-}
-
-sling-input[name="mobilePhone"] {
-  grid-column: 5 / 9;
+  grid-column: 1 / 9;
 }
 
 sling-button[type="submit"] {
   margin-left: auto;
-  grid-column: 8;
+  grid-column: 1 / 1;
 }

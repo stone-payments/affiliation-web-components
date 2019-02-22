@@ -20,6 +20,23 @@ describe('Merchant Contacts', () => {
     $merchantContacts = null;
   });
 
+  it('Should reflect "affiliationCode", "state", "isLoading", "requestErrors"' +
+  ', "addable", "editable" attributes to properties.', () => {
+    $merchantContacts.setAttribute('affiliationCode', '111111111');
+    $merchantContacts.setAttribute('state', []);
+    $merchantContacts.setAttribute('isLoading', '');
+    $merchantContacts.setAttribute('requestErrors', {});
+    $merchantContacts.setAttribute('addable', '');
+    $merchantContacts.setAttribute('editable', '');
+
+    expect($merchantContacts.hasAttribute('affiliationCode')).to.be.true;
+    expect($merchantContacts.hasAttribute('state')).to.be.true;
+    expect($merchantContacts.hasAttribute('isLoading')).to.be.true;
+    expect($merchantContacts.hasAttribute('requestErrors')).to.be.true;
+    expect($merchantContacts.hasAttribute('addable')).to.be.true;
+    expect($merchantContacts.hasAttribute('editable')).to.be.true;
+  });
+
   it('Should reflect "editable", "editing" and "addable" ' +
    'attribute to property ', () => {
     $merchantContacts.setAttribute('editable', '');
