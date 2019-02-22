@@ -48,9 +48,6 @@ export const MerchantInfoListModel = (
     additionalData: [],
   };
 
-  console.log('1', showAdditionalData);
-  console.log('2', showBasicData);
-
   if (showAdditionalData && showBasicData) {
     modeledData.basicData.push({
       affiliationCode,
