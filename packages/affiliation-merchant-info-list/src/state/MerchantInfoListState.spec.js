@@ -15,7 +15,15 @@ describe('Merchant Info List State.', () => {
           },
         ],
       },
-      apiResponse: [{ mcc: { id: 1 } }],
+      apiResponse: [
+        {
+          data: {
+            mcc: {
+              id: 1,
+            },
+          },
+        },
+      ],
       formData: {},
       affiliationCode: '11111',
     };

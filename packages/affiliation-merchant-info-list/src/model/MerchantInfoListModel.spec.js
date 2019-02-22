@@ -8,57 +8,75 @@ import {
 describe('Merchant Info List Model', () => {
   it('Should return correct MerchantInfoListModel response.', () => {
     const affiliationCode = '123456789';
-    const infoData = [
+    const test = [
       {
-        memberKey: 'test',
-        mcc: {
-          id: 1,
-          name: 'Test Name',
-        },
-        legalName: 'Test Legal Name',
-        tradeName: 'Test Trade Name',
-        legalPersonality: {
-          id: 1,
-          name: 'Test Name',
-        },
-        taxId: '11111111111',
-        taxIdType: {
-          id: 1,
-          name: 'Test Document',
-        },
-        additionalDocuments: [
-          {
-            documentType: {
-              id: 1,
-              name: 'test',
-            },
-            documentIdentifier: '11111111111111',
-            issuedBy: 'test',
-            issueDate: new Date(),
-            expirationDate: new Date(),
+        data: {
+          memberKey: 'test',
+          mcc: {
+            id: 1,
+            name: 'Test Name',
           },
-        ],
-        estimatedMonthlyBilling: 1,
-        birthDate: new Date(),
-        birthPlace: 'test',
-        birthCountry: {
-          id: 1,
-          name: 'test',
+          legalName: 'Test Legal Name',
+          tradeName: 'Test Trade Name',
+          legalPersonality: {
+            id: 1,
+            name: 'Test Name',
+          },
+          taxId: '12345678911',
+          taxIdType: {
+            id: 1,
+            name: 'CPF',
+          },
+          additionalDocuments: [
+            {
+              documentType: {
+                id: 1,
+                name: 'CNPJ',
+              },
+              documentIdentifier: '11111111111111',
+              issuedBy: 'test',
+              issueDate: new Date(),
+              expirationDate: new Date(),
+            },
+          ],
+          estimatedMonthlyBilling: 10000,
+          birthDate: new Date(),
+          birthPlace: 'test',
+          motherName: 'izabel',
+          birthCountry: {
+            id: 1,
+            name: 'test',
+          },
         },
       },
     ];
 
-    const modeledData = [
-      {
-        affiliationCode: '123456789',
-        documentNumber: '111.111.111-11',
-        legalName: 'Test Legal Name',
-        tradeName: 'Test Trade Name',
-        mccDescription: 'Test Name',
-      },
-    ];
+    const modeledData = {
+      additionalData: [{
+        additionalDocumentType: 'CNPJ',
+        additionalDocumentIdentifier: '11 111 111/1111-11',
+        issueBy: 'test',
+        issueDate: '22/02/2019',
+        expirationDate: '22/02/2019',
+        extimatedMonthlyBilling: 'R$ 10000',
+        birthDate: '22/02/2019',
+        birthPlace: 'test',
+        birthCountry: 'test',
+        motherName: 'izabel',
+      }],
+      basicData: [
+        {
+          affiliationCode: '123456789',
+          documentType: 'CPF',
+          documentNumber: '123.456.789-11',
+          legalName: 'Test Legal Name',
+          tradeName: 'Test Trade Name',
+          mccDescription: 'Test Name',
+        },
+      ],
+    };
 
-    expect(MerchantInfoListModel(infoData, affiliationCode, true, true))
+    expect(MerchantInfoListModel(test, affiliationCode, true, true))
       .to
       .deep
       .equal(modeledData);
