@@ -1,3 +1,11 @@
+# [affiliation-merchant-contacts-v1.1.1](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-contacts-v1.1.0...affiliation-merchant-contacts-v1.1.1) (2019-02-22)
+
+
+### Bug Fixes
+
+* :arrow_up: Update package-lock.json. ([f7cc895](https://github.com/stone-payments/affiliation-web-components/commit/f7cc895))
+* :arrow_up: Update sdk dependency. ([37ffb88](https://github.com/stone-payments/affiliation-web-components/commit/37ffb88))
+
 # [affiliation-merchant-contacts-v1.1.0](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-contacts-v1.0.1...affiliation-merchant-contacts-v1.1.0) (2019-02-04)
 
 
