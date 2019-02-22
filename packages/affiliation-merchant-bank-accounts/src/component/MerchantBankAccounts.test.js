@@ -74,7 +74,7 @@ describe('Merchant Bank Accounts', () => {
     });
   });
 
-  it('Should reflect "affiliationCode", "state", "isLoading", "requestErrors"' +
+   it('Should reflect "state", "isLoading", "requestErrors"' +
    ', "addable", "editable", "editing" attributes to properties.', () => {
     merchantBankAccounts.setAttribute('state', []);
     merchantBankAccounts.setAttribute('isLoading', '');
