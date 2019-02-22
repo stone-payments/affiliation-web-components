@@ -55,15 +55,15 @@ sling-select[name="bankId"] {
   grid-column: 1 / 5;
 }
 
-sling-select[name="typeId"] {
+sling-select[name="accountTypeId"] {
   grid-column: 5 / 9;
 }
 
-sling-input[name="agencyNumber"] {
+sling-input[name="branchCode"] {
   grid-column: 1 / 4;
 }
 
-sling-input[name="agencyNumberVerificationCode"] {
+sling-input[name="branchCodeCheckDigit"] {
   grid-column: 4;
 }
 
@@ -71,7 +71,7 @@ sling-input[name="accountNumber"] {
   grid-column: 5 / 8;
 }
 
-sling-input[name="accountNumberVerificationCode"] {
+sling-input[name="accountNumberCheckDigit"] {
   grid-column: 8;
 }
 
