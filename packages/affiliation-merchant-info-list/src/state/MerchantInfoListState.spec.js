@@ -1,31 +1,87 @@
 import { expect } from 'chai';
 import { getInfo } from './MerchantInfoListState.js';
 
+const mockApiResponse = [
+  {
+    data: {
+      memberKey: 'test',
+      mcc: {
+        id: 1,
+        name: 'Test Name',
+      },
+      legalName: 'Test Legal Name',
+      tradeName: 'Test Trade Name',
+      legalPersonality: {
+        id: 1,
+        name: 'Test Name',
+      },
+      taxId: '12345678911',
+      taxIdType: {
+        id: 1,
+        name: 'CPF',
+      },
+      additionalDocuments: [
+        {
+          documentType: {
+            id: 1,
+            name: 'CNPJ',
+          },
+          documentIdentifier: '11111111111111',
+          issuedBy: 'test',
+          issueDate: new Date(),
+          expirationDate: new Date(),
+        },
+      ],
+      estimatedMonthlyBilling: 10000,
+      birthDate: new Date(),
+      birthPlace: 'test',
+      motherName: 'izabel',
+      birthCountry: {
+        id: 1,
+        name: 'test',
+      },
+    },
+  },
+];
+
+
 describe('Merchant Info List State.', () => {
   it('Should return correct getInfo response', () => {
     const stateData = {
       info: {
-        basicData: [
-          {
-            affiliationCode: '11111111111',
-            documentNumber: '11111111111',
-            companyName: 'test.',
-            fantasyName: 'test',
-            mccDescription: 'test',
-          },
-        ],
+        basicData: [{
+          affiliationCode: '123456789',
+          documentType: 'CPF',
+          documentNumber: '123.456.789-11',
+          legalName: 'Test Legal Name',
+          tradeName: 'Test Trade Name',
+          mccDescription: 'Test Name',
+        }],
+        additionalData: [{
+          additionalDocumentType: 'CNPJ',
+          additionalDocumentIdentifier: '11 111 111/1111-11',
+          issueBy: 'test',
+          issueDate: '25/02/2019',
+          expirationDate: '25/02/2019',
+          estimatedMonthlyBilling: 'R$ 10000',
+          birthDate: '25/02/2019',
+          birthPlace: 'test',
+          birthCountry: 'test',
+          motherName: 'izabel',
+        }],
       },
-      apiResponse: [{ mcc: { id: 1 } }],
+      apiResponse: mockApiResponse,
       formData: {},
       affiliationCode: '11111',
     };
 
     const modeledData = {
-      affiliationCode: '11111111111',
-      documentNumber: '11111111111',
-      companyName: 'test.',
-      fantasyName: 'test',
-      mccDescription: 'test',
+      affiliationCode: '123456789',
+      documentNumber: '123.456.789-11',
+      documentType: 'CPF',
+      legalName: 'Test Legal Name',
+      tradeName: 'Test Trade Name',
+      mccDescription: 'Test Name',
       mccId: 1,
     };
 
@@ -34,6 +90,7 @@ describe('Merchant Info List State.', () => {
       .deep
       .equal(modeledData);
   });
+
   it('Should return correct getInfo response without info in ', () => {
     const stateData = {
       info: [],
