@@ -98,5 +98,8 @@
   "resolutions": {
     "eslint-scope": "3.7.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "npm": "^6.8.0",
+    "test": "^0.6.0"
+  }
 }
