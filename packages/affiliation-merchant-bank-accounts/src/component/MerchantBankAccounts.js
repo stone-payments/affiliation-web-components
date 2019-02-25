@@ -4,6 +4,7 @@ import { getMerchantBankAccountsView } from '../views/MerchantBankAccountsView.j
 import {
   BankAccountsModel,
   BankAccountsFormResponseModel,
+  PayloadModel,
 } from '../model/BankAccountsModel.js';
 
 const notEmpty = arg => arg != null;
@@ -19,8 +20,8 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
       this.handleStopEditing = this.handleStopEditing.bind(this);
 
       this.state = {
+        bankAccounts: [],
         banks: [],
-        availableBanks: [],
         formdata: {},
         instanceName: this.localName,
       };
@@ -65,30 +66,19 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
       if (evt.detail) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
-          id: evt.detail.id,
+          key: evt.detail.key,
         };
-
-        const payload = {
-          accountNumber: evt.detail.accountNumber,
-          accountNumberVerificationCode:
-            evt.detail.accountNumberVerificationCode,
-          agencyNumber: evt.detail.agencyNumber,
-          agencyNumberVerificationCode: evt.detail.agencyNumberVerificationCode,
-          bankId: Number(evt.detail.bankId),
-          statusId: evt.detail.statusId,
-          typeId: Number(evt.detail.typeId),
-          centralizedPayment: evt.detail.centralizedPayment,
-        };
+        const payload = PayloadModel(evt.detail);
 
         this
           .request([
-            sdk.merchants.bankAccounts.put(requestParams, payload),
+            sdk.affiliation.bankAccounts.put(requestParams, payload),
           ])
           .then((responses) => {
             const data =
-              BankAccountsFormResponseModel(this.state.banks, responses);
+              BankAccountsFormResponseModel(this.state.bankAccounts, responses);
             this.setState({
-              banks: data,
+              bankAccounts: data,
             });
           });
       }
@@ -113,7 +103,7 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            sdk.merchants.availableBanks.get({ affiliationCode }),
+            sdk.affiliation.banks.get({ affiliationCode }),
             sdk.affiliation.bankAccounts.get({ affiliationCode }),
           ])
           .then((responses) => {
@@ -122,7 +112,7 @@ export const AffiliationMerchantBankAccounts = (base = class {}) =>
               this.setState({
                 affiliationCode,
                 banks: data.banks,
-                availableBanks: data.availableBanks,
+                bankAccounts: data.bankAccounts,
               });
             }
           });

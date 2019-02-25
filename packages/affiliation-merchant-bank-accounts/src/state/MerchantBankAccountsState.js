@@ -1,4 +1,9 @@
-export const findAccountType = (availableBanks, bankId = undefined) => {
-  const bank = availableBanks.find(el => el.id === Number(bankId));
-  return bank ? bank.accountTypes : [];
-};
+export const accountType = [
+  {
+    id: 1,
+    name: 'Conta Corrente',
+  }, {
+    id: 2,
+    name: 'Conta Poupança',
+  },
+];

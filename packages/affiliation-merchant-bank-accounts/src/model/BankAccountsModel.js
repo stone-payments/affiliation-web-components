@@ -1,63 +1,75 @@
-export const BankAccountsModelWithAvailableBanks = (responses) => {
-  const [availableBanks, banks] = responses;
+export const BankAccountsModel = (responses) => {
+  const [banks, bankAccounts] = responses;
+
   const modeledData = {
+    bankAccounts: bankAccounts.data,
     banks: banks.data,
-    availableBanks: availableBanks.data,
   };
 
-  modeledData.banks = modeledData.banks.reduce((result, current) => {
-    const repeatedAccountNumbers = result.map(item => item.accountNumber);
-    const repeatedAgencyNumbers = result.map(item => item.agencyNumber);
-    const repeatedBankIds = result.map(item => item.bankId);
+  modeledData.bankAccounts = modeledData.bankAccounts.map(item => ({
+    key: item.key,
+    bankId: item.bank.id,
+    bankName: item.bank.name,
+    branchCode: item.branchCode,
+    branchCodeCheckDigit: item.branchCodeCheckDigit,
+    accountNumber: item.accountNumber,
+    accountNumberCheckDigit: item.accountNumberCheckDigit,
+    accountTypeId: item.accountType.id,
+    accountTypeName: item.accountType.name,
+    statusId: item.status.id,
+    statusName: item.status.name,
 
-    if (repeatedAccountNumbers.includes(current.accountNumber) &&
-      repeatedAgencyNumbers.includes(current.agencyNumber) &&
-      repeatedBankIds.includes(current.bankId)) {
-      return result;
-    }
-
-    return [...result, current];
-  }, []);
-
+    branchCodeDisplay: item.branchCodeCheckDigit
+      ? `${item.branchCode}-${item.branchCodeCheckDigit}`
+      : item.branchCode,
+    accountDisplayName: `${item.accountNumber}-${item.accountNumberCheckDigit}`,
+  }));
   return modeledData;
 };
 
-export const BankAccountsModel = ([banks]) => banks.map(bank => ({
-  key: bank.key,
-  bankId: bank.bank.id,
-  bankName: bank.bank.name,
-  branchCode: bank.branchCode,
-  branchCodeCheckDigit: bank.branchCodeCheckDigit,
-  accountNumber: bank.accountNumber,
-  accountNumberCheckDigit: bank.accountNumberCheckDigit,
-  accountTypeId: bank.accountType.id,
-  accountTypeName: bank.accountType.name,
-  statusId: bank.status.id,
-  statusName: bank.status.name,
-
-  branchCodeDisplay: bank.branchCodeCheckDigit
-    ? `${bank.branchCode}-${bank.branchCodeCheckDigit}`
-    : bank.branchCode,
-  accountDisplayNmae: `${bank.accountNumber}-${bank.accountNumberCheckDigit}`,
-}));
-
 export const BankAccountsFormResponseModel = (state, responses) => {
-  const [oldValue] = state;
   const [data] = responses;
+  const modeledArray = [];
 
-  const modeledData = {
-    bankName: data.data.bankName || oldValue.bankName,
-    typeName: data.data.typeName ? data.data.typeName : oldValue.typeName,
-    accountNumber: data.data.accountNumber,
-    accountNumberVerificationCode: data.data.accountNumberVerificationCode,
-    agencyNumber: data.data.agencyNumber,
-    agencyNumberVerificationCode: data.data.agencyNumberVerificationCode,
-    bankId: data.data.bankId,
-    statusId: data.data.statusId,
-    typeId: data.data.typeId,
-    centralizedPayment: data.data.centralizedPayment,
-  };
+  state.map((el) => {
+    if (el.key === data.key) {
+      const newEl = {
+        ...el,
+        key: data.key,
+        bankId: data.bank.id,
+        bankName: data.bank.name,
+        branchCode: data.branchCode,
+        branchCodeCheckDigit: data.branchCodeCheckDigit,
+        accountNumber: data.accountNumber,
+        accountNumberCheckDigit: data.accountNumberCheckDigit,
+        accountTypeId: data.accountType.id,
+        accountTypeName: data.accountType.name,
+        statusId: data.status.id,
+        statusName: data.status.name,
 
-  return [modeledData];
+        branchCodeDisplay: data.branchCodeCheckDigit
+          ? `${data.branchCode}-${data.branchCodeCheckDigit}`
+          : data.branchCode,
+        accountDisplayName: `${data.accountNumber}-${data.accountNumberCheckDigit}`,
+      };
+
+      return modeledArray.push(newEl);
+    }
+
+    return modeledArray.push(el);
+  });
+
+  return modeledArray;
 };
 
+export const PayloadModel = payloadData => ({
+  bankId: Number(payloadData.bankId),
+  branchCode: payloadData.branchCode,
+  branchCodeCheckDigit: payloadData.branchCodeCheckDigit
+    ? payloadData.branchCodeCheckDigit
+    : null,
+  accountNumber: payloadData.accountNumber,
+  accountNumberCheckDigit: payloadData.accountNumberCheckDigit,
+  accountTypeId: Number(payloadData.accountTypeId),
+  statusId: Number(payloadData.statusId),
+});

@@ -16,7 +16,7 @@ const columns = [{
   field: 'branchCodeDisplay',
 }, {
   title: 'Conta',
-  field: 'accountDisplayNmae',
+  field: 'accountDisplayName',
 }];
 
 export const getMerchantBankAccountsView = ({
@@ -54,7 +54,7 @@ export const getMerchantBankAccountsView = ({
     <sling-table
       editable="${editable}"
       onrowclicked="${handleStartEditing}"
-      srcdata="${state.banks}"
+      srcdata="${state.bankAccounts}"
       srccolumns="${columns}">
     </sling-table>
   </div>
