@@ -48,9 +48,6 @@ export const MerchantInfoListModel = (
     additionalData: [],
   };
 
-  console.log('1', showAdditionalData);
-  console.log('2', showBasicData);
-
   if (showAdditionalData && showBasicData) {
     modeledData.basicData.push({
       affiliationCode,
@@ -69,7 +66,7 @@ export const MerchantInfoListModel = (
       issueBy: data.additionalDocuments[0].issuedBy,
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
-      extimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
+      estimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
       birthDate: formatDate(data.birthDate),
       birthPlace: data.birthPlace,
       birthCountry: data.birthCountry.name,
@@ -88,7 +85,7 @@ export const MerchantInfoListModel = (
       issueBy: data.additionalDocuments[0].issuedBy,
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
-      extimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
+      estimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
       birthDate: formatDate(data.birthDate),
       birthPlace: data.birthPlace,
       birthCountry: data.birthCountry.name,
@@ -100,6 +97,7 @@ export const MerchantInfoListModel = (
   if (showBasicData && !showAdditionalData) {
     modeledData.basicData.push({
       affiliationCode,
+      documentType: data.taxIdType.name,
       documentNumber: formatDocument(data.taxId),
       legalName: data.legalName,
       tradeName: data.tradeName,
@@ -109,5 +107,5 @@ export const MerchantInfoListModel = (
     return modeledData;
   }
 
-  return [];
+  return modeledData;
 };
