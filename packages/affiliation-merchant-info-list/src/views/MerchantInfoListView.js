@@ -40,11 +40,7 @@ export const getMerchantInfoListView = ({
   handleFormUpdate,
   handleStartEditing,
   handleStopEditing,
-}) => {
-  console.log('state', state);
-  console.log('additional', showAdditionalData);
-  console.log('basic', showBasicData);
-  return html`
+}) => html`
     <style>
       @import url('affiliation-merchant-info-list/src/index.css');
     </style>
@@ -88,4 +84,3 @@ export const getMerchantInfoListView = ({
     : ''}
     </div>
   `;
-};
