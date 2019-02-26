@@ -18,7 +18,7 @@ const basicDataKeys = [
 const additionalDataKeys = [
   'Tipo de documento',
   'Documento',
-  'Publicador',
+  'Órgão expedidor',
   'Data de emissão',
   'Data de validade',
   'Faturamento mensal estimado',
