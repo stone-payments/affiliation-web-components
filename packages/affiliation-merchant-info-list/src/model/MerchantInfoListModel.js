@@ -12,7 +12,7 @@ const formatDocument = (document) => {
     return formatedDocument;
   }
 
-  return 'Documento invalido';
+  return 'Documento inválido';
 };
 
 const formatDate = (date) => {
