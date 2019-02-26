@@ -68,7 +68,7 @@ describe('Merchant Info List', () => {
 
   it('Should reflect "state", "isLoading", "requestErrors"' +
   ', "cascadelist", "editable", "showAdditionalData", "showBasicData" and' +
-  '"editing" properties to atributes.', (done) => {
+  '"editing" properties to attributes.', (done) => {
     $merchantInfoList.state = undefined;
     $merchantInfoList.isLoading = false;
     $merchantInfoList.requestErrors = undefined;
