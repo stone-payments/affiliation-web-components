@@ -1,15 +1,15 @@
 const formatDocument = (document) => {
-  let formatedDocument;
+  let formattedDocument;
   if (document.length === 14) {
-    formatedDocument = document.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1 $2 $3/$4-$5');
+    formattedDocument = document.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
 
-    return formatedDocument;
+    return formattedDocument;
   }
 
   if (document.length === 11) {
-    formatedDocument = document.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    formattedDocument = document.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 
-    return formatedDocument;
+    return formattedDocument;
   }
 
   return 'Documento inválido';
