@@ -15,38 +15,8 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
     this.handleStartEditing = this.handleStartEditing.bind(this);
     this.handleStopEditing = this.handleStopEditing.bind(this);
 
-
-
     this.state = {
-      addresses: [
-        {
-          key: '826CB172-5DA7-4E66-BBAB-0487129758C4',
-          entranceNumber: '58',
-          streetName: 'Monsenhor pio ragazinskas',
-          neighborhood: 'Parque da vila prudente',
-          postalCode: '03141-090',
-          complement: 'Seven Houses',
-          city: {
-            id: 5351,
-            name: 'São Paulo',
-            countrySubdivision: {
-              id: 'BR-AL',
-              name: 'Alagoas',
-              iso31662Short: 'AL',
-              country: {
-                id: 76,
-                name: 'Brazil',
-                iso31661Alpha3: 'BRA',
-                iso31661Alpha2: 'BR',
-              },
-            },
-          },
-          type: {
-            id: 1,
-            name: 'Principal (Operação)',
-          },
-        },
-      ],
+      addresses: [],
       types: [
         {
           id: 2,
@@ -65,67 +35,42 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
           name: 'Residencial',
         },
       ],
-      states: [
-        {
-          id: 'BR-AC',
-          name: 'Acre',
-          iso31662Short: 'AC',
-          country: {
-            id: 76,
-            name: 'Brazil',
-            iso31661Alpha3: 'BRA',
-            iso31661Alpha2: 'BR',
-          },
-          cities: {
-            href: 'test',
-          },
-        },
-        {
-          id: 'BR-AL',
-          name: 'Alagoas',
-          iso31662Short: 'AL',
-          country: {
-            id: 76,
-            name: 'Brazil',
-            iso31661Alpha3: 'BRA',
-            iso31661Alpha2: 'BR',
-          },
-          cities: {
-            href: 'test',
-          },
-        }],
-      cities: [
-        {
-          id: 3594,
-          name: 'Angra dos Reis',
-          countrySubdivision: {
-            id: 'BR-RJ',
-            name: 'Rio de Janeiro',
-            iso31662Short: 'RJ',
-            country: {
-              id: 76,
-              name: 'Brazil',
-              iso31661Alpha3: 'BRA',
-              iso31661Alpha2: 'BR',
-            },
-          },
-        },
-        {
-          id: 3595,
-          name: 'Aperibé',
-          countrySubdivision: {
-            id: 'BR-RJ',
-            name: 'Rio de Janeiro',
-            iso31662Short: 'RJ',
-            country: {
-              id: 76,
-              name: 'Brazil',
-              iso31661Alpha3: 'BRA',
-              iso31661Alpha2: 'BR',
-            },
-          },
-        }],
     };
+    this.mockData = [
+      {
+        data: [
+          {
+            key: 'test',
+            entranceNumber: 1,
+            streetName: 'test',
+            neighborhood: 'test',
+            postalCode: 'test',
+            city: {
+              id: 1,
+              name: 'test',
+              countrySubdivision: {
+                id: 'test',
+                name: 'test',
+                iso31662Short: 'test',
+                country: {
+                  id: 1,
+                  name: 'test',
+                  iso31661Alpha3: 'test',
+                  iso31661Alpha2: 'test',
+                },
+              },
+            },
+            type: {
+              id: 1,
+              name: 'test',
+            },
+          },
+        ],
+      },
+    ];
+    this.setState({
+      address: AddressesModel(this.mockData),
+    });
   }
 
   static get properties() {
