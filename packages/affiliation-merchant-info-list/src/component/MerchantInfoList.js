@@ -9,7 +9,7 @@ import {
 
 const notEmpty = arg => arg != null;
 
-export const AffiliationMerchantInfoList = (base = class {}) =>
+export const AffiliationMerchantInfoList = (base = class { }) =>
   class extends withRequest(withSetState(base)) {
     constructor() {
       super();
@@ -48,6 +48,14 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
           reflectToAttribute: true,
         },
         editing: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
+        showAdditionalData: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
+        showBasicData: {
           type: Boolean,
           reflectToAttribute: true,
         },
@@ -98,8 +106,7 @@ export const AffiliationMerchantInfoList = (base = class {}) =>
       if (affiliationCode) {
         this
           .request([
-            // @TODO Update to new sdk medule "affiliation".
-            sdk.merchants.merchant.get({ affiliationCode }),
+            sdk.affiliation.merchant.get({ affiliationCode }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
