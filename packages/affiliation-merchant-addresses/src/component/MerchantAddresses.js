@@ -1,6 +1,6 @@
 import { v0 as sdk } from 'customer-js-sdk';
 import { withRequest, withSetState } from 'sling-framework';
-import { AddressesModel } from '../model/MerchantAddressesModel.js';
+import { AddressesModel, StatesModel } from '../model/MerchantAddressesModel.js';
 import { getMerchantAddressesView } from '../view/MerchantAddressesView.js';
 
 const notEmpty = arg => arg != null;
@@ -17,25 +17,10 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
 
     this.state = {
       addresses: [],
-      types: [
-        {
-          id: 2,
-          name: 'Administrativo',
-        },
-        {
-          id: 3,
-          name: 'Entrega',
-        },
-        {
-          id: 1,
-          name: 'Principal (Operação)',
-        },
-        {
-          id: 4,
-          name: 'Residencial',
-        },
-      ],
+      states: [],
+      cities: [],
     };
+
     this.mockData = [
       {
         data: [
@@ -44,14 +29,14 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
             entranceNumber: 1,
             streetName: 'test',
             neighborhood: 'test',
-            postalCode: 'test',
+            postalCode: '11111111',
             city: {
               id: 1,
-              name: 'test',
+              name: 'Anamã',
               countrySubdivision: {
                 id: 'test',
                 name: 'test',
-                iso31662Short: 'test',
+                iso31662Short: 'AM',
                 country: {
                   id: 1,
                   name: 'test',
@@ -67,18 +52,45 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
           },
         ],
       },
+      {
+        data: [
+          {
+            code: 'AC',
+            name: 'Acre',
+          }, {
+            code: 'AL',
+            name: 'Alagoas',
+          }, {
+            code: 'AM',
+            name: 'Amazonas',
+          }, {
+            code: 'AP',
+            name: 'Amapá',
+          },
+        ],
+      },
     ];
+
+    this.cities = [
+      {
+        name: 'Alvarães',
+      },
+      {
+        name: 'Amaturá',
+      },
+      {
+        name: 'Anamã',
+      },
+    ];
+
     this.setState({
-      address: AddressesModel(this.mockData),
+      addresses: AddressesModel(this.mockData),
+      states: StatesModel(this.mockData),
     });
   }
 
   static get properties() {
     return {
-      state: {
-        type: Object,
-        reflectToAttribute: false,
-      },
       isLoading: {
         type: Boolean,
         reflectToAttribute: false,
@@ -103,33 +115,9 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   handleFormUpdate(evt) {
-    this.handleStateChange(evt);
-    const myEvt = document.getElementById('MySelect');
-    myEvt.addEventListener('onchange', (event) => {
-      console.log('CHANGE EVENT', event);
-    });
-
     this.setState({
       formdata: evt.detail,
     });
-  }
-
-  handleStateChange(evt) {
-    if (evt.detail.key === undefined) {
-      const address = this.state.addresses.find(x => x.key === evt.detail.key);
-
-      if (evt.detail.stateId !== address.city.countrySubdivision.id) {
-        console.log(`Get related cities of ${address.city.countrySubdivision.iso31662Short}`);
-        // this.request([
-        //     sdk.affiliation.cities.get({
-        //       stateCode: address.countrySubdivision.iso31662Short,
-        //     }),
-        //   ])
-        //   .then((responses) => {
-        //     this.setState({ cities: responses });
-        //   });
-      }
-    }
   }
 
   handleFormSubmit(evt) {
@@ -158,6 +146,9 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   handleStartEditing(evt) {
+    this.setState({
+      cities: this.cities,
+    });
     this.editing = true;
     this.handleFormUpdate(evt);
   }
@@ -175,11 +166,16 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
       this
         .request([
           sdk.affiliation.addresses.get({ affiliationCode }),
+          sdk.affiliation.states.get(),
         ])
         .then((responses) => {
           if (responses.every(notEmpty)) {
             const addresses = AddressesModel(responses);
-            this.setState({ addresses });
+            const states = StatesModel(responses);
+            this.setState({
+              addresses,
+              states,
+            });
           }
         });
     }

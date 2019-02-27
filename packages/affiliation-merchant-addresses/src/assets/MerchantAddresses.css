@@ -72,11 +72,11 @@ sling-input[name="neighborhood"] {
   grid-column: 1 / 4;
 }
 
-sling-input[name="streetName"] {
+sling-input[name="street"] {
   grid-column: 4 / 8;
 }
 
-sling-input[name="entranceNumber"] {
+sling-input[name="number"] {
   grid-column: 1 / 3;
 }
 

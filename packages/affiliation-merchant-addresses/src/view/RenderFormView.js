@@ -3,6 +3,7 @@ import { isNotEmpty } from 'sling-helpers';
 import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
+import { types, FindCityByName } from '../state/MerchantAddressesState.js';
 
 const validation = [
   isNotEmpty('typeId'),
@@ -20,7 +21,8 @@ export const getRenderForm = (
   handleFormUpdate,
 ) => {
   const fields = state.formdata || {};
-
+  console.log('state form', state);
+  console.log('fields', fields);
   return html`
     <sling-form
       onformsubmit="${handleFormSubmit}"
@@ -36,7 +38,7 @@ export const getRenderForm = (
         placeholder="Selecione um tipo"
         name="typeId"
         value="${fields.typeId}"
-        srcoptions="${state.types}">
+        srcoptions="${types}">
       </sling-select>
       <sling-input
         type="cep"
@@ -49,14 +51,14 @@ export const getRenderForm = (
         label="Estado"
         placeholder="Selecione um estado"
         name="stateId"
-        value="${fields.stateId}"
+        value="${fields.stateCode}"
         srcoptions="${state.states}">
       </sling-select>
       <sling-select
         label="Cidade"
         placeholder="Selecione uma cidade"
         name="cityId"
-        value="${fields.cityId}"
+        value="${FindCityByName(fields.cityName, state.cities)}"
         srcoptions="${state.cities}">
       </sling-select>
       <sling-input
@@ -68,22 +70,22 @@ export const getRenderForm = (
       </sling-input>
       <sling-input
         type="text"
-        name="streetName"
+        name="street"
         label="Rua"
         maxLength="128"
-        value="${fields.streetName}">
+        value="${fields.street}">
       </sling-input>
       <sling-input
         type="text"
-        name="entranceNumber"
+        name="number"
         label="Número"
         maxLength="32"
-        value="${fields.entranceNumber}">
+        value="${fields.number}">
       </sling-input>
       <sling-input
         type="text"
         name="complement"
-        label="Número"
+        label="Complemento"
         maxLength="64"
         value="${fields.complement}">
       </sling-input>
