@@ -23,15 +23,14 @@ describe('Merchant Bank Accounts', () => {
   it('Should start submit form', () => {
     const myEvent = new CustomEvent('myEvent', {
       detail: {
+        key: '2',
         bankId: '341',
-        typeId: '1',
-        agencyNumber: '0332',
-        agencyNumberVerificationCode: '8',
+        accountTypeId: '1',
+        branchCode: '0332',
+        branchCodeCheckDigit: '8',
         accountNumber: '25003',
-        accountNumberVerificationCode: '4',
+        accountNumberCheckDigit: '4',
         statusId: 1,
-        centralizedPayment: false,
-        id: 454489,
       },
     });
 
