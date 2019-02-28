@@ -3,6 +3,7 @@ import { isNotEmpty } from 'sling-helpers';
 import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
+import { types } from '../state/MerchantAddressesState.js';
 
 const validation = [
   isNotEmpty('typeId'),
@@ -20,7 +21,7 @@ export const getRenderForm = (
   handleFormUpdate,
 ) => {
   const fields = state.formdata || {};
-
+  console.log('form state -----------', state);
   return html`
     <sling-form
       onformsubmit="${handleFormSubmit}"
@@ -36,7 +37,7 @@ export const getRenderForm = (
         placeholder="Selecione um tipo"
         name="typeId"
         value="${fields.typeId}"
-        srcoptions="${state.types}">
+        srcoptions="${types}">
       </sling-select>
       <sling-input
         type="cep"
@@ -48,15 +49,15 @@ export const getRenderForm = (
       <sling-select
         label="Estado"
         placeholder="Selecione um estado"
-        name="stateId"
-        value="${fields.stateId}"
+        name="stateCode"
+        value="${fields.stateCode}"
         srcoptions="${state.states}">
       </sling-select>
       <sling-select
         label="Cidade"
         placeholder="Selecione uma cidade"
-        name="cityId"
-        value="${fields.cityId}"
+        name="cityName"
+        value="${fields.cityName}"
         srcoptions="${state.cities}">
       </sling-select>
       <sling-input
@@ -71,19 +72,19 @@ export const getRenderForm = (
         name="streetName"
         label="Rua"
         maxLength="128"
-        value="${fields.streetName}">
+        value="${fields.street}">
       </sling-input>
       <sling-input
         type="text"
         name="entranceNumber"
         label="Número"
         maxLength="32"
-        value="${fields.entranceNumber}">
+        value="${fields.number}">
       </sling-input>
       <sling-input
         type="text"
         name="complement"
-        label="Número"
+        label="Complemento"
         maxLength="64"
         value="${fields.complement}">
       </sling-input>

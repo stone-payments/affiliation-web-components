@@ -60,11 +60,11 @@ sling-input[name="postalCode"] {
   grid-column: 4 / 8;
 }
 
-sling-select[name="stateId"] {
+sling-select[name="stateCode"] {
   grid-column: 1 / 4;
 }
 
-sling-select[name="cityId"] {
+sling-select[name="cityName"] {
   grid-column: 4 / 8;
 }
 

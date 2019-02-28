@@ -1,7 +1,11 @@
 import { v0 as sdk } from 'customer-js-sdk';
 import { withRequest, withSetState } from 'sling-framework';
-import { AddressesModel } from '../model/MerchantAddressesModel.js';
 import { getMerchantAddressesView } from '../view/MerchantAddressesView.js';
+import {
+  AddressesModel,
+  StatesModel,
+  CitiesModel,
+} from '../model/MerchantAddressesModel.js';
 
 const notEmpty = arg => arg != null;
 
@@ -17,41 +21,28 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
 
     this.state = {
       addresses: [],
-      types: [
-        {
-          id: 2,
-          name: 'Administrativo',
-        },
-        {
-          id: 3,
-          name: 'Entrega',
-        },
-        {
-          id: 1,
-          name: 'Principal (Operação)',
-        },
-        {
-          id: 4,
-          name: 'Residencial',
-        },
-      ],
+      states: [],
+      cities: [],
+      formdata: {},
     };
+
     this.mockData = [
       {
+        // mock data
         data: [
           {
             key: 'test',
             entranceNumber: 1,
             streetName: 'test',
             neighborhood: 'test',
-            postalCode: 'test',
+            postalCode: '11111111',
             city: {
-              id: 1,
-              name: 'test',
+              id: 3,
+              name: 'city3',
               countrySubdivision: {
                 id: 'test',
                 name: 'test',
-                iso31662Short: 'test',
+                iso31662Short: 'SP',
                 country: {
                   id: 1,
                   name: 'test',
@@ -67,18 +58,67 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
           },
         ],
       },
+      {
+        // mock states
+        data: [
+          {
+            code: 'AC',
+            name: 'Acre',
+          }, {
+            code: 'RJ',
+            name: 'Rio de janeiro',
+          }, {
+            code: 'SP',
+            name: 'São Paulo',
+          },
+        ],
+      },
     ];
+
+    this.citiesSP = {
+      data: [
+        {
+          name: 'city1',
+        }, {
+          name: 'city2',
+        }, {
+          name: 'city3',
+        },
+      ],
+    };
+
+    this.citiesRJ = {
+      data: [
+        {
+          name: 'city4',
+        }, {
+          name: 'city5',
+        }, {
+          name: 'city6',
+        },
+      ],
+    };
+
+    this.citiesAC = {
+      data: [
+        {
+          name: 'city7',
+        }, {
+          name: 'city8',
+        }, {
+          name: 'city9',
+        },
+      ],
+    };
+
     this.setState({
-      address: AddressesModel(this.mockData),
+      addresses: AddressesModel(this.mockData),
+      states: StatesModel(this.mockData),
     });
   }
 
   static get properties() {
     return {
-      state: {
-        type: Object,
-        reflectToAttribute: false,
-      },
       isLoading: {
         type: Boolean,
         reflectToAttribute: false,
@@ -103,33 +143,39 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   handleFormUpdate(evt) {
-    this.handleStateChange(evt);
-    const myEvt = document.getElementById('MySelect');
-    myEvt.addEventListener('onchange', (event) => {
-      console.log('CHANGE EVENT', event);
-    });
-
+    console.log(evt.detail, 'evento -----');
+    console.log(evt.detail.stateCode, 'evt statecode');
+    console.log(this.state.formdata.stateCode, 'form statecode');
+    if ((evt.detail.stateCode !== this.state.formdata.stateCode) &&
+      (evt.detail.stateCode)) {
+      // this
+      //   .request([
+      //     sdk.affiliation.cities.get(evt.detail.stateCode),
+      //   ])
+      //   .then((responses) => {
+      //     if (responses.every(notEmpty)) {
+      //       const addresses = AddressesModel(responses);
+      //       this.setState({ addresses });
+      //     }
+      //   });
+      if (evt.detail.stateCode === 'SP') {
+        debugger;
+        this.setState({ cities: CitiesModel(this.citiesSP) });
+      }
+      if (evt.detail.stateCode === 'RJ') {
+        debugger;
+        this.setState({ cities: CitiesModel(this.citiesRJ) });
+      }
+      if (evt.detail.stateCode === 'AC') {
+        debugger;        
+        this.setState({ cities: CitiesModel(this.citiesAC) });
+      }
+    }
     this.setState({
       formdata: evt.detail,
     });
-  }
 
-  handleStateChange(evt) {
-    if (evt.detail.key === undefined) {
-      const address = this.state.addresses.find(x => x.key === evt.detail.key);
-
-      if (evt.detail.stateId !== address.city.countrySubdivision.id) {
-        console.log(`Get related cities of ${address.city.countrySubdivision.iso31662Short}`);
-        // this.request([
-        //     sdk.affiliation.cities.get({
-        //       stateCode: address.countrySubdivision.iso31662Short,
-        //     }),
-        //   ])
-        //   .then((responses) => {
-        //     this.setState({ cities: responses });
-        //   });
-      }
-    }
+    console.log('AQUI CARALHO', this.state);
   }
 
   handleFormSubmit(evt) {
