@@ -1,7 +1,11 @@
 import { v0 as sdk } from 'customer-js-sdk';
 import { withRequest, withSetState } from 'sling-framework';
-import { AddressesModel, StatesModel } from '../model/MerchantAddressesModel.js';
 import { getMerchantAddressesView } from '../view/MerchantAddressesView.js';
+import {
+  AddressesModel,
+  StatesModel,
+  CitiesModel,
+} from '../model/MerchantAddressesModel.js';
 
 const notEmpty = arg => arg != null;
 
@@ -19,10 +23,12 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
       addresses: [],
       states: [],
       cities: [],
+      formdata: {},
     };
 
     this.mockData = [
       {
+        // mock data
         data: [
           {
             key: 'test',
@@ -53,6 +59,7 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
         ],
       },
       {
+        // mock states
         data: [
           {
             code: 'AC',
@@ -115,9 +122,39 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   handleFormUpdate(evt) {
+    console.log(evt.detail, 'evento -----');
+    console.log(evt.detail.stateCode, 'evt statecode');
+    console.log(this.state.formdata.stateCode, 'form statecode');
+    if ((evt.detail.stateCode !== this.state.formdata.stateCode) &&
+      (evt.detail.stateCode)) {
+      // this
+      //   .request([
+      //     sdk.affiliation.cities.get(evt.detail.stateCode),
+      //   ])
+      //   .then((responses) => {
+      //     if (responses.every(notEmpty)) {
+      //       const addresses = AddressesModel(responses);
+      //       this.setState({ addresses });
+      //     }
+      //   });
+      if (evt.detail.stateCode === 'SP') {
+        debugger;
+        this.setState({ cities: CitiesModel(this.citiesSP) });
+      }
+      if (evt.detail.stateCode === 'RJ') {
+        debugger;
+        this.setState({ cities: CitiesModel(this.citiesRJ) });
+      }
+      if (evt.detail.stateCode === 'AC') {
+        debugger;
+        this.setState({ cities: CitiesModel(this.citiesAC) });
+      }
+    }
     this.setState({
       formdata: evt.detail,
     });
+
+    console.log('AQUI CARALHO', this.state);
   }
 
   handleFormSubmit(evt) {

@@ -1,5 +1,3 @@
-import { StatesModel } from "../model/MerchantAddressesModel";
-
 export const types = [
   {
     id: 2,
