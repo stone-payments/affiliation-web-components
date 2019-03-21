@@ -1,7 +1,7 @@
-export const AddressesModel = ([data]) => {
+export const AddressesModel = ([{ data }]) => {
   console.log('addresses model', data);
 
-  return data.data.map(item => ({
+  return data.map(item => ({
     key: item.key,
     typeId: item.type.id,
     typeName: item.type.name,
@@ -19,11 +19,21 @@ export const AddressesModel = ([data]) => {
   }));
 };
 
-export const StatesModel = ([, states]) => {
-  console.log('states model', states);
-  const modeledData = states.data.map(state => ({
+export const StatesModel = ([, data]) => {
+  console.log('states model *******************', data);
+  const modeledData = data.data.map(state => ({
     id: state.code,
     name: state.name,
+  }));
+
+  return modeledData;
+};
+
+export const CitiesModel = (cities) => {
+  console.log('Cities model -----------------', cities.data);
+  const modeledData = cities.data.map(citie => ({
+    code: citie.name,
+    name: citie.name,
   }));
 
   return modeledData;

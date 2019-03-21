@@ -3,6 +3,7 @@ import { isNotEmpty } from 'sling-helpers';
 import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
+
 import { types, FindCityByName } from '../state/MerchantAddressesState.js';
 
 const validation = [
@@ -21,8 +22,7 @@ export const getRenderForm = (
   handleFormUpdate,
 ) => {
   const fields = state.formdata || {};
-  console.log('state form', state);
-  console.log('fields', fields);
+  console.log('STATE IN VIEW FORM -------------------------------------------------------------', state);
   return html`
     <sling-form
       onformsubmit="${handleFormSubmit}"
@@ -50,16 +50,16 @@ export const getRenderForm = (
       <sling-select
         label="Estado"
         placeholder="Selecione um estado"
-        name="stateId"
+        name="stateCode"
         value="${fields.stateCode}"
         srcoptions="${state.states}">
       </sling-select>
       <sling-select
         label="Cidade"
         placeholder="Selecione uma cidade"
-        name="cityId"
+        name="cityName"
         value="${FindCityByName(fields.cityName, state.cities)}"
-        srcoptions="${state.cities}">
+        srcoptions="${[]}">
       </sling-select>
       <sling-input
         type="text"

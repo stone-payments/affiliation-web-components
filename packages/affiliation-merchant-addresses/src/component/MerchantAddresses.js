@@ -38,11 +38,11 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
             postalCode: '11111111',
             city: {
               id: 1,
-              name: 'Anamã',
+              name: 'Rio de Janeiro',
               countrySubdivision: {
                 id: 'test',
                 name: 'test',
-                iso31662Short: 'AM',
+                iso31662Short: 'RJ',
                 country: {
                   id: 1,
                   name: 'test',
@@ -65,30 +65,58 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
             code: 'AC',
             name: 'Acre',
           }, {
-            code: 'AL',
-            name: 'Alagoas',
+            code: 'RJ',
+            name: 'Rio de janeiro',
           }, {
-            code: 'AM',
-            name: 'Amazonas',
-          }, {
-            code: 'AP',
-            name: 'Amapá',
+            code: 'SP',
+            name: 'São Paulo',
           },
         ],
       },
     ];
 
-    this.cities = [
-      {
-        name: 'Alvarães',
-      },
-      {
-        name: 'Amaturá',
-      },
-      {
-        name: 'Anamã',
-      },
-    ];
+    this.citiesSP =
+    {
+      data: [
+        {
+          name: 'citie1',
+        },
+        {
+          name: 'citie2',
+        },
+        {
+          name: 'citie3',
+        },
+      ],
+    };
+
+    this.citiesRJ = {
+      data: [
+        {
+          name: 'citie4',
+        },
+        {
+          name: 'citie5',
+        },
+        {
+          name: 'citie6',
+        },
+      ],
+    };
+
+    this.citiesAC = {
+      data: [
+        {
+          name: 'citie7',
+        },
+        {
+          name: 'citie8',
+        },
+        {
+          name: 'citie8',
+        },
+      ],
+    };
 
     this.setState({
       addresses: AddressesModel(this.mockData),
@@ -122,9 +150,9 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   handleFormUpdate(evt) {
-    console.log(evt.detail, 'evento -----');
-    console.log(evt.detail.stateCode, 'evt statecode');
-    console.log(this.state.formdata.stateCode, 'form statecode');
+    console.log(evt.detail, 'evento 8*8*8*8*8*8*8*8*');
+    console.log(evt.detail.stateCode, 'evt statecode -9-9-9-9-9-9-9');
+    console.log(this.state.formdata.stateCode, 'form statecode -7-7-7-7-7-7-7-7');
     if ((evt.detail.stateCode !== this.state.formdata.stateCode) &&
       (evt.detail.stateCode)) {
       // this
@@ -206,6 +234,7 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
           sdk.affiliation.states.get(),
         ])
         .then((responses) => {
+          console.log('top', responses);
           if (responses.every(notEmpty)) {
             const addresses = AddressesModel(responses);
             const states = StatesModel(responses);
