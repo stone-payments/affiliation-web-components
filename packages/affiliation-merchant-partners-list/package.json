@@ -1,13 +1,13 @@
 {
   "name": "affiliation-merchant-partners-list",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Merchant Partners List business component",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
   "main": "dist/cjs/es5/index.js",
   "jsnext:main": "dist/es/es6/index.js",
   "dependencies": {
-    "customer-js-sdk": "^1.6.0",
+    "customer-js-sdk": "^1.15.0",
     "sling-framework": "^1.9.0",
     "sling-helpers": "1.10.0",
     "sling-web-component-list": "^1.7.0"

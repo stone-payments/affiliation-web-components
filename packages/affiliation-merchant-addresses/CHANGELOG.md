@@ -1,3 +1,18 @@
+# [affiliation-merchant-addresses-v1.2.1](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-addresses-v1.2.0...affiliation-merchant-addresses-v1.2.1) (2019-02-22)
+
+
+### Bug Fixes
+
+* :arrow_up: Update package-lock.json. ([f7cc895](https://github.com/stone-payments/affiliation-web-components/commit/f7cc895))
+* :arrow_up: Update sdk dependency. ([37ffb88](https://github.com/stone-payments/affiliation-web-components/commit/37ffb88))
+
+# [affiliation-merchant-addresses-v1.2.0](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-addresses-v1.1.2...affiliation-merchant-addresses-v1.2.0) (2019-02-04)
+
+
+### Features
+
+* :construction: Update sdk method. ([8028b50](https://github.com/stone-payments/affiliation-web-components/commit/8028b50))
+
 # [affiliation-merchant-addresses-v1.1.2](https://github.com/stone-payments/affiliation-web-components/compare/affiliation-merchant-addresses-v1.1.1...affiliation-merchant-addresses-v1.1.2) (2018-11-19)
 
 

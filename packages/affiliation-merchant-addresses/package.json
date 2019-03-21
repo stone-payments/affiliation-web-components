@@ -1,13 +1,13 @@
 {
   "name": "affiliation-merchant-addresses",
   "description": "Merchant Addresses business component",
-  "version": "1.1.2",
+  "version": "1.2.1",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
   "main": "dist/cjs/es5/index.js",
   "jsnext:main": "dist/es/es6/index.js",
   "dependencies": {
-    "customer-js-sdk": "^1.13.0",
+    "customer-js-sdk": "^1.15.0",
     "sling-framework": "^1.9.0",
     "sling-helpers": "1.10.0",
     "sling-web-component-button": "^1.6.0",
