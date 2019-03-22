@@ -15,6 +15,9 @@ const formatDocument = (document) => {
   return 'Documento inválido';
 };
 
+const formatCurrency = (n, currency) =>
+  currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
 const formatDate = (date) => {
   const tempDate = new Date(date);
   let day = tempDate.getDate().toString();
@@ -66,7 +69,8 @@ export const MerchantInfoListModel = (
       issueBy: data.additionalDocuments[0].issuedBy,
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
-      estimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
+      estimatedMonthlyBilling:
+        formatCurrency(data.estimatedMonthlyBilling, 'R$'),
       birthDate: formatDate(data.birthDate),
       birthPlace: data.birthPlace,
       birthCountry: data.birthCountry.name,
@@ -85,7 +89,8 @@ export const MerchantInfoListModel = (
       issueBy: data.additionalDocuments[0].issuedBy,
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
-      estimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
+      estimatedMonthlyBilling:
+        formatCurrency(data.estimatedMonthlyBilling, 'R$'),
       birthDate: formatDate(data.birthDate),
       birthPlace: data.birthPlace,
       birthCountry: data.birthCountry.name,
