@@ -34,13 +34,13 @@ export const CitiesModel = (cities) => {
 };
 
 export const PayloadModel = payload => ({
-  typeId: payload.typeId,
-  entranceNumber: payload.number,
-  streetName: payload.street,
-  neighborhood: payload.neighborhood,
-  postalCode: payload.postalCode,
-  cityName: payload.cityName,
-  countrySubdivisionCode: payload.stateCode,
+  typeId: Number(payload.typeId),
+  entranceNumber: Number(payload.number),
+  streetName: String(payload.street),
+  neighborhood: String(payload.neighborhood),
+  postalCode: String(payload.postalCode),
+  cityName: String(payload.cityName),
+  countrySubdivisionCode: String(payload.stateCode),
 });
 
 export const AddressResponseModel = (currentState, responses) => {
