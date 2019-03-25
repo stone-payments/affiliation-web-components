@@ -1,4 +1,4 @@
-export const types = [
+export const addressesTypes = [
   {
     id: 2,
     name: 'Administrativo',
@@ -18,13 +18,9 @@ export const types = [
 ];
 
 export const FindCityByName = (cityName, cities) => {
-  console.log('cities 1-1-1-1-1--1-1', cities);
-  console.log('cityName -2-2-2-2-2-2-2-2', cityName);
   if (cities && cityName) {
-    console.log('top -------------------');
     const newState = cities.find(el => el.code === cityName);
 
-    console.log('NEW CITIE NAME', newState);
     return newState.name;
   }
   return [];
