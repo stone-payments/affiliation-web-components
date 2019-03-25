@@ -1,18 +1,17 @@
 :host .business-component__form {
     display: none;
   }
-  
+
   :host([editing]) .business-component__form {
     display: flex;
   }
-  
+
   /* for compatibility */
-  
-  sling-merchant-addresses .business-component__form {
+
+  affiliation-merchant-addresses .business-component__form {
     display: none;
   }
-  
-  sling-merchant-addresses[editing] .business-component__form {
+
+  affiliation-merchant-addresses[editing] .business-component__form {
     display: flex;
   }
-  

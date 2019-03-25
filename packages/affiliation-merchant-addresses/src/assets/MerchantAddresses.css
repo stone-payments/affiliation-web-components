@@ -64,7 +64,7 @@ sling-select[name="stateCode"] {
   grid-column: 1 / 4;
 }
 
-sling-select[name="cityName"] {
+sling-input[name="cityName"] {
   grid-column: 4 / 8;
 }
 
