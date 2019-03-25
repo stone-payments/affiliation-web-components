@@ -4,91 +4,90 @@ import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
 
-import { types, FindCityByName } from '../state/MerchantAddressesState.js';
+import { addressesTypes } from '../state/MerchantAddressesState.js';
 
 const validation = [
   isNotEmpty('typeId'),
-  isNotEmpty('stateId'),
-  isNotEmpty('cityId'),
+  isNotEmpty('stateCode'),
+  isNotEmpty('cityName'),
   isNotEmpty('neighborhood'),
-  isNotEmpty('streetName'),
-  isNotEmpty('entranceNumber'),
+  isNotEmpty('street'),
+  isNotEmpty('number'),
   isNotEmpty('postalCode'),
 ];
 
-export const getRenderForm = (
+export const getMerchantAddressesRenderForm = (
   state,
   handleFormSubmit,
   handleFormUpdate,
 ) => {
   const fields = state.formdata || {};
-  console.log('STATE IN VIEW FORM -------------------------------------------------------------', state);
   return html`
     <sling-form
       onformsubmit="${handleFormSubmit}"
       onformupdate="${handleFormUpdate}"
-      validation=${validation}>
+      validation="${validation}">
       <sling-input
         type="hidden"
         name="key"
-        value="${fields.key}">
-      </sling-input>
+        value="${fields.key}"
+      ></sling-input>
       <sling-select
         label="Tipo"
         placeholder="Selecione um tipo"
         name="typeId"
         value="${fields.typeId}"
-        srcoptions="${types}">
-      </sling-select>
+        srcoptions="${addressesTypes}"
+      ></sling-select>
       <sling-input
         type="cep"
         name="postalCode"
         label="CEP"
         maxLength="32"
-        value="${fields.postalCode}">
-      </sling-input>
+        value="${fields.postalCode}"
+      ></sling-input>
       <sling-select
         label="Estado"
         placeholder="Selecione um estado"
         name="stateCode"
         value="${fields.stateCode}"
-        srcoptions="${state.states}">
-      </sling-select>
-      <sling-select
-        label="Cidade"
-        placeholder="Selecione uma cidade"
+        srcoptions="${state.states}"
+      ></sling-select>
+      <sling-input
+        type="text"
         name="cityName"
-        value="${FindCityByName(fields.cityName, state.cities)}"
-        srcoptions="${[]}">
-      </sling-select>
+        label="Cidade"
+        maxLength="64"
+        value="${fields.cityName}"
+      ></sling-input>
       <sling-input
         type="text"
         name="neighborhood"
         label="Bairro"
         maxLength="64"
-        value="${fields.neighborhood}">
-      </sling-input>
+        value="${fields.neighborhood}"
+      ></sling-input>
       <sling-input
         type="text"
         name="street"
         label="Rua"
         maxLength="128"
-        value="${fields.street}">
-      </sling-input>
+        value="${fields.street}"
+      ></sling-input>
       <sling-input
         type="text"
         name="number"
         label="Número"
         maxLength="32"
-        value="${fields.number}">
-      </sling-input>
+        value="${fields.number}"
+      ></sling-input>
       <sling-input
         type="text"
         name="complement"
         label="Complemento"
         maxLength="64"
-        value="${fields.complement}">
-      </sling-input>
+        value="${fields.complement}"
+      ></sling-input>
       <sling-button
         color="success"
         type="submit">
