@@ -110,7 +110,13 @@ export const AffiliationMerchantInfoList = (base = class { }) =>
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
-              const data = MerchantInfoListModel(responses, affiliationCode);
+              const data =
+              MerchantInfoListModel(
+                responses,
+                affiliationCode,
+                this.showAdditionalData,
+                this.showBasicData,
+              );
               this.setState({
                 affiliationCode,
                 apiResponse: responses,
