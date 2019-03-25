@@ -4,7 +4,8 @@ import { getMerchantAddressesView } from '../view/MerchantAddressesView.js';
 import {
   AddressesModel,
   StatesModel,
-  CitiesModel,
+  PayloadModel,
+  AddressesResponseModel,
 } from '../model/MerchantAddressesModel.js';
 
 const notEmpty = arg => arg != null;
@@ -150,39 +151,9 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   handleFormUpdate(evt) {
-    console.log(evt.detail, 'evento 8*8*8*8*8*8*8*8*');
-    console.log(evt.detail.stateCode, 'evt statecode -9-9-9-9-9-9-9');
-    console.log(this.state.formdata.stateCode, 'form statecode -7-7-7-7-7-7-7-7');
-    if ((evt.detail.stateCode !== this.state.formdata.stateCode) &&
-      (evt.detail.stateCode)) {
-      // this
-      //   .request([
-      //     sdk.affiliation.cities.get(evt.detail.stateCode),
-      //   ])
-      //   .then((responses) => {
-      //     if (responses.every(notEmpty)) {
-      //       const addresses = AddressesModel(responses);
-      //       this.setState({ addresses });
-      //     }
-      //   });
-      if (evt.detail.stateCode === 'SP') {
-        debugger;
-        this.setState({ cities: CitiesModel(this.citiesSP) });
-      }
-      if (evt.detail.stateCode === 'RJ') {
-        debugger;
-        this.setState({ cities: CitiesModel(this.citiesRJ) });
-      }
-      if (evt.detail.stateCode === 'AC') {
-        debugger;
-        this.setState({ cities: CitiesModel(this.citiesAC) });
-      }
-    }
     this.setState({
       formdata: evt.detail,
     });
-
-    console.log('AQUI CARALHO', this.state);
   }
 
   handleFormSubmit(evt) {
@@ -192,18 +163,17 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
         key: evt.detail.key,
       };
 
-      const payload = {};
+      const payload = PayloadModel(evt.detail);
 
       this
         .request([
-          sdk.merchants.addresses.put(requestParams, payload),
+          sdk.affiliation.addresses.put(requestParams, payload),
         ])
         .then((responses) => {
-          console.log(responses);
-          // const data = BankAccountsFormResponseModel(this.state.banks, responses);
-          // this.setState({
-          //   banks: data,
-          // });
+          const data = AddressesResponseModel(this.state.addresses, responses);
+          this.setState({
+            addresses: data,
+          });
         });
     }
 
@@ -234,7 +204,6 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
           sdk.affiliation.states.get(),
         ])
         .then((responses) => {
-          console.log('top', responses);
           if (responses.every(notEmpty)) {
             const addresses = AddressesModel(responses);
             const states = StatesModel(responses);
