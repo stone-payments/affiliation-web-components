@@ -15,8 +15,13 @@ const formatDocument = (document) => {
   return 'Documento inválido';
 };
 
-const formatCurrency = (n, currency) =>
-  currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+const formatCurrency = (value) => {
+  const splitedValue = value.toFixed(2).split('.');
+
+  splitedValue[0] = `R$ ${splitedValue[0].split(/(?=(?:...)*$)/).join('.')}`;
+
+  return splitedValue.join(',');
+};
 
 const formatDate = (date) => {
   const tempDate = new Date(date);
@@ -70,7 +75,7 @@ export const MerchantInfoListModel = (
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
       estimatedMonthlyBilling:
-        formatCurrency(data.estimatedMonthlyBilling, 'R$'),
+        formatCurrency(data.estimatedMonthlyBilling),
       birthDate: formatDate(data.birthDate),
       birthPlace: data.birthPlace,
       birthCountry: data.birthCountry.name,
@@ -90,7 +95,7 @@ export const MerchantInfoListModel = (
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
       estimatedMonthlyBilling:
-        formatCurrency(data.estimatedMonthlyBilling, 'R$'),
+        formatCurrency(data.estimatedMonthlyBilling),
       birthDate: formatDate(data.birthDate),
       birthPlace: data.birthPlace,
       birthCountry: data.birthCountry.name,
