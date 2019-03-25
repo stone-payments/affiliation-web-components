@@ -41,9 +41,7 @@ export const getMerchantAddressesView = ({
   handleStopEditing,
   handleFormSubmit,
   handleFormUpdate,
-}) => {
-  console.log('state');
-  return html`
+}) => html`
   <style>
     @import url('affiliation-merchant-addresses/src/index.css');
   </style>
@@ -72,4 +70,3 @@ export const getMerchantAddressesView = ({
     </sling-table>
   </div>
 `;
-};
