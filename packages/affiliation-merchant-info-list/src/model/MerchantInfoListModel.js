@@ -12,27 +12,32 @@ const formatDocument = (document) => {
     return formattedDocument;
   }
 
-  return 'Documento inválido';
+  return ' ';
 };
 
 const formatCurrency = (value) => {
-  const splitedValue = value.toFixed(2).split('.');
+  if (value) {
+    const splitedValue = value.toFixed(2).split('.');
+    splitedValue[0] = `R$ ${splitedValue[0].split(/(?=(?:...)*$)/).join('.')}`;
 
-  splitedValue[0] = `R$ ${splitedValue[0].split(/(?=(?:...)*$)/).join('.')}`;
-
-  return splitedValue.join(',');
+    return splitedValue.join(',');
+  }
+  return ' ';
 };
 
 const formatDate = (date) => {
-  const tempDate = new Date(date);
-  let day = tempDate.getDate().toString();
-  let month = (tempDate.getMonth() + 1).toString();
-  const year = tempDate.getFullYear();
+  if (date) {
+    const tempDate = new Date(date);
+    let day = tempDate.getDate().toString();
+    let month = (tempDate.getMonth() + 1).toString();
+    const year = tempDate.getFullYear();
 
-  day = (day.length === 1) ? `0${day}` : day;
-  month = (month.length === 1) ? `0${month}` : month;
+    day = (day.length === 1) ? `0${day}` : day;
+    month = (month.length === 1) ? `0${month}` : month;
 
-  return `${day}/${month}/${year}`;
+    return `${day}/${month}/${year}`;
+  }
+  return ' ';
 };
 
 export const MerchantInfoListPayloadModel = state => ({
@@ -68,18 +73,32 @@ export const MerchantInfoListModel = (
 
     modeledData.additionalData.push({
       // @TODO Update logic to be generic to all additional data array
-      additionalDocumentType: data.additionalDocuments[0].documentType.name,
-      additionalDocumentIdentifier:
-        formatDocument(data.additionalDocuments[0].documentIdentifier),
-      issueBy: data.additionalDocuments[0].issuedBy,
-      issueDate: formatDate(data.additionalDocuments[0].issueDate),
-      expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
-      estimatedMonthlyBilling:
-        formatCurrency(data.estimatedMonthlyBilling),
+      additionalDocumentType: data.additionalDocuments[0]
+        ? data.additionalDocuments[0].documentType.name
+        : ' ',
+      additionalDocumentIdentifier: data.additionalDocuments[0]
+        ? formatDocument(data.additionalDocuments[0].documentIdentifier)
+        : ' ',
+      issueBy: data.additionalDocuments[0]
+        ? data.additionalDocuments[0].issuedBy
+        : ' ',
+      issueDate: data.additionalDocuments[0]
+        ? formatDate(data.additionalDocuments[0].issueDate)
+        : ' ',
+      expirationDate: data.additionalDocuments[0]
+        ? formatDate(data.additionalDocuments[0].expirationDate)
+        : ' ',
+      estimatedMonthlyBilling: formatCurrency(data.estimatedMonthlyBilling),
       birthDate: formatDate(data.birthDate),
-      birthPlace: data.birthPlace,
-      birthCountry: data.birthCountry.name,
-      motherName: data.motherName,
+      birthPlace: data.birthPlace
+        ? data.birthPlace
+        : ' ',
+      birthCountry: data.birthCountry
+        ? data.birthCountry.name
+        : ' ',
+      motherName: data.motherName
+        ? data.motherName
+        : ' ',
     });
 
     return modeledData;
