@@ -5,12 +5,12 @@ import {
   AddressesModel,
   StatesModel,
   PayloadModel,
-  AddressesResponseModel,
+  AddressResponseModel,
 } from '../model/MerchantAddressesModel.js';
 
 const notEmpty = arg => arg != null;
 
-export const AffiliationMerchantAddresses = (Base = class { }) => class extends
+export const AffiliationMerchantAddresses = (Base = class {}) => class extends
   withRequest(withSetState(Base)) {
   constructor() {
     super();
@@ -23,106 +23,76 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
     this.state = {
       addresses: [],
       states: [],
-      cities: [],
       formdata: {},
     };
 
-    this.mockData = [
-      {
-        // mock data
-        data: [
-          {
-            key: 'test',
-            entranceNumber: 1,
-            streetName: 'test',
-            neighborhood: 'test',
-            postalCode: '11111111',
-            city: {
-              id: 1,
-              name: 'Rio de Janeiro',
-              countrySubdivision: {
-                id: 'test',
-                name: 'test',
-                iso31662Short: 'RJ',
-                country: {
-                  id: 1,
-                  name: 'test',
-                  iso31661Alpha3: 'test',
-                  iso31661Alpha2: 'test',
-                },
-              },
-            },
-            type: {
-              id: 1,
-              name: 'test',
-            },
-          },
-        ],
-      },
-      {
-        // mock states
-        data: [
-          {
-            code: 'AC',
-            name: 'Acre',
-          }, {
-            code: 'RJ',
-            name: 'Rio de janeiro',
-          }, {
-            code: 'SP',
-            name: 'São Paulo',
-          },
-        ],
-      },
-    ];
+    // this.mockData = [
+    //   {
+    //     // mock data
+    //     data: [
+    //       {
+    //         key: 'test',
+    //         entranceNumber: 1,
+    //         streetName: 'test',
+    //         neighborhood: 'test',
+    //         postalCode: '11111111',
+    //         city: {
+    //           id: 1,
+    //           name: 'Rio de Janeiro',
+    //           countrySubdivision: {
+    //             id: 'test',
+    //             name: 'test',
+    //             iso31662Short: 'RJ',
+    //             country: {
+    //               id: 1,
+    //               name: 'test',
+    //               iso31661Alpha3: 'test',
+    //               iso31661Alpha2: 'test',
+    //             },
+    //           },
+    //         },
+    //         type: {
+    //           id: 1,
+    //           name: 'test',
+    //         },
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     // mock states
+    //     data: [
+    //       {
+    //         code: 'AC',
+    //         name: 'Acre',
+    //       }, {
+    //         code: 'RJ',
+    //         name: 'Rio de janeiro',
+    //       }, {
+    //         code: 'SP',
+    //         name: 'São Paulo',
+    //       },
+    //     ],
+    //   },
+    // ];
 
-    this.citiesSP =
-    {
-      data: [
-        {
-          name: 'citie1',
-        },
-        {
-          name: 'citie2',
-        },
-        {
-          name: 'citie3',
-        },
-      ],
-    };
+    // this.citiesSP =
+    // {
+    //   data: [
+    //     {
+    //       name: 'citie1',
+    //     },
+    //     {
+    //       name: 'citie2',
+    //     },
+    //     {
+    //       name: 'citie3',
+    //     },
+    //   ],
+    // };
 
-    this.citiesRJ = {
-      data: [
-        {
-          name: 'citie4',
-        },
-        {
-          name: 'citie5',
-        },
-        {
-          name: 'citie6',
-        },
-      ],
-    };
-
-    this.citiesAC = {
-      data: [
-        {
-          name: 'citie7',
-        },
-        {
-          name: 'citie8',
-        },
-        {
-          name: 'citie8',
-        },
-      ],
-    };
-
-    this.setState({
-      addresses: AddressesModel(this.mockData),
-      states: StatesModel(this.mockData),
-    });
+    // this.setState({
+    //   states: StatesModel(this.mockData),
+    // });
   }
 
   static get properties() {
@@ -170,7 +140,7 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
           sdk.affiliation.addresses.put(requestParams, payload),
         ])
         .then((responses) => {
-          const data = AddressesResponseModel(this.state.addresses, responses);
+          const data = AddressResponseModel(this.state.addresses, responses);
           this.setState({
             addresses: data,
           });
@@ -181,9 +151,6 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   handleStartEditing(evt) {
-    this.setState({
-      cities: this.cities,
-    });
     this.editing = true;
     this.handleFormUpdate(evt);
   }
@@ -211,6 +178,7 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
               addresses,
               states,
             });
+            console.log('CONTROLLER', this.state);
           }
         });
     }
@@ -221,6 +189,7 @@ export const AffiliationMerchantAddresses = (Base = class { }) => class extends
   }
 
   render() {
+    console.log('flash --->');
     return getMerchantAddressesView(this);
   }
 };
