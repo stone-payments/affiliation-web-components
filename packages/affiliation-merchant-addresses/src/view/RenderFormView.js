@@ -14,7 +14,6 @@ const validation = [
   isNotEmpty('number'),
   isNotEmpty('postalCode'),
 ];
-console.log(isNotEmpty);
 
 export const getRenderForm = (
   state,
@@ -22,7 +21,6 @@ export const getRenderForm = (
   handleFormUpdate,
 ) => {
   const fields = state.formdata || {};
-  console.log(fields);
   return html`
     <sling-form
       onformsubmit="${handleFormSubmit}"
