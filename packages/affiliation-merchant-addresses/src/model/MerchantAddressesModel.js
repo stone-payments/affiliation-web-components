@@ -12,3 +12,12 @@ export const AddressesModel = ([data]) => data.data.map(item => ({
   cityDisplay: `${item.city.name} / ${item.city.countrySubdivision.iso31662Short}`,
   streetDisplay: `${item.streetName}, ${item.entranceNumber} ${item.complement ? item.complement : 'N/A'}`,
 }));
+
+export const StatesModel = ([, data]) => {
+  const modeledData = data.data.map(state => ({
+    id: state.code,
+    name: state.name,
+  }));
+
+  return modeledData;
+};
