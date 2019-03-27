@@ -10,6 +10,12 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
   constructor() {
     super();
 
+    this.handleFormUpdate = this.handleFormUpdate.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleStartEditing = this.handleStartEditing.bind(this);
+    this.handleStopEditing = this.handleStopEditing.bind(this);
+
+
     this.state = {
       addresses: [],
     };
@@ -25,6 +31,10 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
         type: Boolean,
         reflectToAttribute: true,
       },
+      editing: {
+        type: Boolean,
+        reflectToAttribute: true,
+      },
       addable: {
         type: Boolean,
         reflectToAttribute: true,
@@ -35,6 +45,47 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
       },
     };
   }
+
+  handleFormUpdate(evt) {
+    this.setState({
+      formdata: evt.detail,
+    });
+  }
+
+  handleFormSubmit(evt) {
+    if (evt.detail) {
+      const requestParams = {
+        affiliationCode: this.state.affiliationCode,
+        key: evt.detail.key,
+      };
+      const payload = {};
+
+      this
+        .request([
+          sdk.affiliation.addresses.put(requestParams, payload),
+        ])
+        .then((responses) => {
+          console.log(responses);
+          // const data =
+          //   BankAccountsFormResponseModel(this.state.bankAccounts, responses);
+          // this.setState({
+          //   bankAccounts: data,
+          // });
+        });
+    }
+
+    this.handleStopEditing();
+  }
+
+  handleStartEditing(evt) {
+    this.editing = true;
+    this.handleFormUpdate(evt);
+  }
+
+  handleStopEditing() {
+    this.editing = false;
+  }
+
 
   static get requestParamNames() {
     return ['affiliationCode'];
