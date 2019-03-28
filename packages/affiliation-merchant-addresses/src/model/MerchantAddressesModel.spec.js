@@ -41,7 +41,7 @@ const expctedeData = [{
   postalCode: 'test',
   stateCode: 'test',
   cityName: 'test',
-  street: 'test',
+  streetName: 'test',
   number: 1,
   complement: 'N/A',
   neighborhood: 'test',
