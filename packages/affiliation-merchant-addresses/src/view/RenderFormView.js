@@ -10,7 +10,7 @@ const validation = [
   isNotEmpty('stateCode'),
   isNotEmpty('cityName'),
   isNotEmpty('neighborhood'),
-  isNotEmpty('street'),
+  isNotEmpty('streetName'),
   isNotEmpty('number'),
   isNotEmpty('postalCode'),
 ];
@@ -68,10 +68,10 @@ export const getRenderForm = (
       </sling-input>
       <sling-input
         type="text"
-        name="street"
+        name="streetName"
         label="Rua"
         maxLength="128"
-        value="${fields.street}">
+        value="${fields.streetName}">
       </sling-input>
       <sling-input
         type="text"
