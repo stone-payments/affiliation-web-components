@@ -5,7 +5,7 @@ export const AddressesModel = ([data]) => data.data.map(item => ({
   postalCode: item.postalCode,
   stateCode: item.city.countrySubdivision.iso31662Short,
   cityName: item.city.name,
-  street: item.streetName,
+  streetName: item.streetName,
   number: item.entranceNumber,
   complement: item.complement ? item.complement : 'N/A',
   neighborhood: item.neighborhood,
@@ -20,4 +20,50 @@ export const StatesModel = ([, data]) => {
   }));
 
   return modeledData;
+};
+
+export const PayloadModel = payload => ({
+  typeId: Number(payload.typeId),
+  entranceNumber: Number(payload.number),
+  streetName: String(payload.streetName),
+  neighborhood: String(payload.neighborhood),
+  postalCode: String(payload.postalCode),
+  cityName: String(payload.cityName),
+  countrySubdivisionCode: String(payload.stateCode),
+});
+
+export const AddressesUpdatedResponseModel = (currentState, [data]) => {
+  const modeledArray = [];
+
+  currentState.map((item) => {
+    if (item.key === data.key) {
+      const updatedItem = {
+        ...item,
+        key: item.key,
+        typeId: item.type.id,
+        typeName: item.type.name,
+        postalCode: item.postalCode,
+        stateId: item.city.countrySubdivision.id,
+        stateCode: item.city.countrySubdivision.iso31662Short,
+        cityId: item.city.id,
+        cityName: item.city.name,
+        street: item.streetName,
+        number: item.entranceNumber,
+        complement: item.complement
+          ? item.complement
+          : 'N/A',
+        neighborhood: item.neighborhood,
+        cityDisplay: `${item.city.name} / ${item.city.countrySubdivision.iso31662Short}`,
+        streetDisplay: `${item.streetName}, ${item.entranceNumber} ${item.complement
+          ? item.complement
+          : 'N/A'}`,
+      };
+
+      return modeledArray.push(updatedItem);
+    }
+
+    return modeledArray.push(item);
+  });
+
+  return modeledArray;
 };
