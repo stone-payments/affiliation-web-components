@@ -32,30 +32,30 @@ export const PayloadModel = payload => ({
   countrySubdivisionCode: String(payload.stateCode),
 });
 
-export const AddressesUpdatedResponseModel = (currentState, [data]) => {
+export const AddressesUpdatedResponseModel = (currentState, [{ data }]) => {
   const modeledArray = [];
 
   currentState.map((item) => {
     if (item.key === data.key) {
       const updatedItem = {
         ...item,
-        key: item.key,
-        typeId: item.type.id,
-        typeName: item.type.name,
-        postalCode: item.postalCode,
-        stateId: item.city.countrySubdivision.id,
-        stateCode: item.city.countrySubdivision.iso31662Short,
-        cityId: item.city.id,
-        cityName: item.city.name,
-        street: item.streetName,
-        number: item.entranceNumber,
-        complement: item.complement
-          ? item.complement
+        key: data.key,
+        typeId: data.type.id,
+        typeName: data.type.name,
+        postalCode: data.postalCode,
+        stateId: data.city.countrySubdivision.id,
+        stateCode: data.city.countrySubdivision.iso31662Short,
+        cityId: data.city.id,
+        cityName: data.city.name,
+        street: data.streetName,
+        number: data.entranceNumber,
+        complement: data.complement
+          ? data.complement
           : 'N/A',
-        neighborhood: item.neighborhood,
-        cityDisplay: `${item.city.name} / ${item.city.countrySubdivision.iso31662Short}`,
-        streetDisplay: `${item.streetName}, ${item.entranceNumber} ${item.complement
-          ? item.complement
+        neighborhood: data.neighborhood,
+        cityDisplay: `${data.city.name} / ${data.city.countrySubdivision.iso31662Short}`,
+        streetDisplay: `${data.streetName}, ${data.entranceNumber} ${data.complement
+          ? data.complement
           : 'N/A'}`,
       };
 
