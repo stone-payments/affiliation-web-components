@@ -69,7 +69,7 @@ export const getRenderForm = (
       <sling-input
         type="text"
         name="streetName"
-        label="Rua"
+        label="Logradouro"
         maxLength="128"
         value="${fields.streetName}">
       </sling-input>
