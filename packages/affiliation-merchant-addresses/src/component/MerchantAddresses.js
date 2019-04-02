@@ -1,7 +1,12 @@
 import { v0 as sdk } from 'customer-js-sdk';
 import { withRequest, withSetState } from 'sling-framework';
-import { AddressesModel } from '../model/MerchantAddressesModel.js';
 import { getMerchantAddressesView } from '../view/MerchantAddressesView.js';
+import {
+  AddressesModel,
+  StatesModel,
+  PayloadModel,
+  AddressesUpdatedResponseModel,
+} from '../model/MerchantAddressesModel.js';
 
 const notEmpty = arg => arg != null;
 
@@ -10,8 +15,15 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
   constructor() {
     super();
 
+    this.handleFormUpdate = this.handleFormUpdate.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleStartEditing = this.handleStartEditing.bind(this);
+    this.handleStopEditing = this.handleStopEditing.bind(this);
+
+
     this.state = {
       addresses: [],
+      states: [],
     };
   }
 
@@ -22,6 +34,10 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
         reflectToAttribute: false,
       },
       editable: {
+        type: Boolean,
+        reflectToAttribute: true,
+      },
+      editing: {
         type: Boolean,
         reflectToAttribute: true,
       },
@@ -36,6 +52,46 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
     };
   }
 
+  handleFormUpdate(evt) {
+    this.setState({
+      formdata: evt.detail,
+    });
+  }
+
+  handleFormSubmit(evt) {
+    if (evt.detail) {
+      const requestParams = {
+        affiliationCode: this.state.affiliationCode,
+        key: evt.detail.key,
+      };
+
+      const payload = PayloadModel(evt.detail);
+
+      this
+        .request([
+          sdk.affiliation.addresses.put(requestParams, payload),
+        ])
+        .then((responses) => {
+          const addresses =
+            AddressesUpdatedResponseModel(this.state.addresses, responses);
+          this.setState({
+            addresses,
+          });
+        });
+    }
+
+    this.handleStopEditing();
+  }
+
+  handleStartEditing(evt) {
+    this.editing = true;
+    this.handleFormUpdate(evt);
+  }
+
+  handleStopEditing() {
+    this.editing = false;
+  }
+
   static get requestParamNames() {
     return ['affiliationCode'];
   }
@@ -45,11 +101,13 @@ export const AffiliationMerchantAddresses = (Base = class {}) => class extends
       this
         .request([
           sdk.affiliation.addresses.get({ affiliationCode }),
+          sdk.affiliation.states.get(),
         ])
         .then((responses) => {
           if (responses.every(notEmpty)) {
             const addresses = AddressesModel(responses);
-            this.setState({ addresses });
+            const states = StatesModel(responses);
+            this.setState({ addresses, states, affiliationCode });
           }
         });
     }
