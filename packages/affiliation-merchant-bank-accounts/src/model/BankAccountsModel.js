@@ -27,14 +27,13 @@ export const BankAccountsModel = (responses) => {
   return modeledData;
 };
 
-export const BankAccountsFormResponseModel = (state, responses) => {
-  const [data] = responses;
+export const BankAccountsFormResponseModel = (currentState, [{ data }]) => {
   const modeledArray = [];
 
-  state.map((el) => {
-    if (el.key === data.key) {
+  currentState.map((item) => {
+    if (item.key === data.key) {
       const newEl = {
-        ...el,
+        ...item,
         key: data.key,
         bankId: data.bank.id,
         bankName: data.bank.name,
@@ -56,7 +55,7 @@ export const BankAccountsFormResponseModel = (state, responses) => {
       return modeledArray.push(newEl);
     }
 
-    return modeledArray.push(el);
+    return modeledArray.push(item);
   });
 
   return modeledArray;
