@@ -6,6 +6,7 @@ import 'sling-web-component-select';
 import 'sling-web-component-loader';
 import 'sling-web-component-message';
 import 'sling-web-component-button';
+import { getWrappedFormView } from './WrappedFormView.js';
 
 const columns = [
   {
@@ -36,6 +37,10 @@ export const getMerchantAddressesView = ({
   addable,
   state,
   isLoading,
+  handleStopEditing,
+  handleFormSubmit,
+  handleFormUpdate,
+  handleStartEditing,
 }) => html`
   <style>
     @import url('affiliation-merchant-addresses/src/index.css');
@@ -43,7 +48,9 @@ export const getMerchantAddressesView = ({
   <sling-message
     aim="error"
     srcdata="${requestErrors.length > 0 ? ['Ocorreu um erro ao acessar os dados'] : []}"
-    layout="outline"></sling-message>
+    layout="outline">
+  </sling-message>
+  ${getWrappedFormView(state, handleStopEditing, handleFormSubmit, handleFormUpdate)}
   <div class="business-component">
     <sling-loader loading="${isLoading}"></sling-loader>
     ${addable ? html`
@@ -57,6 +64,7 @@ export const getMerchantAddressesView = ({
     ` : ''}
     <sling-table
       editable="${editable}"
+      onrowclicked="${handleStartEditing}"
       srcdata="${state.addresses}"
       srccolumns="${columns}">
     </sling-table>
