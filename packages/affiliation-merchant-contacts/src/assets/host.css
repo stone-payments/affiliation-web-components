@@ -8,10 +8,10 @@
 
 /* for compatibility */
 
-sling-merchant-contacts .business-component__form {
+affiliation-merchant-contacts .business-component__form {
   display: none;
 }
 
-sling-merchant-contacts[editing] .business-component__form {
+affiliation-merchant-contacts[editing] .business-component__form {
   display: flex;
 }
