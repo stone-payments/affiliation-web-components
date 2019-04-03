@@ -60,17 +60,36 @@ export const MerchantInfoListModel = (
 
     modeledData.additionalData.push({
       // @TODO Update logic to be generic to all additional data array
-      additionalDocumentType: data.additionalDocuments[0].documentType.name,
-      additionalDocumentIdentifier:
-        formatDocument(data.additionalDocuments[0].documentIdentifier),
-      issueBy: data.additionalDocuments[0].issuedBy,
-      issueDate: formatDate(data.additionalDocuments[0].issueDate),
-      expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
-      estimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
-      birthDate: formatDate(data.birthDate),
-      birthPlace: data.birthPlace,
-      birthCountry: data.birthCountry.name,
-      motherName: data.motherName,
+      additionalDocumentType: data.additionalDocuments[0]
+        ? data.additionalDocuments[0].documentType.name
+        : '',
+      additionalDocumentIdentifier: data.additionalDocuments[0]
+        ? formatDocument(data.additionalDocuments[0].documentIdentifier)
+        : '',
+      issuedBy: data.additionalDocuments[0]
+        ? data.additionalDocuments[0].issuedBy
+        : '',
+      issueDate: data.additionalDocuments[0]
+        ? formatDate(data.additionalDocuments[0].issueDate)
+        : '',
+      expirationDate: data.additionalDocuments[0]
+        ? formatDate(data.additionalDocuments[0].expirationDate)
+        : '',
+      estimatedMonthlyBilling: data.estimatedMonthlyBilling
+        ? `R$ ${data.estimatedMonthlyBilling}`
+        : '',
+      birthDate: data.birthDate
+        ? formatDate(data.birthDate)
+        : '',
+      birthPlace: data.birthPlace
+        ? data.birthPlace
+        : '',
+      birthCountry: data.birthCountry
+        ? data.birthCountry.name
+        : '',
+      motherName: data.motherName
+        ? data.motherName
+        : '',
     });
 
     return modeledData;
@@ -82,7 +101,7 @@ export const MerchantInfoListModel = (
       additionalDocumentType: data.additionalDocuments[0].documentType.name,
       additionalDocumentIdentifier:
         formatDocument(data.additionalDocuments[0].documentIdentifier),
-      issueBy: data.additionalDocuments[0].issuedBy,
+      issuedBy: data.additionalDocuments[0].issuedBy,
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
       estimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,

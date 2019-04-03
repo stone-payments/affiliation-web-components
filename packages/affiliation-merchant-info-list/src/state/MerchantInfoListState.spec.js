@@ -60,7 +60,7 @@ describe('Merchant Info List State.', () => {
         additionalData: [{
           additionalDocumentType: 'CNPJ',
           additionalDocumentIdentifier: '11.111.111/1111-11',
-          issueBy: 'test',
+          issuedBy: 'test',
           issueDate: '26/02/2019',
           expirationDate: '26/02/2019',
           estimatedMonthlyBilling: 'R$ 10000',
