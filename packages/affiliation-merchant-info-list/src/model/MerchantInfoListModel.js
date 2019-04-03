@@ -66,7 +66,7 @@ export const MerchantInfoListModel = (
       additionalDocumentIdentifier: data.additionalDocuments[0]
         ? formatDocument(data.additionalDocuments[0].documentIdentifier)
         : '',
-      issueBy: data.additionalDocuments[0]
+      issuedBy: data.additionalDocuments[0]
         ? data.additionalDocuments[0].issuedBy
         : '',
       issueDate: data.additionalDocuments[0]
@@ -101,7 +101,7 @@ export const MerchantInfoListModel = (
       additionalDocumentType: data.additionalDocuments[0].documentType.name,
       additionalDocumentIdentifier:
         formatDocument(data.additionalDocuments[0].documentIdentifier),
-      issueBy: data.additionalDocuments[0].issuedBy,
+      issuedBy: data.additionalDocuments[0].issuedBy,
       issueDate: formatDate(data.additionalDocuments[0].issueDate),
       expirationDate: formatDate(data.additionalDocuments[0].expirationDate),
       estimatedMonthlyBilling: `R$ ${data.estimatedMonthlyBilling}`,
