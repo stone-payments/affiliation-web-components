@@ -27,9 +27,9 @@ const formatDate = (date) => {
   return `${day}/${month}/${year}`;
 };
 
-export const MerchantInfoListPayloadModel = state => ({
-  tradeName: state.formData.fantasyName,
-  mccId: state.formData.mccId,
+export const MerchantInfoListPayloadModel = payload => ({
+  tradeName: payload.fantasyName,
+  mccId: payload.mccId,
 });
 
 export const MerchantInfoListResponseModel = ([data], [oldValue]) => {
