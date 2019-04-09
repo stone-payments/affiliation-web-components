@@ -74,10 +74,11 @@ export const AffiliationMerchantInfoList = (base = class { }) =>
           affiliationCode: this.state.affiliationCode,
           id: evt.detail.id,
         };
-        const payload = MerchantInfoListPayloadModel(this.state);
+        const payload = MerchantInfoListPayloadModel(evt.detail);
+        // O serviço na sdk de merchant PUT ainda não existe
         this
           .request([
-            sdk.merchants.merchant.patch(requestParams, payload),
+            sdk.affiliation.merchant.put(requestParams, payload),
           ])
           .then((responses) => {
             const data =
