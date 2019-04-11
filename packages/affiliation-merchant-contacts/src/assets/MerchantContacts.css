@@ -56,19 +56,19 @@ sling-input[name="friendlyName"] {
   grid-column: 1 / 9;
 }
 
-sling-input[name="email"] {
+sling-input[id="email"] {
   grid-column: 1 / 9;
 }
 
-sling-input[name="countryCode"] {
+sling-input[id="countryCode"] {
   grid-column: 1 / 2;
 }
 
-sling-input[name="areaCode"] {
+sling-input[id="areaCode"] {
   grid-column: 3 / 5;
 }
 
-sling-input[name="phoneNumber"] {
+sling-input[id="phoneNumber"] {
   grid-column: 6 / 9;
 }
 

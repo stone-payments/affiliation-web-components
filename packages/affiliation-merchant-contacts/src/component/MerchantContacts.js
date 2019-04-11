@@ -6,6 +6,7 @@ import {
   MerchantContactsPayloadModel,
   UpdateContactstList,
 } from '../model/MerchantContactsModel';
+import { ETXTBSY } from 'constants';
 
 const notEmpty = arg => arg != null;
 
@@ -24,6 +25,7 @@ export const AffiliationMerchantContacts = (base = class {}) =>
         editedContact: {},
         formData: {
           emails: [],
+          phones: [],
         },
       };
 
@@ -37,7 +39,7 @@ export const AffiliationMerchantContacts = (base = class {}) =>
           friendlyName: 'teste tomador2',
           phones: [
             {
-              key: 'Test key',
+              key: '111111',
               type: {
                 id: 1,
                 name: 'Desconhecido',
@@ -47,14 +49,14 @@ export const AffiliationMerchantContacts = (base = class {}) =>
               phoneNumber: 12341234,
             },
             {
-              key: 'Test key',
+              key: '222222',
               type: {
                 id: 1,
                 name: 'Desconhecido',
               },
               countryCode: 55,
               areaCode: 11,
-              phoneNumber: 12341234,
+              phoneNumber: 2222222,
             },
           ],
           emails: [
@@ -65,14 +67,14 @@ export const AffiliationMerchantContacts = (base = class {}) =>
             {
               key: '2222222',
               email: 'test2@email.com'
-            }
+            },
           ],
         }],
       ];
 
-      this.setState({ 
-        contacts:  ContactsModel(this.mockData),
-      })
+      this.setState({
+        contacts: ContactsModel(this.mockData),
+      });
     }
 
     static get properties() {
@@ -105,8 +107,8 @@ export const AffiliationMerchantContacts = (base = class {}) =>
     }
 
     handleFormUpdate(evt) {
-      if( evt.detail.emails != undefined ) {
-        console.log(evt)
+      if (evt.detail.emails !== undefined &&
+          evt.detail.phones !== undefined) {
         this.setState({
           formData: evt.detail,
         });
@@ -123,7 +125,7 @@ export const AffiliationMerchantContacts = (base = class {}) =>
         };
         debugger;
         const payload = MerchantContactsPayloadModel(evt.detail);
-        
+        console.log(payload);
         this
           .request([
             // @TODO Change the sdk method to sdk.affiliation.contacts.put.

@@ -5,19 +5,26 @@ import 'sling-web-component-select';
 import 'sling-web-component-form';
 import { contactsTypeId } from '../state/MerchantContactsState.js';
 
-const validation = [
-  isNotEmpty('friendlyName'),
-
-  isNotEmpty('email'),
-  isValidEmail('email'),
-
-  isNotEmpty('phoneNumber'),
-];
-
 export const getFormView = (state, handleFormSubmit, handleFormUpdate) => {
   const fields = state.formData || {};
-  fields.contactEmails = state.emails || [];
-  console.log(state)
+  console.log(state);
+
+  const validationEmails = fields.emails
+    ? fields.emails.map(email => isValidEmail(`email-${email.key}`))
+    : [];
+
+  const validationPhones = fields.phones
+    ? fields.phones.map(phone => isNotEmpty(`phoneNumber-${phone.key}`))
+    : [];
+
+  const validation = [
+    isNotEmpty('friendlyName'),
+  ];
+
+  validationEmails.map(item => validation.push(item));
+  validationPhones.map(item => validation.push(item));
+
+
   return html`
     <sling-form
       onformsubmit="${handleFormSubmit}"
@@ -36,38 +43,38 @@ export const getFormView = (state, handleFormSubmit, handleFormUpdate) => {
         value="${fields.typeId}"
         srcoptions="${contactsTypeId}">
       </sling-select>
-      ${fields.emails.map((email, index) => html`
+      ${fields.emails.map(email => html`
         <sling-input
+          id="email"
           type="email"
-          name="email${email.key}"
+          name="email-${email.key}"
           label="Email"
           value="${email.email}">
         </sling-input>
-        `)}     
-      <sling-input
-        type="email"
-        name="email"
-        label="Email"
-        value="${fields.email}">
-      </sling-input>
-      <sling-input
-        type="text"
-        name="countryCode"
-        label="País"
-        value="${fields.countryCode}">
-      </sling-input>
-      <sling-input
-        type="text"
-        name="areaCode"
-        label="DDD"
-        value="${fields.areaCode}">
-      </sling-input>
-      <sling-input
-        type="text"
-        name="phoneNumber"
-        label="Telefone"
-        value="${fields.phoneNumber}">
-      </sling-input>
+        `)}
+      ${fields.phones.map(phone => html`
+        <sling-input
+          id="countryCode"
+          type="text"
+          name="countryCode-${phone.key}"
+          label="País"
+          value="${phone.countryCode}">
+        </sling-input>
+        <sling-input
+          id="areaCode"
+          type="text"
+          name="areaCode-${phone.key}"
+          label="DDD"
+          value="${phone.areaCode}">
+        </sling-input>
+        <sling-input
+          id="phoneNumber"
+          type="text"
+          name="phoneNumber-${phone.key}"
+          label="Telefone"
+          value="${phone.phoneNumber}">
+        </sling-input>
+      `)}
       <sling-input
         type="hidden"
         name="key"
