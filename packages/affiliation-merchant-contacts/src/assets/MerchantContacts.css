@@ -52,7 +52,7 @@ sling-input[type="hidden"] {
   display: none;
 }
 
-sling-input[name="name"] {
+sling-input[name="friendlyName"] {
   grid-column: 1 / 9;
 }
 
@@ -60,8 +60,16 @@ sling-input[name="email"] {
   grid-column: 1 / 9;
 }
 
-sling-input[name="phone"] {
-  grid-column: 1 / 9;
+sling-input[name="countryCode"] {
+  grid-column: 1 / 2;
+}
+
+sling-input[name="areaCode"] {
+  grid-column: 3 / 5;
+}
+
+sling-input[name="phoneNumber"] {
+  grid-column: 6 / 9;
 }
 
 sling-button[type="submit"] {
