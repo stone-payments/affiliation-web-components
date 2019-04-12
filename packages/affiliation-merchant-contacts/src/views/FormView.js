@@ -13,7 +13,7 @@ export const getFormView = (state, handleFormSubmit, handleFormUpdate) => {
     : [];
 
   const validationPhones = fields.phones
-    ? fields.phones.map(phone => isValidPhone(`phoneNumber-${phone.key}`))
+    ? fields.phones.map(phone => isNotEmpty(`phoneNumber-${phone.key}`))
     : [];
 
   const validation = [
