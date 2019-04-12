@@ -1,5 +1,5 @@
 import { html } from 'sling-framework';
-import { isNotEmpty, isValidEmail, isValidPhone } from 'sling-helpers';
+import { isNotEmpty, isValidEmail } from 'sling-helpers';
 import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
@@ -29,19 +29,18 @@ export const getFormView = (state, handleFormSubmit, handleFormUpdate) => {
       onformsubmit="${handleFormSubmit}"
       onformupdate="${handleFormUpdate}"
       validation=${validation}>
+      <sling-select
+        label="Tipo"
+        name="typeId"
+        value="${fields.typeId}"
+        srcoptions="${contactsTypeId}">
+      </sling-select>
       <sling-input
         type="text"
         name="friendlyName"
         label="Nome"
         value="${fields.friendlyName}">
       </sling-input>
-      </sling-select>
-        <sling-select
-        label="Tipo"
-        name="typeId"
-        value="${fields.typeId}"
-        srcoptions="${contactsTypeId}">
-      </sling-select>
       ${fields.emails.map(email => html`
         <sling-input
           id="email"
