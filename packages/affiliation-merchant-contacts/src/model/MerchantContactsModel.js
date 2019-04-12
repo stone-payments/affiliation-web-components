@@ -1,5 +1,3 @@
-import { replaceNonDigits } from 'sling-helpers';
-
 export const ModelEmailsList = (data) => {
   const modeledEmails = [];
   const dataEntries = Object.entries(data);
@@ -7,7 +5,7 @@ export const ModelEmailsList = (data) => {
   dataEntries.forEach((item) => {
     if (item[0].split('-')[0] === 'email') {
       modeledEmails.push({
-        key: item[0].split('-')[1],
+        key: String(item[0].split('-')[1]),
         email: item[1],
       });
     }
@@ -17,18 +15,17 @@ export const ModelEmailsList = (data) => {
 };
 
 export const ModelPhonesList = (data) => {
-  debugger;
   const modeledPhones = [];
   const dataEntries = Object.entries(data);
 
-  let modeledPhonesObject = {};
+  const modeledPhonesObject = {};
 
   dataEntries.forEach((item) => {
     switch (item[0].split('-')[0]) {
       case 'phoneNumber':
         modeledPhonesObject[item[0].split('-')[1]] = {
           ...modeledPhonesObject[item[0].split('-')[1]],
-          key: item[0].split('-')[1],
+          key: String(item[0].split('-')[1]),
           phoneNumber: item[1],
         };
         break;
@@ -47,10 +44,10 @@ export const ModelPhonesList = (data) => {
         };
         break;
 
-      case 'typeId':
+      case 'phoneTypeId':
         modeledPhonesObject[item[0].split('-')[1]] = {
           ...modeledPhonesObject[item[0].split('-')[1]],
-          areaCode: item[1],
+          typeId: item[1],
         };
         break;
 
@@ -66,16 +63,8 @@ export const ModelPhonesList = (data) => {
   return modeledPhones;
 };
 
-// const ModelEmailsList = data => Object
-//   .entries(data)
-//   .reduce((result, [key, email]) => {
-//     return (key.split('-')[0] === 'email')
-//       ? [ ...result, { key: key.split('-')[1], email } ]
-//       : result;
-//   }, []);
-
-export const ContactsModel = ([data]) => data.map(contact => ({
-  key: contact.key,
+export const ContactsModel = ([contacts]) => contacts.data.map(contact => ({
+  key: String(contact.key),
   friendlyName: contact.friendlyName,
   typeName: contact.type.name,
   typeId: contact.type.id,
@@ -90,24 +79,32 @@ export const ContactsModel = ([data]) => data.map(contact => ({
     : '',
 }));
 
-export const MerchantContactsPayloadModel = (data) => {
-  return {
-    emails: ModelEmailsList(data),
-    phones: ModelPhonesList(data),
-    friendlyName: data.friendlyName,
-    typeId: Number(data.typeId),
-    phone: replaceNonDigits(data.phone),
-  };
-};
+export const MerchantContactsPayloadModel = data => ({
+  emails: ModelEmailsList(data),
+  phones: ModelPhonesList(data),
+  friendlyName: data.friendlyName,
+  typeId: Number(data.typeId),
+});
 
-export const UpdateContactstList = (list, [item]) =>
-  list.map((el => (el.id === item.data.id
+export const UpdateContactstList = (contactsList, [updatedContact]) =>
+  contactsList.map((el => (el.key === updatedContact.data.key
     ? ({
       ...el,
-      name: item.data.name,
-      typeId: item.data.typeId,
-      email: item.data.email,
-      phone: item.data.phone,
+      key: String(updatedContact.data.key),
+      friendlyName: updatedContact.data.friendlyName,
+      typeName: updatedContact.data.type.name,
+      typeId: updatedContact.data.type.id,
+      emails: updatedContact.data.emails,
+      phones: updatedContact.data.phones,
+      email: updatedContact.data.emails[0]
+        ? updatedContact.data.emails[0].email
+        : '',
+      phoneNumber: String(updatedContact.data.phones[0].phoneNumber),
+      countryCode: String(updatedContact.data.phones[0].countryCode),
+      areaCode: String(updatedContact.data.phones[0].areaCode),
+      displayPhone: updatedContact.data.phones[0]
+        ? `${updatedContact.data.phones[0].areaCode}${updatedContact.data.phones[0].phoneNumber}`
+        : '',
     })
     : el
   )));
