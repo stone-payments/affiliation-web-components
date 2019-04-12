@@ -6,7 +6,6 @@ import {
   MerchantContactsPayloadModel,
   UpdateContactstList,
 } from '../model/MerchantContactsModel';
-import { ETXTBSY } from 'constants';
 
 const notEmpty = arg => arg != null;
 
@@ -28,53 +27,6 @@ export const AffiliationMerchantContacts = (base = class {}) =>
           phones: [],
         },
       };
-
-      this.mockData = [
-        [{
-          key: 'Test key',
-          type: {
-            id: 1,
-            name: 'Administrativo',
-          },
-          friendlyName: 'teste tomador2',
-          phones: [
-            {
-              key: '111111',
-              type: {
-                id: 1,
-                name: 'Desconhecido',
-              },
-              countryCode: 55,
-              areaCode: 11,
-              phoneNumber: 12341234,
-            },
-            {
-              key: '222222',
-              type: {
-                id: 1,
-                name: 'Desconhecido',
-              },
-              countryCode: 55,
-              areaCode: 11,
-              phoneNumber: 2222222,
-            },
-          ],
-          emails: [
-            {
-              key: '1111111',
-              email: 'test1@email.com'
-            },
-            {
-              key: '2222222',
-              email: 'test2@email.com'
-            },
-          ],
-        }],
-      ];
-
-      this.setState({
-        contacts: ContactsModel(this.mockData),
-      });
     }
 
     static get properties() {
@@ -123,9 +75,7 @@ export const AffiliationMerchantContacts = (base = class {}) =>
           affiliationCode: this.state.affiliationCode,
           id: evt.detail.key,
         };
-        debugger;
         const payload = MerchantContactsPayloadModel(evt.detail);
-        console.log(payload);
         this
           .request([
             // @TODO Change the sdk method to sdk.affiliation.contacts.put.
