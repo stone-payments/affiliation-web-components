@@ -7,14 +7,13 @@ import { contactsTypeId } from '../state/MerchantContactsState.js';
 
 export const getFormView = (state, handleFormSubmit, handleFormUpdate) => {
   const fields = state.formData || {};
-  console.log(state);
 
   const validationEmails = fields.emails
     ? fields.emails.map(email => isValidEmail(`email-${email.key}`))
     : [];
 
   const validationPhones = fields.phones
-    ? fields.phones.map(phone => isNotEmpty(`phoneNumber-${phone.key}`))
+    ? fields.phones.map(phone => isValidPhone(`phoneNumber-${phone.key}`))
     : [];
 
   const validation = [
@@ -73,6 +72,11 @@ export const getFormView = (state, handleFormSubmit, handleFormUpdate) => {
           name="phoneNumber-${phone.key}"
           label="Telefone"
           value="${phone.phoneNumber}">
+        </sling-input>
+        <sling-input
+          type="hidden"
+          name="phoneTypeId-${phone.key}"
+          value="${phone.type.id}">
         </sling-input>
       `)}
       <sling-input
