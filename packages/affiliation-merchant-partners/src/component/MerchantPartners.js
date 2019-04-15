@@ -5,7 +5,13 @@ import 'sling-web-component-loader';
 import 'sling-web-component-message';
 import 'sling-web-component-button';
 import { getMerchantPartnersView } from '../views/MerchantPartnersView';
-import { PartnersModel } from '../model/MerchantPartnersModel';
+import {
+  PartnersModel,
+  PayloadLegalModel,
+  PayloadNaturalModel,
+  PartnersLegalFormResponseModel,
+  PartnersNaturalFormResponseModel
+} from '../model/MerchantPartnersModel.js';
 
 const notEmpty = arg => arg != null;
 
@@ -14,9 +20,86 @@ export const AffiliationMerchantPartners = (base = class {}) =>
     constructor() {
       super();
 
+      this.handleUpdateEditeLegalPersonForm =
+        this.handleUpdateEditeLegalPersonForm.bind(this);
+      this.handleSubmitEditeLegalPersonForm =
+        this.handleSubmitEditeLegalPersonForm.bind(this);
+      this.handleStartEditeLegalPerson =
+        this.handleStartEditeLegalPerson.bind(this);
+      this.handleStopEditeLegalPerson =
+        this.handleStopEditeLegalPerson.bind(this);
+
+      this.handleUpdateEditeNaturalPersonForm =
+        this.handleUpdateEditeNaturalPersonForm.bind(this);
+      this.handleSubmitEditeNaturalPersonForm =
+        this.handleSubmitEditeNaturalPersonForm.bind(this);
+      this.handleStartEditeNaturalPerson =
+        this.handleStartEditeNaturalPerson.bind(this);
+      this.handleStopEditeNaturalPerson =
+        this.handleStopEditeNaturalPerson.bind(this);
+
       this.state = {
-        partners: [],
+        partners: {
+          naturalPersons: [],
+          legalPerson: [],
+        },
+        legalPersonformData: {},
+        naturalPersonformData: {},
       };
+
+      this.mockPartnersResponse = [
+        {
+          data: [
+            {
+              naturalPerson: {
+                key: 'test',
+                name: 'test',
+                taxId: 11144455578,
+                taxIdType: {
+                  id: 2,
+                  name: 'CPF',
+                },
+                ownershipPercentage: null,
+                birthdate: null,
+                birthPlace: null,
+                birthCountry: null,
+                fatherName: null,
+                motherName: null,
+                spouseName: null,
+                spouseTaxId: null,
+                spouseTaxIdType: null,
+              },
+            },
+            {
+              legalPerson: {
+                ownershipPercentage: 0.85,
+                key: 'BE374DCB-5E13-432F-912E-CB62E8188EE9',
+                tradeName: 'Campbelo Gestora',
+                legalName: ' Campbelo Gestão de Recursos S.A.',
+                legalPersonality: {
+                  id: 1,
+                  name: 'Pessoa Jurídica',
+                },
+                taxId: '43836121000180',
+                taxIdType: {
+                  id: 1,
+                  name: 'CNPJ',
+                },
+                stateInscription: 'SP',
+                municipalInscription: 'São Paulo',
+                websiteUrl: 'campbelo.com.b',
+                addresses: {
+                  href: '',
+                },
+                createdOn: '2017-08-10T17:12:33.917',
+                lastModifiedOn: '2017-08-10T17:12:33.917',
+              },
+            },
+          ],
+        },
+      ];
+
+      this.setState({ partners: PartnersModel(this.mockPartnersResponse) });
     }
 
     static get properties() {
@@ -41,7 +124,115 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           type: Boolean,
           reflectToAttribute: true,
         },
+        naturalPersons: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
+        legalPersons: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
+        isEditingLegalPerson: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
+        isEditingNaturalPerson: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
       };
+    }
+
+    // Edição de legal person.
+    handleUpdateEditeLegalPersonForm(evt) {
+      console.log(evt.detail);
+      if (evt.detail) {
+        this.setState({
+          legalPersonformData: evt.detail,
+        });
+      } else {
+        evt.stopPropagation();
+      }
+    }
+
+    handleStartEditeLegalPerson(evt) {
+      this.isEditingLegalPerson = true;
+      this.handleUpdateEditeLegalPersonForm(evt);
+    }
+
+    handleStopEditeLegalPerson() {
+      this.isEditingLegalPerson = false;
+    }
+
+    handleSubmitEditeLegalPersonForm(evt) {
+      if (evt.detail) {
+        const requestParams = {
+          affiliationCode: this.state.affiliationCode,
+          key: evt.detail.key,
+        };
+        console.log(evt.detail);
+        const payload = PayloadLegalModel(evt.detail);
+
+        this
+          .request([
+            sdk.affiliation.partners.put(requestParams, payload),
+          ])
+          .then((responses) => {
+            const data =
+              PartnersLegalFormResponseModel(this.state.partners, responses);
+            this.setState({
+              partners: data,
+            });
+          });
+      }
+
+      this.handleStopEditeLegalPerson();
+    }
+
+    // edição de natural person
+    handleUpdateEditeNaturalPersonForm(evt) {
+      console.log(evt.detail);
+      if (evt.detail) {
+        this.setState({
+          legalPersonformData: evt.detail,
+        });
+      } else {
+        evt.stopPropagation();
+      }
+    }
+
+    handleStartEditeNaturalPerson(evt) {
+      this.isEditingNaturalPerson = true;
+      this.handleUpdateEditeNaturalPersonForm(evt);
+    }
+
+    handleStopEditeNaturalPerson() {
+      this.isEditingNaturalPerson = false;
+    }
+
+    handleSubmitEditeNaturalPersonForm(evt) {
+      if (evt.detail) {
+        const requestParams = {
+          affiliationCode: this.state.affiliationCode,
+          key: evt.detail.key,
+        };
+        console.log(evt.detail);
+        const payload = PayloadNaturalModel(evt.detail);
+
+        this
+          .request([
+            sdk.affiliation.partners.put(requestParams, payload),
+          ])
+          .then((responses) => {
+            const data =
+              PartnersNaturalFormResponseModel(this.state.partners, responses);
+            this.setState({
+              partners: data,
+            });
+          });
+      }
+
+      this.handleStopEditeNaturalPerson();
     }
 
     static get requestParamNames() {
@@ -50,7 +241,6 @@ export const AffiliationMerchantPartners = (base = class {}) =>
 
     fetchData({ affiliationCode }) {
       if (affiliationCode) {
-        sdk.headers.append('StoneCode', affiliationCode);
         this
           .request([
             sdk.affiliation.partners.get({ affiliationCode }),
@@ -58,7 +248,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           .then((responses) => {
             if (responses.every(notEmpty)) {
               const partners = PartnersModel(responses);
-              this.setState({ partners });
+              this.setState({ partners, affiliationCode });
             }
           });
       }

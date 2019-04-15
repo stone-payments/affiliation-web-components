@@ -1,0 +1,18 @@
+:host .business-component__form {
+    display: none;
+  }
+  
+  :host([isEditingLegalPerson]) .business-component__form {
+    display: flex;
+  }
+  
+  /* for compatibility */
+  
+  affiliation-merchant-partners .business-component__form {
+    display: none;
+  }
+  
+  affiliation-merchant-partners[isEditingLegalPerson] .business-component__form {
+    display: flex;
+  }
+  
