@@ -10,7 +10,8 @@ import {
   PayloadLegalModel,
   PayloadNaturalModel,
   PartnersLegalFormResponseModel,
-  PartnersNaturalFormResponseModel
+  PartnersNaturalFormResponseModel,
+  PayloadCreatePartnerlModel,
 } from '../model/MerchantPartnersModel.js';
 
 const notEmpty = arg => arg != null;
@@ -38,6 +39,13 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       this.handleStopEditeNaturalPerson =
         this.handleStopEditeNaturalPerson.bind(this);
 
+      this.handleStartCreatePartner =
+        this.handleStartCreatePartner.bind(this);
+      this.handleSubmitCreatePartner =
+        this.handleSubmitCreatePartner.bind(this);
+      this.handleStopCreatePartner =
+        this.handleStopCreatePartner.bind(this);
+
       this.state = {
         partners: {
           naturalPersons: [],
@@ -53,27 +61,41 @@ export const AffiliationMerchantPartners = (base = class {}) =>
             {
               naturalPerson: {
                 key: 'test',
-                name: 'test',
+                name: 'Nome Completo',
                 taxId: 11144455578,
                 taxIdType: {
                   id: 2,
                   name: 'CPF',
                 },
-                ownershipPercentage: null,
-                birthdate: null,
-                birthPlace: null,
-                birthCountry: null,
-                fatherName: null,
-                motherName: null,
-                spouseName: null,
-                spouseTaxId: null,
-                spouseTaxIdType: null,
+                ownershipPercentage: 0.25,
+                birthdate: '1984-02-07T00:00:00Z',
+                birthPlace: 'Rio de Janeiro',
+                birthCountry: {
+                  id: 76,
+                  name: 'Brazil',
+                  iso31661Alpha3: 'BRA',
+                  iso31661Alpha2: 'BR',
+                },
+                additionalDocuments: [
+                  {
+                    documentTypeId: 1,
+                    documentIdentifier: '123456789',
+                    issuedBy: 'Issuer name',
+                    issueDate: '1990-12-31',
+                    expirationDate: '2025-04-01',
+                  },
+                ],
+                fatherName: 'Father Name',
+                motherName: 'Mother Name',
+                spouseName: 'Spouse Name',
+                spouseTaxId: 111111111111,
+                spouseTaxIdType: 2,
               },
             },
             {
               legalPerson: {
                 ownershipPercentage: 0.85,
-                key: 'BE374DCB-5E13-432F-912E-CB62E8188EE9',
+                key: '',
                 tradeName: 'Campbelo Gestora',
                 legalName: ' Campbelo Gestão de Recursos S.A.',
                 legalPersonality: {
@@ -124,6 +146,10 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           type: Boolean,
           reflectToAttribute: true,
         },
+        isCreatingPartner: {
+          type: Boolean,
+          reflectToAttribute: true,
+        },
         naturalPersons: {
           type: Boolean,
           reflectToAttribute: true,
@@ -143,9 +169,45 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       };
     }
 
-    // Edição de legal person.
+    // create partner
+    handleStartCreatePartner() {
+      this.isCreatingPartner = true;
+    }
+
+    handleStopCreatePartner() {
+      this.isCreatingPartner = false;
+    }
+
+    handleSubmitCreatePartner(evt) {
+      if (evt.detail) {
+        const requestParams = {
+          affiliationCode: this.state.affiliationCode,
+        };
+
+        const payload = PayloadCreatePartnerlModel(evt.detail);
+
+        this
+          .request([
+            sdk.affiliation.partners.post(requestParams, payload),
+          ]);
+
+        // Criar feedBack para o usuario que foi criado com sucesso
+
+        this
+          .request([
+            sdk.affiliation.partners.get(this.state.affiliationCode),
+          ])
+          .then((responses) => {
+            const partners = PartnersModel(responses);
+            this.setState({ partners });
+          });
+      }
+
+      this.handleStopEditeNaturalPerson();
+    }
+
+    // Edite legal person.
     handleUpdateEditeLegalPersonForm(evt) {
-      console.log(evt.detail);
       if (evt.detail) {
         this.setState({
           legalPersonformData: evt.detail,
@@ -170,7 +232,6 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           affiliationCode: this.state.affiliationCode,
           key: evt.detail.key,
         };
-        console.log(evt.detail);
         const payload = PayloadLegalModel(evt.detail);
 
         this
@@ -178,10 +239,10 @@ export const AffiliationMerchantPartners = (base = class {}) =>
             sdk.affiliation.partners.put(requestParams, payload),
           ])
           .then((responses) => {
-            const data =
+            const partners =
               PartnersLegalFormResponseModel(this.state.partners, responses);
             this.setState({
-              partners: data,
+              partners,
             });
           });
       }
@@ -189,12 +250,11 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       this.handleStopEditeLegalPerson();
     }
 
-    // edição de natural person
+    // Edite natural person
     handleUpdateEditeNaturalPersonForm(evt) {
-      console.log(evt.detail);
       if (evt.detail) {
         this.setState({
-          legalPersonformData: evt.detail,
+          naturalPersonformData: evt.detail,
         });
       } else {
         evt.stopPropagation();
@@ -216,7 +276,6 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           affiliationCode: this.state.affiliationCode,
           key: evt.detail.key,
         };
-        console.log(evt.detail);
         const payload = PayloadNaturalModel(evt.detail);
 
         this
@@ -224,10 +283,10 @@ export const AffiliationMerchantPartners = (base = class {}) =>
             sdk.affiliation.partners.put(requestParams, payload),
           ])
           .then((responses) => {
-            const data =
+            const partners =
               PartnersNaturalFormResponseModel(this.state.partners, responses);
             this.setState({
-              partners: data,
+              partners,
             });
           });
       }
@@ -239,6 +298,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       return ['affiliationCode'];
     }
 
+    // List partners
     fetchData({ affiliationCode }) {
       if (affiliationCode) {
         this
