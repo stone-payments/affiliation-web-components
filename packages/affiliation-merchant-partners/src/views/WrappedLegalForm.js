@@ -1,14 +1,14 @@
 import { html } from 'sling-framework';
 import { getRenderLegalPersonForm } from './RenderLegalPersonFormView.js';
 
-export const getWrappedFormView = (
+export const getWrappedLegalFormView = (
   state,
   handleStopEditeLegalPerson, // stop
   handleSubmitEditeLegalPersonForm, // submit form
   handleUpdateEditeLegalPersonForm, // update form
 ) => html`
-  <div class="business-component__form">
-    <div class="business-component__inner">
+  <div class="business-component__form_legal">
+    <div class="business-component__inner_legal">
       <svg
         onclick="${handleStopEditeLegalPerson}"
         class="business-component__close"
