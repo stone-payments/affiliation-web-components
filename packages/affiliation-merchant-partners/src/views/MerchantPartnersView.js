@@ -44,11 +44,7 @@ const naturalPrsonColumns = [{
 }, {
   title: 'Renda mensal',
   field: 'estimatedMonthlyBilling',
-}, {
-  title: 'Patrimônio',
-  field: 'patrimonio',
 },
-
 ];
 
 
@@ -71,6 +67,7 @@ export const getMerchantPartnersView = ({
   handleStopEditeNaturalPerson,
   handleSubmitEditeNaturalPersonForm,
   handleUpdateEditeNaturalPersonForm,
+  handleDeleteNaturalPerson,
 }) => html`
     <style>
       @import url('affiliation-merchant-partners/src/index.css');
@@ -80,11 +77,11 @@ export const getMerchantPartnersView = ({
       srcdata="${requestErrors.length > 0 ? ['Ocorreu um erro ao acessar os dados.'] : []}"
       layout="outline">
     </sling-message>
-   
+
     <div class="business-component">
       <sling-loader loading="${isLoading}"></sling-loader>
-    
-    
+
+
     ${getWrappedLegalFormView(
     state,
     handleStopEditeLegalPerson,
@@ -121,7 +118,8 @@ export const getMerchantPartnersView = ({
     state,
     handleStopEditeNaturalPerson,
     handleSubmitEditeNaturalPersonForm,
-    handleUpdateEditeNaturalPersonForm)}
+    handleUpdateEditeNaturalPersonForm,
+    handleDeleteNaturalPerson)}
     ${naturalPersons
     ? html`
     <h3>Neutral Person</h3>
