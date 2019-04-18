@@ -21,10 +21,23 @@ sling-form {
 }
 
 
-sling-button {
+sling-button[name="save"] {
   grid-column: 1;
+  grid-row: 7;
+}
+
+sling-button[name="cancel"] {
+  grid-column: 8;
+  grid-row: 7;
+}
+
+sling-button[name="delet"] {
+  grid-column: 1 / 9;
   grid-row: 6;
 }
+
+
+
 
 
 /* ------------ */
