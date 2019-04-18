@@ -3,9 +3,11 @@ export const ModelEmailsList = (data) => {
   const dataEntries = Object.entries(data);
 
   dataEntries.forEach((item) => {
-    if (item[0].split('-')[0] === 'email') {
+    const itemParts = item[0].split('-');
+
+    if (itemParts[0] === 'email') {
       modeledEmails.push({
-        key: String(item[0].split('-')[1]),
+        key: String(itemParts[1]),
         email: item[1],
       });
     }
@@ -21,32 +23,34 @@ export const ModelPhonesList = (data) => {
   const modeledPhonesObject = {};
 
   dataEntries.forEach((item) => {
-    switch (item[0].split('-')[0]) {
+    const itemParts = item[0].split('-');
+
+    switch (itemParts[0]) {
       case 'phoneNumber':
-        modeledPhonesObject[item[0].split('-')[1]] = {
-          ...modeledPhonesObject[item[0].split('-')[1]],
-          key: String(item[0].split('-')[1]),
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
+          key: String(itemParts[1]),
           phoneNumber: item[1],
         };
         break;
 
       case 'areaCode':
-        modeledPhonesObject[item[0].split('-')[1]] = {
-          ...modeledPhonesObject[item[0].split('-')[1]],
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
           areaCode: item[1],
         };
         break;
 
       case 'countryCode':
-        modeledPhonesObject[item[0].split('-')[1]] = {
-          ...modeledPhonesObject[item[0].split('-')[1]],
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
           countryCode: item[1],
         };
         break;
 
       case 'phoneTypeId':
-        modeledPhonesObject[item[0].split('-')[1]] = {
-          ...modeledPhonesObject[item[0].split('-')[1]],
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
           typeId: item[1],
         };
         break;
