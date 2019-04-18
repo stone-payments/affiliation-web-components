@@ -59,7 +59,7 @@ export const AffiliationMerchantContacts = (base = class {}) =>
     }
 
     handleFormUpdate(evt) {
-      if (evt.detail.emails !== undefined &&
+      if (evt.detail.emails !== undefined ||
           evt.detail.phones !== undefined) {
         this.setState({
           formData: evt.detail,
