@@ -27,6 +27,7 @@ const validation = [
 export const getRenderCreatePartnerForm = (
   state,
   handleSubmitCreatePartner,
+  handleStopCreatePartner,
 ) => html`
   <sling-form
     onformsubmit="${handleSubmitCreatePartner}"
@@ -99,7 +100,7 @@ export const getRenderCreatePartnerForm = (
     </sling-input>
     <sling-select
       label="Documento"
-      name="spouseTaxIdType""
+      name="spouseTaxIdType"
       srcoptions="${documentTypeIds}">
     </sling-select>
     <sling-input
@@ -108,9 +109,16 @@ export const getRenderCreatePartnerForm = (
       label="N° do documento do cônjuge">
     </sling-input>
     <sling-button
+      name="save"
       color="success"
       type="submit">
       Enviar
+    </sling-button>
+    <sling-button
+      name="cancel"
+      onclick="${handleStopCreatePartner}"
+      color="secondary">
+      Cancelar
     </sling-button>
   </sling-form>
 `;

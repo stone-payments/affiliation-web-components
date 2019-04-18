@@ -27,6 +27,8 @@ export const getRenderNaturalPersonForm = (
   state,
   handleSubmitEditeNaturalPersonForm,
   handleUpdateEditeNaturalPersonForm,
+  handleStopEditeNaturalPerson,
+  handleDeleteNaturalPerson,
 ) => {
   const fields = state.naturalPersonformData || {};
 
@@ -35,6 +37,12 @@ export const getRenderNaturalPersonForm = (
       onformsubmit="${handleSubmitEditeNaturalPersonForm}"
       onformupdate="${handleUpdateEditeNaturalPersonForm}"
       validation=${validation}>
+      <sling-input
+        type="hidden"
+        name="key"
+        label="Nome"
+        value="${fields.key}">
+      </sling-input>
       <sling-input
         type="text"
         name="name"
@@ -116,7 +124,7 @@ export const getRenderNaturalPersonForm = (
       </sling-input>
       <sling-select
         label="Documento"
-        name="spouseTaxIdType""
+        name="spouseTaxIdType"
         srcoptions="${documentTypeIds}"
         value="${fields.spouseTaxIdType}">
       </sling-select>
@@ -127,10 +135,24 @@ export const getRenderNaturalPersonForm = (
         value="${fields.spouseTaxId}">
       </sling-input>
       <sling-button
+        name="delet"
+        onclick="${() => handleDeleteNaturalPerson(fields.key)}"
+        color="danger">
+        Deletar sócio
+      </sling-button>
+      <sling-button
+        name="save"
         color="success"
         type="submit">
         Enviar
       </sling-button>
+      <sling-button
+        name="cancel"
+        onclick="${handleStopEditeNaturalPerson}"
+        color="secondary">
+        Cancelar
+      </sling-button>
     </sling-form>
+
   `;
 };
