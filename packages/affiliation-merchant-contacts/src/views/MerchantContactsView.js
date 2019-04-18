@@ -13,7 +13,7 @@ const columns = [{
   field: 'typeName',
 }, {
   title: 'E-mail',
-  field: 'email',
+  field: 'displayEmail',
 }, {
   title: 'Telefone',
   field: 'displayPhone',
