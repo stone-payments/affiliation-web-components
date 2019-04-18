@@ -35,6 +35,7 @@ export const PartnersModel = ([{ data }]) => {
         findByDocumentTypeId(partner.naturalPerson.additionalDocuments);
 
       const modeledPartner = {
+        key: partner.naturalPerson.key,
         name: partner.naturalPerson.name,
         motherName: partner.naturalPerson.motherName,
         fatherName: partner.naturalPerson.fatherName,
@@ -45,7 +46,6 @@ export const PartnersModel = ([{ data }]) => {
         birthPlace: partner.naturalPerson.birthPlace,
         birthCountryid: partner.naturalPerson.birthCountry.id,
         taxId: partner.naturalPerson.taxId,
-        ownershipPercentage: partner.naturalPerson.ownershipPercentage,
         document: partner.naturalPerson.taxIdType.name,
         documentTypeId: partner.naturalPerson.taxIdType.id,
         additionalDocumentId: additionalDocument.documentTypeId,
@@ -55,8 +55,6 @@ export const PartnersModel = ([{ data }]) => {
         estimatedMonthlyBilling:
         partner.naturalPerson.estimatedMonthlyBilling || '',
         partnerType: 'natural',
-        // Mapear propiedade correta.
-        patrimonio: '',
 
         displayAdditionalDocumentIssueDate:
           formatDate(additionalDocument.issueDate, 'display'),
@@ -66,9 +64,9 @@ export const PartnersModel = ([{ data }]) => {
       allPartners.naturalPersons.push(modeledPartner);
     } else {
       const modeledPartner = {
+        key: partner.legalPerson.key,
         tradeName: partner.legalPerson.tradeName,
         taxId: partner.legalPerson.taxId,
-        ownershipPercentage: partner.legalPerson.ownershipPercentage,
         document: partner.legalPerson.taxIdType.name,
         documenttypeId: partner.legalPerson.taxIdType.id,
         estimatedMonthlyBilling:
@@ -82,10 +80,10 @@ export const PartnersModel = ([{ data }]) => {
 };
 
 export const PayloadLegalModel = data => data;
+
 export const PartnersLegalFormResponseModel = data => data;
 
 export const PayloadNaturalModel = data => ({
-  ownershipPercentage: data.ownershipPercentage,
   taxId: data.taxId,
   name: data.name,
   birthdate: data.birthDate,
