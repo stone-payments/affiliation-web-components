@@ -68,7 +68,7 @@ export const ModelPhonesList = (data) => {
 };
 
 export const ContactsModel = ([contacts]) => contacts.data.map(contact => ({
-  key: String(contact.key),
+  key: contact.key,
   friendlyName: contact.friendlyName,
   typeName: contact.type.name,
   typeId: contact.type.id,
@@ -94,7 +94,7 @@ export const UpdateContactstList = (contactsList, [updatedContact]) =>
   contactsList.map((el => (el.key === updatedContact.data.key
     ? ({
       ...el,
-      key: String(updatedContact.data.key),
+      key: updatedContact.data.key,
       friendlyName: updatedContact.data.friendlyName,
       typeName: updatedContact.data.type.name,
       typeId: updatedContact.data.type.id,
