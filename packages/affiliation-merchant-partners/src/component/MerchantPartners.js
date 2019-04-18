@@ -46,6 +46,9 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       this.handleStopCreatePartner =
         this.handleStopCreatePartner.bind(this);
 
+      this.handleDeleteNaturalPerson =
+        this.handleDeleteNaturalPerson.bind(this);
+
       this.state = {
         partners: {
           naturalPersons: [],
@@ -54,74 +57,6 @@ export const AffiliationMerchantPartners = (base = class {}) =>
         legalPersonformData: {},
         naturalPersonformData: {},
       };
-
-      this.mockPartnersResponse = [
-        {
-          data: [
-            {
-              naturalPerson: {
-                key: 'test',
-                name: 'Nome Completo',
-                taxId: 11144455578,
-                taxIdType: {
-                  id: 2,
-                  name: 'CPF',
-                },
-                ownershipPercentage: 0.25,
-                birthdate: '1984-02-07T00:00:00Z',
-                birthPlace: 'Rio de Janeiro',
-                birthCountry: {
-                  id: 76,
-                  name: 'Brazil',
-                  iso31661Alpha3: 'BRA',
-                  iso31661Alpha2: 'BR',
-                },
-                additionalDocuments: [
-                  {
-                    documentTypeId: 1,
-                    documentIdentifier: '123456789',
-                    issuedBy: 'Issuer name',
-                    issueDate: '1990-12-31',
-                    expirationDate: '2025-04-01',
-                  },
-                ],
-                fatherName: 'Father Name',
-                motherName: 'Mother Name',
-                spouseName: 'Spouse Name',
-                spouseTaxId: 111111111111,
-                spouseTaxIdType: 2,
-              },
-            },
-            {
-              legalPerson: {
-                ownershipPercentage: 0.85,
-                key: '',
-                tradeName: 'Campbelo Gestora',
-                legalName: ' Campbelo Gestão de Recursos S.A.',
-                legalPersonality: {
-                  id: 1,
-                  name: 'Pessoa Jurídica',
-                },
-                taxId: '43836121000180',
-                taxIdType: {
-                  id: 1,
-                  name: 'CNPJ',
-                },
-                stateInscription: 'SP',
-                municipalInscription: 'São Paulo',
-                websiteUrl: 'campbelo.com.b',
-                addresses: {
-                  href: '',
-                },
-                createdOn: '2017-08-10T17:12:33.917',
-                lastModifiedOn: '2017-08-10T17:12:33.917',
-              },
-            },
-          ],
-        },
-      ];
-
-      this.setState({ partners: PartnersModel(this.mockPartnersResponse) });
     }
 
     static get properties() {
@@ -167,6 +102,32 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           reflectToAttribute: true,
         },
       };
+    }
+
+    // delet partner
+    handleDeleteNaturalPerson(key) {
+      if (key) {
+        const requestParams = {
+          affiliationCode: this.state.affiliationCode,
+          key,
+        };
+
+        this
+          .request([
+            sdk.affiliation.partners.delete(requestParams),
+          ]);
+
+        this
+          .request([
+            sdk.affiliation.partners.get(this.state.affiliationCode),
+          ])
+          .then((responses) => {
+            const partners = PartnersModel(responses);
+            this.setState({ partners });
+          });
+      }
+
+      this.handleStopEditeNaturalPerson();
     }
 
     // create partner
