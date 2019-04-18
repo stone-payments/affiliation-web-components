@@ -13,8 +13,6 @@ export const getRenderLegalPersonForm = (
   handleSubmitEditeLegalPersonForm,
   handleUpdateEditeLegalPersonForm,
 ) => {
-  console.log(state);
-
   const fields = state.legalPersonformData || {};
 
   // PRECISA DECIDIR COM BASE NAS REGRAS DE NEGOCIO O QUE SERA EDITAVEL
@@ -29,12 +27,6 @@ export const getRenderLegalPersonForm = (
         name="tradeName"
         label="Nome Fantasia"
         value="${fields.tradeName}">
-      </sling-input>
-      <sling-input
-        type="text"
-        name="documentId"
-        label="N° do documento"
-        value="${fields.documentId}">
       </sling-input>
       <sling-button
         color="success"
