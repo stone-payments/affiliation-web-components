@@ -74,10 +74,11 @@ export const ContactsModel = ([contacts]) => contacts.data.map(contact => ({
   typeId: contact.type.id,
   emails: contact.emails,
   phones: contact.phones,
-  email: contact.emails[0] ? contact.emails[0].email : '',
   phoneNumber: String(contact.phones[0].phoneNumber),
   countryCode: String(contact.phones[0].countryCode),
   areaCode: String(contact.phones[0].areaCode),
+
+  displayEmail: contact.emails[0] ? contact.emails[0].email : '',
   displayPhone: contact.phones[0]
     ? `${contact.phones[0].areaCode}${contact.phones[0].phoneNumber}`
     : '',
@@ -100,12 +101,13 @@ export const UpdateContactstList = (contactsList, [updatedContact]) =>
       typeId: updatedContact.data.type.id,
       emails: updatedContact.data.emails,
       phones: updatedContact.data.phones,
-      email: updatedContact.data.emails[0]
-        ? updatedContact.data.emails[0].email
-        : '',
       phoneNumber: String(updatedContact.data.phones[0].phoneNumber),
       countryCode: String(updatedContact.data.phones[0].countryCode),
       areaCode: String(updatedContact.data.phones[0].areaCode),
+
+      displayEmail: updatedContact.data.emails[0]
+        ? updatedContact.data.emails[0].email
+        : '',
       displayPhone: updatedContact.data.phones[0]
         ? `${updatedContact.data.phones[0].areaCode}${updatedContact.data.phones[0].phoneNumber}`
         : '',
