@@ -7,16 +7,16 @@ import { getWrappedForm } from './WrappedFormView';
 
 const columns = [{
   title: 'Nome',
-  field: 'name',
+  field: 'friendlyName',
 }, {
   title: 'Cargo',
   field: 'typeName',
 }, {
   title: 'E-mail',
-  field: 'email',
+  field: 'displayEmail',
 }, {
   title: 'Telefone',
-  field: 'phone',
+  field: 'displayPhone',
   type: 'phone',
 }];
 

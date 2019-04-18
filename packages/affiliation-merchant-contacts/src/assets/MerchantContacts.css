@@ -52,16 +52,28 @@ sling-input[type="hidden"] {
   display: none;
 }
 
-sling-input[name="name"] {
+sling-input[name="friendlyName"] {
+  grid-column: 3 / 9;
+}
+
+sling-select[name="typeId"] {
+  grid-column: 1 / 3;
+}
+
+sling-input[id="email"] {
   grid-column: 1 / 9;
 }
 
-sling-input[name="email"] {
-  grid-column: 1 / 9;
+sling-input[id="countryCode"] {
+  grid-column: 1 / 2;
 }
 
-sling-input[name="phone"] {
-  grid-column: 1 / 9;
+sling-input[id="areaCode"] {
+  grid-column: 3 / 5;
+}
+
+sling-input[id="phoneNumber"] {
+  grid-column: 6 / 9;
 }
 
 sling-button[type="submit"] {

@@ -1,30 +1,116 @@
-import { replaceNonDigits } from 'sling-helpers';
+export const ModelEmailsList = (data) => {
+  const modeledEmails = [];
+  const dataEntries = Object.entries(data);
 
-export const ContactsModel = ([data]) => data.map(contact => ({
-  name: contact.friendlyName,
+  dataEntries.forEach((item) => {
+    const itemParts = item[0].split('-');
+
+    if (itemParts[0] === 'email') {
+      modeledEmails.push({
+        key: String(itemParts[1]),
+        email: item[1],
+      });
+    }
+  });
+
+  return modeledEmails;
+};
+
+export const ModelPhonesList = (data) => {
+  const modeledPhones = [];
+  const dataEntries = Object.entries(data);
+
+  const modeledPhonesObject = {};
+
+  dataEntries.forEach((item) => {
+    const itemParts = item[0].split('-');
+
+    switch (itemParts[0]) {
+      case 'phoneNumber':
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
+          key: String(itemParts[1]),
+          phoneNumber: item[1],
+        };
+        break;
+
+      case 'areaCode':
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
+          areaCode: item[1],
+        };
+        break;
+
+      case 'countryCode':
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
+          countryCode: item[1],
+        };
+        break;
+
+      case 'phoneTypeId':
+        modeledPhonesObject[itemParts[1]] = {
+          ...modeledPhonesObject[itemParts[1]],
+          typeId: item[1],
+        };
+        break;
+
+      default:
+        break;
+    }
+  });
+
+  Object
+    .keys(modeledPhonesObject)
+    .map(key => modeledPhones.push(modeledPhonesObject[key]));
+
+  return modeledPhones;
+};
+
+export const ContactsModel = ([contacts]) => contacts.data.map(contact => ({
+  key: contact.key,
+  friendlyName: contact.friendlyName,
   typeName: contact.type.name,
   typeId: contact.type.id,
-  email: contact.emails[0] ? contact.emails[0].email : 'N/A',
-  phone: contact.phones[0]
+  emails: contact.emails,
+  phones: contact.phones,
+  phoneNumber: String(contact.phones[0].phoneNumber),
+  countryCode: String(contact.phones[0].countryCode),
+  areaCode: String(contact.phones[0].areaCode),
+
+  displayEmail: contact.emails[0] ? contact.emails[0].email : '',
+  displayPhone: contact.phones[0]
     ? `${contact.phones[0].areaCode}${contact.phones[0].phoneNumber}`
-    : 'N/A',
+    : '',
 }));
 
 export const MerchantContactsPayloadModel = data => ({
-  name: data.name,
+  emails: ModelEmailsList(data),
+  phones: ModelPhonesList(data),
+  friendlyName: data.friendlyName,
   typeId: Number(data.typeId),
-  email: data.email,
-  phone: replaceNonDigits(data.phone),
 });
 
-export const UpdateContactstList = (list, [item]) =>
-  list.map((el => (el.id === item.data.id
+export const UpdateContactstList = (contactsList, [updatedContact]) =>
+  contactsList.map((el => (el.key === updatedContact.data.key
     ? ({
       ...el,
-      name: item.data.name,
-      typeId: item.data.typeId,
-      email: item.data.email,
-      phone: item.data.phone,
+      key: updatedContact.data.key,
+      friendlyName: updatedContact.data.friendlyName,
+      typeName: updatedContact.data.type.name,
+      typeId: updatedContact.data.type.id,
+      emails: updatedContact.data.emails,
+      phones: updatedContact.data.phones,
+      phoneNumber: String(updatedContact.data.phones[0].phoneNumber),
+      countryCode: String(updatedContact.data.phones[0].countryCode),
+      areaCode: String(updatedContact.data.phones[0].areaCode),
+
+      displayEmail: updatedContact.data.emails[0]
+        ? updatedContact.data.emails[0].email
+        : '',
+      displayPhone: updatedContact.data.phones[0]
+        ? `${updatedContact.data.phones[0].areaCode}${updatedContact.data.phones[0].phoneNumber}`
+        : '',
     })
     : el
   )));
