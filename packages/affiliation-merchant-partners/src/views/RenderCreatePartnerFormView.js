@@ -81,7 +81,7 @@ export const getRenderCreatePartnerForm = (
     <sling-input
       type="text"
       name="additionalDocumentIssuedBy"
-      label="Orgão expeditor">
+      label="Órgão expedidor">
     </sling-input>
     <sling-input
       type="text"
