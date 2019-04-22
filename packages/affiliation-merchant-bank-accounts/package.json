@@ -1,7 +1,7 @@
 {
   "name": "affiliation-merchant-bank-accounts",
   "description": "Merchant Bank Accounts business component",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": "Stone Pagamentos",
   "module": "src/index.js",
   "main": "dist/cjs/es5/index.js",
