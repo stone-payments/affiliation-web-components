@@ -101,7 +101,7 @@ export const getRenderNaturalPersonForm = (
       <sling-input
         type="text"
         name="additionalDocumentIssuedBy"
-        label="Orgão expeditor"
+        label="Órgão expedidor"
         value="${fields.additionalDocumentIssuedBy}">
       </sling-input>
       <sling-input
