@@ -10,17 +10,17 @@ const validation = [
 
 export const getRenderLegalPersonForm = (
   state,
-  handleSubmitEditeLegalPersonForm,
-  handleUpdateEditeLegalPersonForm,
+  handleSubmitEditLegalPersonForm,
+  handleUpdateEditLegalPersonForm,
 ) => {
   const fields = state.legalPersonformData || {};
 
-  // PRECISA DECIDIR COM BASE NAS REGRAS DE NEGOCIO O QUE SERA EDITAVEL
+  // @TODO: DECIDIR COM BASE NAS REGRAS DE NEGOCIO O QUE SERA EDITAVEL
 
   return html`
     <sling-form
-      onformsubmit="${handleSubmitEditeLegalPersonForm}"
-      onformupdate="${handleUpdateEditeLegalPersonForm}"
+      onformsubmit="${handleSubmitEditLegalPersonForm}"
+      onformupdate="${handleUpdateEditLegalPersonForm}"
       validation=${validation}>
       <sling-input
         type="text"
