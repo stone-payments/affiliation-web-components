@@ -8,10 +8,7 @@ const LegalPersonColumns = [{
   title: 'Nome Fantasia',
   field: 'tradeName',
 }, {
-  title: 'Tipo de documento',
-  field: 'document',
-}, {
-  title: 'N° documento',
+  title: 'CNPJ',
   field: 'taxId',
   type: 'cnpj',
 }];
@@ -41,9 +38,6 @@ const naturalPrsonColumns = [{
 }, {
   title: 'Expedidor',
   field: 'additionalDocumentIssuedBy',
-}, {
-  title: 'Renda mensal',
-  field: 'estimatedMonthlyBilling',
 },
 ];
 
