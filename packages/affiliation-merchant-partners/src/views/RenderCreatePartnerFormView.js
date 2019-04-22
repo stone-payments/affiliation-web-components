@@ -39,7 +39,7 @@ export const getRenderCreatePartnerForm = (
     </sling-input>
     <sling-select
       label="Documento"
-      name="documentTypeId""
+      name="documentTypeId"
       srcoptions="${documentTypeIds}">
     </sling-select>
     <sling-input
@@ -109,16 +109,16 @@ export const getRenderCreatePartnerForm = (
       label="N° do documento do cônjuge">
     </sling-input>
     <sling-button
+      name="cancelCreate"
+      onclick="${handleStopCreatePartner}"
+      color="secondary">
+      Cancelar
+    </sling-button>
+    <sling-button
       name="save"
       color="success"
       type="submit">
       Enviar
-    </sling-button>
-    <sling-button
-      name="cancel"
-      onclick="${handleStopCreatePartner}"
-      color="secondary">
-      Cancelar
     </sling-button>
   </sling-form>
 `;
