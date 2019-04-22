@@ -13,7 +13,7 @@ const LegalPersonColumns = [{
   type: 'cnpj',
 }];
 
-const naturalPrsonColumns = [{
+const naturalPersonColumns = [{
   title: 'Nome',
   field: 'name',
 }, {
@@ -119,7 +119,7 @@ export const getMerchantPartnersView = ({
         onrowclicked="${handleStartEditNaturalPerson}"
         editable="${editable}"
         srcdata="${state.partners.naturalPersons}"
-        srccolumns="${naturalPrsonColumns}">
+        srccolumns="${naturalPersonColumns}">
       </sling-table>
       `
     : ''}
