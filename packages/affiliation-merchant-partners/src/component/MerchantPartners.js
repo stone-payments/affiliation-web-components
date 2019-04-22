@@ -154,7 +154,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
             sdk.affiliation.partners.post(requestParams, payload),
           ]);
 
-        // Criar feedBack para o usuario que foi criado com sucesso
+        // @TODO Criar feedBack para o usuario que foi criado com sucesso
 
         this
           .request([
