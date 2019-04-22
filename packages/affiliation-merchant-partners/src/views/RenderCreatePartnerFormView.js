@@ -52,17 +52,18 @@ export const getRenderCreatePartnerForm = (
       name="birthDate"
       label="Data de nascimento">
     </sling-input>
+    <sling-select
+      type="text"
+      name="birthCountryid"
+      placeholder="selecione um país"
+      label="País de Nascimento"
+      srcoptions="${countryCodes}">
+    </sling-select>
     <sling-input
       type="text"
       name="birthPlace"
       label="Local de Nascimento">
     </sling-input>
-    <sling-select
-      type="text"
-      name="birthCountryid"
-      label="País de Nascimento"
-      srcoptions="${countryCodes}">
-    </sling-select>
     <sling-select
       label="Documento Adicional"
       name="additionalDocumentId""
@@ -81,7 +82,7 @@ export const getRenderCreatePartnerForm = (
     <sling-input
       type="text"
       name="additionalDocumentIssuedBy"
-      label="Orgão expeditor">
+      label="Órgão expedidor">
     </sling-input>
     <sling-input
       type="text"

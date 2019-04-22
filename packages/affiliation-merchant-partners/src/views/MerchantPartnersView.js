@@ -24,7 +24,7 @@ const naturalPrsonColumns = [{
   title: 'Nome da Mãe',
   field: 'motherName',
 }, {
-  title: 'Nascimento',
+  title: 'Data de Nascimento',
   field: 'displayBirthDate',
 }, {
   title: 'Cidade de nascimento',
@@ -53,14 +53,14 @@ export const getMerchantPartnersView = ({
   handleStartCreatePartner,
   handleStopCreatePartner,
   handleSubmitCreatePartner,
-  handleStartEditeLegalPerson,
-  handleStopEditeLegalPerson,
-  handleSubmitEditeLegalPersonForm,
-  handleUpdateEditeLegalPersonForm,
-  handleStartEditeNaturalPerson,
-  handleStopEditeNaturalPerson,
-  handleSubmitEditeNaturalPersonForm,
-  handleUpdateEditeNaturalPersonForm,
+  handleStartEditLegalPerson,
+  handleStopEditLegalPerson,
+  handleSubmitEditLegalPersonForm,
+  handleUpdateEditLegalPersonForm,
+  handleStartEditNaturalPerson,
+  handleStopEditNaturalPerson,
+  handleSubmitEditNaturalPersonForm,
+  handleUpdateEditNaturalPersonForm,
   handleDeleteNaturalPerson,
 }) => html`
     <style>
@@ -78,14 +78,13 @@ export const getMerchantPartnersView = ({
 
     ${getWrappedLegalFormView(
     state,
-    handleStopEditeLegalPerson,
-    handleSubmitEditeLegalPersonForm,
-    handleUpdateEditeLegalPersonForm)}
+    handleStopEditLegalPerson,
+    handleSubmitEditLegalPersonForm,
+    handleUpdateEditLegalPersonForm)}
     ${legalPersons
     ? html`
-    <h3>Legal Person</h3>
       <sling-table
-        onrowclicked="${handleStartEditeLegalPerson}"
+        onrowclicked="${handleStartEditLegalPerson}"
         editable="${editable}"
         srcdata="${state.partners.legalPersons}"
         srccolumns="${LegalPersonColumns}">
@@ -110,15 +109,14 @@ export const getMerchantPartnersView = ({
     ` : ''}
     ${getWrappedNaturalFormView(
     state,
-    handleStopEditeNaturalPerson,
-    handleSubmitEditeNaturalPersonForm,
-    handleUpdateEditeNaturalPersonForm,
+    handleStopEditNaturalPerson,
+    handleSubmitEditNaturalPersonForm,
+    handleUpdateEditNaturalPersonForm,
     handleDeleteNaturalPerson)}
     ${naturalPersons
     ? html`
-    <h3>Neutral Person</h3>
       <sling-table
-        onrowclicked="${handleStartEditeNaturalPerson}"
+        onrowclicked="${handleStartEditNaturalPerson}"
         editable="${editable}"
         srcdata="${state.partners.naturalPersons}"
         srccolumns="${naturalPrsonColumns}">

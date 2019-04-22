@@ -25,17 +25,17 @@ const validation = [
 
 export const getRenderNaturalPersonForm = (
   state,
-  handleSubmitEditeNaturalPersonForm,
-  handleUpdateEditeNaturalPersonForm,
-  handleStopEditeNaturalPerson,
+  handleSubmitEditNaturalPersonForm,
+  handleUpdateEditNaturalPersonForm,
+  handleStopEditNaturalPerson,
   handleDeleteNaturalPerson,
 ) => {
   const fields = state.naturalPersonformData || {};
 
   return html`
     <sling-form
-      onformsubmit="${handleSubmitEditeNaturalPersonForm}"
-      onformupdate="${handleUpdateEditeNaturalPersonForm}"
+      onformsubmit="${handleSubmitEditNaturalPersonForm}"
+      onformupdate="${handleUpdateEditNaturalPersonForm}"
       validation=${validation}>
       <sling-input
         type="text"
@@ -98,7 +98,7 @@ export const getRenderNaturalPersonForm = (
       <sling-input
         type="text"
         name="additionalDocumentIssuedBy"
-        label="Orgão expeditor"
+        label="Órgão expedidor"
         value="${fields.additionalDocumentIssuedBy}">
       </sling-input>
 
@@ -148,7 +148,7 @@ export const getRenderNaturalPersonForm = (
       </sling-button>
       <sling-button
         name="cancel"
-        onclick="${handleStopEditeNaturalPerson}"
+        onclick="${handleStopEditNaturalPerson}"
         color="secondary">
         Cancelar
       </sling-button>

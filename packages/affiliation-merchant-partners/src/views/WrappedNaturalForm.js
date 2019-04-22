@@ -3,15 +3,15 @@ import { getRenderNaturalPersonForm } from './RenderNaturalPersonFormView.js';
 
 export const getWrappedNaturalFormView = (
   state,
-  handleStopEditeNaturalPerson, // stop
-  handleSubmitEditeNaturalPersonForm, // submit form
-  handleUpdateEditeNaturalPersonForm, // update form
+  handleStopEditNaturalPerson, // stop
+  handleSubmitEditNaturalPersonForm, // submit form
+  handleUpdateEditNaturalPersonForm, // update form
   handleDeleteNaturalPerson, // delet partner
 ) => html`
   <div class="business-component__form_natural">
     <div class="business-component__inner_natural">
       <svg
-        onclick="${handleStopEditeNaturalPerson}"
+        onclick="${handleStopEditNaturalPerson}"
         class="business-component__close"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -22,9 +22,9 @@ export const getWrappedNaturalFormView = (
       </svg>
     ${getRenderNaturalPersonForm(
     state,
-    handleSubmitEditeNaturalPersonForm,
-    handleUpdateEditeNaturalPersonForm,
-    handleStopEditeNaturalPerson,
+    handleSubmitEditNaturalPersonForm,
+    handleUpdateEditNaturalPersonForm,
+    handleStopEditNaturalPerson,
     handleDeleteNaturalPerson,
   )}
     </div>

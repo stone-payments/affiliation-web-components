@@ -21,23 +21,23 @@ export const AffiliationMerchantPartners = (base = class {}) =>
     constructor() {
       super();
 
-      this.handleUpdateEditeLegalPersonForm =
-        this.handleUpdateEditeLegalPersonForm.bind(this);
-      this.handleSubmitEditeLegalPersonForm =
-        this.handleSubmitEditeLegalPersonForm.bind(this);
-      this.handleStartEditeLegalPerson =
-        this.handleStartEditeLegalPerson.bind(this);
-      this.handleStopEditeLegalPerson =
-        this.handleStopEditeLegalPerson.bind(this);
+      this.handleUpdateEditLegalPersonForm =
+        this.handleUpdateEditLegalPersonForm.bind(this);
+      this.handleSubmitEditLegalPersonForm =
+        this.handleSubmitEditLegalPersonForm.bind(this);
+      this.handleStartEditLegalPerson =
+        this.handleStartEditLegalPerson.bind(this);
+      this.handleStopEditLegalPerson =
+        this.handleStopEditLegalPerson.bind(this);
 
-      this.handleUpdateEditeNaturalPersonForm =
-        this.handleUpdateEditeNaturalPersonForm.bind(this);
-      this.handleSubmitEditeNaturalPersonForm =
-        this.handleSubmitEditeNaturalPersonForm.bind(this);
-      this.handleStartEditeNaturalPerson =
-        this.handleStartEditeNaturalPerson.bind(this);
-      this.handleStopEditeNaturalPerson =
-        this.handleStopEditeNaturalPerson.bind(this);
+      this.handleUpdateEditNaturalPersonForm =
+        this.handleUpdateEditNaturalPersonForm.bind(this);
+      this.handleSubmitEditNaturalPersonForm =
+        this.handleSubmitEditNaturalPersonForm.bind(this);
+      this.handleStartEditNaturalPerson =
+        this.handleStartEditNaturalPerson.bind(this);
+      this.handleStopEditNaturalPerson =
+        this.handleStopEditNaturalPerson.bind(this);
 
       this.handleStartCreatePartner =
         this.handleStartCreatePartner.bind(this);
@@ -123,11 +123,13 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           ])
           .then((responses) => {
             const partners = PartnersModel(responses);
-            this.setState({ partners });
+            this.setState({
+              partners,
+            });
           });
       }
 
-      this.handleStopEditeNaturalPerson();
+      this.handleStopEditNaturalPerson();
     }
 
     // create partner
@@ -160,15 +162,17 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           ])
           .then((responses) => {
             const partners = PartnersModel(responses);
-            this.setState({ partners });
+            this.setState({
+              partners,
+            });
           });
       }
 
-      this.handleStopEditeNaturalPerson();
+      this.handleStopEditNaturalPerson();
     }
 
-    // Edite legal person.
-    handleUpdateEditeLegalPersonForm(evt) {
+    // Edit legal person.
+    handleUpdateEditLegalPersonForm(evt) {
       if (evt.detail) {
         this.setState({
           legalPersonformData: evt.detail,
@@ -178,16 +182,16 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       }
     }
 
-    handleStartEditeLegalPerson(evt) {
+    handleStartEditLegalPerson(evt) {
       this.isEditingLegalPerson = true;
-      this.handleUpdateEditeLegalPersonForm(evt);
+      this.handleUpdateEditLegalPersonForm(evt);
     }
 
-    handleStopEditeLegalPerson() {
+    handleStopEditLegalPerson() {
       this.isEditingLegalPerson = false;
     }
 
-    handleSubmitEditeLegalPersonForm(evt) {
+    handleSubmitEditLegalPersonForm(evt) {
       if (evt.detail) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
@@ -208,11 +212,11 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           });
       }
 
-      this.handleStopEditeLegalPerson();
+      this.handleStopEditLegalPerson();
     }
 
-    // Edite natural person
-    handleUpdateEditeNaturalPersonForm(evt) {
+    // Edit natural person
+    handleUpdateEditNaturalPersonForm(evt) {
       if (evt.detail) {
         this.setState({
           naturalPersonformData: evt.detail,
@@ -222,16 +226,16 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       }
     }
 
-    handleStartEditeNaturalPerson(evt) {
+    handleStartEditNaturalPerson(evt) {
       this.isEditingNaturalPerson = true;
-      this.handleUpdateEditeNaturalPersonForm(evt);
+      this.handleUpdateEditNaturalPersonForm(evt);
     }
 
-    handleStopEditeNaturalPerson() {
+    handleStopEditNaturalPerson() {
       this.isEditingNaturalPerson = false;
     }
 
-    handleSubmitEditeNaturalPersonForm(evt) {
+    handleSubmitEditNaturalPersonForm(evt) {
       if (evt.detail) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
@@ -252,7 +256,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           });
       }
 
-      this.handleStopEditeNaturalPerson();
+      this.handleStopEditNaturalPerson();
     }
 
     static get requestParamNames() {
@@ -260,16 +264,23 @@ export const AffiliationMerchantPartners = (base = class {}) =>
     }
 
     // List partners
-    fetchData({ affiliationCode }) {
+    fetchData({
+      affiliationCode,
+    }) {
       if (affiliationCode) {
         this
           .request([
-            sdk.affiliation.partners.get({ affiliationCode }),
+            sdk.affiliation.partners.get({
+              affiliationCode,
+            }),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
               const partners = PartnersModel(responses);
-              this.setState({ partners, affiliationCode });
+              this.setState({
+                partners,
+                affiliationCode,
+              });
             }
           });
       }
