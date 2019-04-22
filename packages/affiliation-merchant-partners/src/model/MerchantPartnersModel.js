@@ -27,7 +27,6 @@ export const PartnersModel = ([{ data }]) => {
     naturalPersons: [],
     legalPersons: [],
   };
-  console.log('data', data);
 
   return data.reduce((allPartners, partner) => {
     if (partner.naturalPerson) {
@@ -52,8 +51,6 @@ export const PartnersModel = ([{ data }]) => {
         additionalDocumentIdentifier: additionalDocument.documentIdentifier,
         additionalDocumentIssueDate: formatDate(additionalDocument.issueDate),
         additionalDocumentIssuedBy: additionalDocument.issuedBy,
-        estimatedMonthlyBilling:
-        partner.naturalPerson.estimatedMonthlyBilling || '',
         partnerType: 'natural',
 
         displayAdditionalDocumentIssueDate:
@@ -68,9 +65,7 @@ export const PartnersModel = ([{ data }]) => {
         tradeName: partner.legalPerson.tradeName,
         taxId: partner.legalPerson.taxId,
         document: partner.legalPerson.taxIdType.name,
-        documenttypeId: partner.legalPerson.taxIdType.id,
-        estimatedMonthlyBilling:
-          partner.legalPerson.estimatedMonthlyBilling || '',
+        documentTypeId: partner.legalPerson.taxIdType.id,
         partnerType: 'legal',
       };
       allPartners.legalPersons.push(modeledPartner);
