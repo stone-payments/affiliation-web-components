@@ -38,17 +38,24 @@ export const getRenderNaturalPersonForm = (
       onformupdate="${handleUpdateEditeNaturalPersonForm}"
       validation=${validation}>
       <sling-input
-        type="hidden"
-        name="key"
-        label="Nome"
-        value="${fields.key}">
-      </sling-input>
-      <sling-input
         type="text"
         name="name"
         label="Nome"
         value="${fields.name}">
       </sling-input>
+      <sling-select
+        label="Documento"
+        name="documentTypeId"
+        value="${fields.documentTypeId}"
+        srcoptions="${documentTypeIds}">
+      </sling-select>
+      <sling-input
+        type="text"
+        name="taxId"
+        label="N° do documento"
+        value="${fields.taxId}">
+      </sling-input>
+
       <sling-input
         type="date"
         name="birthDate"
@@ -68,18 +75,8 @@ export const getRenderNaturalPersonForm = (
         label="Local de Nascimento"
         value="${fields.birthPlace}">
       </sling-input>
-      <sling-select
-        label="Documento"
-        name="documentTypeId"
-        value="${fields.documentTypeId}"
-        srcoptions="${documentTypeIds}">
-      </sling-select>
-      <sling-input
-        type="text"
-        name="taxId"
-        label="N° do documento"
-        value="${fields.taxId}">
-      </sling-input>
+
+
       <sling-select
         label="Documento Adicional"
         name="additionalDocumentId"
@@ -104,6 +101,7 @@ export const getRenderNaturalPersonForm = (
         label="Orgão expeditor"
         value="${fields.additionalDocumentIssuedBy}">
       </sling-input>
+
       <sling-input
         type="text"
         name="fatherName"
@@ -134,23 +132,31 @@ export const getRenderNaturalPersonForm = (
         label="N° do documento do cônjuge"
         value="${fields.spouseTaxId}">
       </sling-input>
+
+
+      <sling-input
+        type="hidden"
+        name="key"
+        value="${fields.key}">
+      </sling-input>
+
       <sling-button
-        name="delet"
+        name="delete"
         onclick="${() => handleDeleteNaturalPerson(fields.key)}"
         color="danger">
         Deletar sócio
-      </sling-button>
-      <sling-button
-        name="save"
-        color="success"
-        type="submit">
-        Enviar
       </sling-button>
       <sling-button
         name="cancel"
         onclick="${handleStopEditeNaturalPerson}"
         color="secondary">
         Cancelar
+      </sling-button>
+      <sling-button
+        name="save"
+        color="success"
+        type="submit">
+        Enviar
       </sling-button>
     </sling-form>
 
