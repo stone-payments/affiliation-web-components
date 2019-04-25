@@ -12,7 +12,7 @@ export const formatDate = (date, target) => {
   const year = tempDate.getFullYear();
 
   day = (day.length === DATE_LENGTH_VERIFY_NUMBER) ? `0${day}` : day;
-  month = (month.length === DATE_LENGTH_VERIFY_NMBER) ? `0${month}` : month;
+  month = (month.length === DATE_LENGTH_VERIFY_NUMBER) ? `0${month}` : month;
 
   if (target === 'display') {
     return `${day}/${month}/${year}`;
