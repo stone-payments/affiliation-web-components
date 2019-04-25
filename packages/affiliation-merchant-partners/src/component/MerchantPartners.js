@@ -1,9 +1,5 @@
 import { withRequest, withSetState } from 'sling-framework';
 import { v0 as sdk } from 'customer-js-sdk';
-import 'sling-web-component-table';
-import 'sling-web-component-loader';
-import 'sling-web-component-message';
-import 'sling-web-component-button';
 import { getMerchantPartnersView } from '../views/MerchantPartnersView';
 import {
   PartnersModel,
