@@ -4,8 +4,8 @@ import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
 import {
-  documentTypeIds,
-  additionalDocumentTypeIds,
+  documentTypes,
+  additionalDocumentTypes,
   countryCodes,
 } from '../state/MerchantPartnersState.js';
 
@@ -15,7 +15,7 @@ const validation = [
   isNotEmpty('taxId'),
   isNotEmpty('birthDate'),
   isNotEmpty('birthPlace'),
-  isNotEmpty('birthCountryid'),
+  isNotEmpty('birthCountryId'),
   isNotEmpty('additionalDocumentId'),
   isNotEmpty('additionalDocumentIdentifier'),
   isNotEmpty('additionalDocumentIssueDate'),
@@ -31,7 +31,7 @@ export const getRenderNaturalPersonForm = (
   handleDeleteNaturalPerson,
 ) => {
   const fields = state.naturalPersonformData || {};
-
+  console.log(state);
   return html`
     <sling-form
       onformsubmit="${handleSubmitEditNaturalPersonForm}"
@@ -47,7 +47,7 @@ export const getRenderNaturalPersonForm = (
         label="Documento"
         name="documentTypeId"
         value="${fields.documentTypeId}"
-        srcoptions="${documentTypeIds}">
+        srcoptions="${documentTypes}">
       </sling-select>
       <sling-input
         type="text"
@@ -63,10 +63,10 @@ export const getRenderNaturalPersonForm = (
       </sling-input>
       <sling-select
         type="text"
-        name="birthCountryid"
+        name="birthCountryId"
         label="País de Nascimento"
         srcoptions="${countryCodes}"
-        value="${fields.birthCountryid}">
+        value="${fields.birthCountryId}">
       </sling-select>
       <sling-input
         type="text"
@@ -78,7 +78,7 @@ export const getRenderNaturalPersonForm = (
         label="Documento Adicional"
         name="additionalDocumentId"
         value="${fields.additionalDocumentId}"
-        srcoptions="${additionalDocumentTypeIds}">
+        srcoptions="${additionalDocumentTypes}">
       </sling-select>
       <sling-input
         type="text"
@@ -119,7 +119,7 @@ export const getRenderNaturalPersonForm = (
       <sling-select
         label="Documento"
         name="spouseTaxIdType"
-        srcoptions="${documentTypeIds}"
+        srcoptions="${documentTypes}"
         value="${fields.spouseTaxIdType}">
       </sling-select>
       <sling-input
@@ -137,7 +137,7 @@ export const getRenderNaturalPersonForm = (
         name="delete"
         onclick="${() => handleDeleteNaturalPerson(fields.key)}"
         color="danger">
-        Deletar sócio
+        Remover sócio
       </sling-button>
       <sling-button
         name="cancel"
