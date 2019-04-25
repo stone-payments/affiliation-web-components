@@ -11,7 +11,7 @@ export const formatDate = (date, target) => {
   let month = (tempDate.getMonth() + MONTH_SUM_NUMBER).toString();
   const year = tempDate.getFullYear();
 
-  day = (day.length === DATE_LENGTH_VERIFY_NMBER) ? `0${day}` : day;
+  day = (day.length === DATE_LENGTH_VERIFY_NUMBER) ? `0${day}` : day;
   month = (month.length === DATE_LENGTH_VERIFY_NMBER) ? `0${month}` : month;
 
   if (target === 'display') {
