@@ -6,6 +6,7 @@ import 'sling-web-component-form';
 import {
   additionalDocumentTypes,
   documentTypes,
+  displayDefaultBirthCountry,
 } from '../state/MerchantPartnersState.js';
 
 
@@ -56,7 +57,7 @@ export const getRenderCreatePartnerForm = (
       name="birthCountryId"
       placeholder="selecione um país"
       label="País de Nascimento"
-      srcoptions="${state.countries}">
+      srcoptions="${displayDefaultBirthCountry}">
     </sling-select>
     <sling-input
       type="text"
