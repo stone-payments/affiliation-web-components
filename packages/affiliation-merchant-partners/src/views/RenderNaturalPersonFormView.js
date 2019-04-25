@@ -31,7 +31,6 @@ export const getRenderNaturalPersonForm = (
   handleDeleteNaturalPerson,
 ) => {
   const fields = state.naturalPersonformData || {};
-  console.log(state);
   return html`
     <sling-form
       onformsubmit="${handleSubmitEditNaturalPersonForm}"
