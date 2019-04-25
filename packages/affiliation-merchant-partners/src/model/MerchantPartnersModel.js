@@ -72,7 +72,7 @@ export const PartnersModel = ([{ data }]) => {
         tradeName: partner.legalPerson.tradeName,
         taxId: partner.legalPerson.taxId,
         documentTypeName: partner.legalPerson.taxIdType.name,
-        documentTypeId: partner.legalPerson.taxIdType.Id,
+        documentTypeId: partner.legalPerson.taxIdType.id,
         partnerType: 'legal',
       };
       allPartners.legalPartners.push(modeledPartner);
