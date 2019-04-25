@@ -77,7 +77,7 @@ export const getRenderCreatePartnerForm = (
     <sling-input
       type="date"
       name="additionalDocumentIssueDate"
-      label="Data de expedição">
+      label="Data de Emissão">
     </sling-input>
     <sling-input
       type="text"

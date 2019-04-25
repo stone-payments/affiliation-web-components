@@ -88,7 +88,7 @@ export const getRenderNaturalPartnerForm = (
       <sling-input
         type="date"
         name="additionalDocumentIssueDate"
-        label="Data de expedição"
+        label="Data de Emissão"
         value="${fields.additionalDocumentIssueDate}">
       </sling-input>
       <sling-input

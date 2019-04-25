@@ -31,7 +31,7 @@ const naturalPartnerColumns = [{
   title: 'Data de Nascimento',
   field: 'displayBirthDate',
 }, {
-  title: 'Cidade de nascimento',
+  title: 'Cidade de Nascimento',
   field: 'birthPlace',
 }, {
   title: 'RG',
