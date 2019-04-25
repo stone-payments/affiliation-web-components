@@ -18,23 +18,23 @@ export const AffiliationMerchantPartners = (base = class {}) =>
     constructor() {
       super();
 
-      this.handleUpdateEditLegalPersonForm =
-        this.handleUpdateEditLegalPersonForm.bind(this);
-      this.handleSubmitEditLegalPersonForm =
-        this.handleSubmitEditLegalPersonForm.bind(this);
-      this.handleStartEditLegalPerson =
-        this.handleStartEditLegalPerson.bind(this);
-      this.handleStopEditLegalPerson =
-        this.handleStopEditLegalPerson.bind(this);
+      this.handleUpdateEditLegalPartnerForm =
+        this.handleUpdateEditLegalPartnerForm.bind(this);
+      this.handleSubmitEditLegalPartnerForm =
+        this.handleSubmitEditLegalPartnerForm.bind(this);
+      this.handleStartEditLegalPartner =
+        this.handleStartEditLegalPartner.bind(this);
+      this.handleStopEditLegalPartner =
+        this.handleStopEditLegalPartner.bind(this);
 
-      this.handleUpdateEditNaturalPersonForm =
-        this.handleUpdateEditNaturalPersonForm.bind(this);
-      this.handleSubmitEditNaturalPersonForm =
-        this.handleSubmitEditNaturalPersonForm.bind(this);
-      this.handleStartEditNaturalPerson =
-        this.handleStartEditNaturalPerson.bind(this);
-      this.handleStopEditNaturalPerson =
-        this.handleStopEditNaturalPerson.bind(this);
+      this.handleUpdateEditNaturalPartnerForm =
+        this.handleUpdateEditNaturalPartnerForm.bind(this);
+      this.handleSubmitEditNaturalPartnerForm =
+        this.handleSubmitEditNaturalPartnerForm.bind(this);
+      this.handleStartEditNaturalPartner =
+        this.handleStartEditNaturalPartner.bind(this);
+      this.handleStopEditNaturalPartner =
+        this.handleStopEditNaturalPartner.bind(this);
 
       this.handleStartCreatePartner =
         this.handleStartCreatePartner.bind(this);
@@ -43,17 +43,17 @@ export const AffiliationMerchantPartners = (base = class {}) =>
       this.handleStopCreatePartner =
         this.handleStopCreatePartner.bind(this);
 
-      this.handleDeleteNaturalPerson =
-        this.handleDeleteNaturalPerson.bind(this);
+      this.handleDeleteNaturalPartner =
+        this.handleDeleteNaturalPartner.bind(this);
 
       this.state = {
         partners: {
-          naturalPersons: [],
-          legalPerson: [],
+          naturalPartners: [],
+          legalPartners: [],
         },
         countries: [],
-        legalPersonformData: {},
-        naturalPersonformData: {},
+        legalPartnerformData: {},
+        naturalPartnerformData: {},
       };
     }
 
@@ -83,19 +83,19 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           type: Boolean,
           reflectToAttribute: true,
         },
-        naturalPersons: {
+        naturalPartners: {
           type: Boolean,
           reflectToAttribute: true,
         },
-        legalPersons: {
+        legalPartners: {
           type: Boolean,
           reflectToAttribute: true,
         },
-        isEditingLegalPerson: {
+        isEditingLegalPartner: {
           type: Boolean,
           reflectToAttribute: true,
         },
-        isEditingNaturalPerson: {
+        isEditingNaturalPartner: {
           type: Boolean,
           reflectToAttribute: true,
         },
@@ -103,7 +103,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
     }
 
     // delet partner
-    handleDeleteNaturalPerson(key) {
+    handleDeleteNaturalPartner(key) {
       if (key) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
@@ -127,7 +127,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           });
       }
 
-      this.handleStopEditNaturalPerson();
+      this.handleStopEditNaturalPartner();
     }
 
     // create partner
@@ -166,30 +166,30 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           });
       }
 
-      this.handleStopEditNaturalPerson();
+      this.handleStopEditNaturalPartner();
     }
 
-    // Edit legal person.
-    handleUpdateEditLegalPersonForm(evt) {
+    // Edit legal Partner.
+    handleUpdateEditLegalPartnerForm(evt) {
       if (evt.detail) {
         this.setState({
-          legalPersonformData: evt.detail,
+          legalPartnerformData: evt.detail,
         });
       } else {
         evt.stopPropagation();
       }
     }
 
-    handleStartEditLegalPerson(evt) {
-      this.isEditingLegalPerson = true;
-      this.handleUpdateEditLegalPersonForm(evt);
+    handleStartEditLegalPartner(evt) {
+      this.isEditingLegalPartner = true;
+      this.handleUpdateEditLegalPartnerForm(evt);
     }
 
-    handleStopEditLegalPerson() {
-      this.isEditingLegalPerson = false;
+    handleStopEditLegalPartner() {
+      this.isEditingLegalPartner = false;
     }
 
-    handleSubmitEditLegalPersonForm(evt) {
+    handleSubmitEditLegalPartnerForm(evt) {
       if (evt.detail) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
@@ -210,30 +210,30 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           });
       }
 
-      this.handleStopEditLegalPerson();
+      this.handleStopEditLegalPartner();
     }
 
-    // Edit natural person
-    handleUpdateEditNaturalPersonForm(evt) {
+    // Edit natural Partner
+    handleUpdateEditNaturalPartnerForm(evt) {
       if (evt.detail) {
         this.setState({
-          naturalPersonformData: evt.detail,
+          naturalPartnerformData: evt.detail,
         });
       } else {
         evt.stopPropagation();
       }
     }
 
-    handleStartEditNaturalPerson(evt) {
-      this.isEditingNaturalPerson = true;
-      this.handleUpdateEditNaturalPersonForm(evt);
+    handleStartEditNaturalPartner(evt) {
+      this.isEditingNaturalPartner = true;
+      this.handleUpdateEditNaturalPartnerForm(evt);
     }
 
-    handleStopEditNaturalPerson() {
-      this.isEditingNaturalPerson = false;
+    handleStopEditNaturalPartner() {
+      this.isEditingNaturalPartner = false;
     }
 
-    handleSubmitEditNaturalPersonForm(evt) {
+    handleSubmitEditNaturalPartnerForm(evt) {
       if (evt.detail) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
@@ -255,7 +255,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           });
       }
 
-      this.handleStopEditNaturalPerson();
+      this.handleStopEditNaturalPartner();
     }
 
     static get requestParamNames() {

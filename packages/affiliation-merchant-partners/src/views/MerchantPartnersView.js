@@ -1,9 +1,14 @@
+import 'sling-web-component-message';
+import 'sling-web-component-loader';
+import 'sling-web-component-table';
+import 'sling-web-component-button';
+
 import { html } from 'sling-framework';
 import { getWrappedLegalFormView } from './WrappedLegalForm.js';
 import { getWrappedNaturalFormView } from './WrappedNaturalForm.js';
 import { getWrappedCreatePartnerFormView } from './WrappedCreatePartnerForm.js';
 
-const LegalPersonColumns = [{
+const LegalPartnerColumns = [{
   title: 'Nome Fantasia',
   field: 'tradeName',
 }, {
@@ -12,7 +17,7 @@ const LegalPersonColumns = [{
   type: 'cnpj',
 }];
 
-const naturalPersonColumns = [{
+const naturalPartnerColumns = [{
   title: 'Nome',
   field: 'name',
 }, {
@@ -45,22 +50,22 @@ export const getMerchantPartnersView = ({
   state,
   editable,
   addable,
-  naturalPersons,
-  legalPersons,
+  naturalPartners,
+  legalPartners,
   isLoading,
   requestErrors,
   handleStartCreatePartner,
   handleStopCreatePartner,
   handleSubmitCreatePartner,
-  handleStartEditLegalPerson,
-  handleStopEditLegalPerson,
-  handleSubmitEditLegalPersonForm,
-  handleUpdateEditLegalPersonForm,
-  handleStartEditNaturalPerson,
-  handleStopEditNaturalPerson,
-  handleSubmitEditNaturalPersonForm,
-  handleUpdateEditNaturalPersonForm,
-  handleDeleteNaturalPerson,
+  handleStartEditLegalPartner,
+  handleStopEditLegalPartner,
+  handleSubmitEditLegalPartnerForm,
+  handleUpdateEditLegalPartnerForm,
+  handleStartEditNaturalPartner,
+  handleStopEditNaturalPartner,
+  handleSubmitEditNaturalPartnerForm,
+  handleUpdateEditNaturalPartnerForm,
+  handleDeleteNaturalPartner,
 }) => html`
     <style>
       @import url('affiliation-merchant-partners/src/index.css');
@@ -77,16 +82,16 @@ export const getMerchantPartnersView = ({
 
     ${getWrappedLegalFormView(
     state,
-    handleStopEditLegalPerson,
-    handleSubmitEditLegalPersonForm,
-    handleUpdateEditLegalPersonForm)}
-    ${legalPersons
+    handleStopEditLegalPartner,
+    handleSubmitEditLegalPartnerForm,
+    handleUpdateEditLegalPartnerForm)}
+    ${legalPartners
     ? html`
       <sling-table
-        onrowclicked="${handleStartEditLegalPerson}"
+        onrowclicked="${handleStartEditLegalPartner}"
         editable="${editable}"
-        srcdata="${state.partners.legalPersons}"
-        srccolumns="${LegalPersonColumns}">
+        srcdata="${state.partners.legalPartners}"
+        srccolumns="${LegalPartnerColumns}">
       </sling-table>
       `
     : ''}
@@ -108,17 +113,17 @@ export const getMerchantPartnersView = ({
     ` : ''}
     ${getWrappedNaturalFormView(
     state,
-    handleStopEditNaturalPerson,
-    handleSubmitEditNaturalPersonForm,
-    handleUpdateEditNaturalPersonForm,
-    handleDeleteNaturalPerson)}
-    ${naturalPersons
+    handleStopEditNaturalPartner,
+    handleSubmitEditNaturalPartnerForm,
+    handleUpdateEditNaturalPartnerForm,
+    handleDeleteNaturalPartner)}
+    ${naturalPartners
     ? html`
       <sling-table
-        onrowclicked="${handleStartEditNaturalPerson}"
+        onrowclicked="${handleStartEditNaturalPartner}"
         editable="${editable}"
-        srcdata="${state.partners.naturalPersons}"
-        srccolumns="${naturalPersonColumns}">
+        srcdata="${state.partners.naturalPartners}"
+        srccolumns="${naturalPartnerColumns}">
       </sling-table>
       `
     : ''}

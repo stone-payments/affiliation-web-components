@@ -70,7 +70,7 @@ describe('Merchant Partners Model', () => {
     ];
 
     const mockModeledResponse = {
-      naturalPersons: [
+      naturalPartners: [
         {
           key: 'test',
           name: 'Nome Completo',
@@ -94,7 +94,7 @@ describe('Merchant Partners Model', () => {
           displayBirthDate: '06/02/1984',
         },
       ],
-      legalPersons: [
+      legalPartners: [
         {
           key: 'test',
           tradeName: 'Campbelo Gestora',

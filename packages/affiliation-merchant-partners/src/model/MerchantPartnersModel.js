@@ -31,8 +31,8 @@ const findByDocumentTypeId = data =>
 export const PartnersModel = ([{ data }]) => {
   const modeledPartnersData =
   {
-    naturalPersons: [],
-    legalPersons: [],
+    naturalPartners: [],
+    legalPartners: [],
   };
 
   return data.reduce((allPartners, partner) => {
@@ -65,7 +65,7 @@ export const PartnersModel = ([{ data }]) => {
         displayBirthDate:
           formatDate(partner.naturalPerson.birthdate, 'display'),
       };
-      allPartners.naturalPersons.push(modeledPartner);
+      allPartners.naturalPartners.push(modeledPartner);
     } else {
       const modeledPartner = {
         key: partner.legalPerson.key,
@@ -75,7 +75,7 @@ export const PartnersModel = ([{ data }]) => {
         documentTypeId: partner.legalPerson.taxIdType.id,
         partnerType: 'legal',
       };
-      allPartners.legalPersons.push(modeledPartner);
+      allPartners.legalPartners.push(modeledPartner);
     }
     return allPartners;
   }, modeledPartnersData);

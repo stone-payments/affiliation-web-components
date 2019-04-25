@@ -8,19 +8,19 @@ const validation = [
   isNotEmpty('tradeName'),
 ];
 
-export const getRenderLegalPersonForm = (
+export const getRenderLegalPartnerForm = (
   state,
-  handleSubmitEditLegalPersonForm,
-  handleUpdateEditLegalPersonForm,
+  handleSubmitEditLegalPartnerForm,
+  handleUpdateEditLegalPartnerForm,
 ) => {
-  const fields = state.legalPersonformData || {};
+  const fields = state.legalPartnerformData || {};
 
   // @TODO: DECIDIR COM BASE NAS REGRAS DE NEGOCIO O QUE SERA EDITAVEL
 
   return html`
     <sling-form
-      onformsubmit="${handleSubmitEditLegalPersonForm}"
-      onformupdate="${handleUpdateEditLegalPersonForm}"
+      onformsubmit="${handleSubmitEditLegalPartnerForm}"
+      onformupdate="${handleUpdateEditLegalPartnerForm}"
       validation=${validation}>
       <sling-input
         type="text"

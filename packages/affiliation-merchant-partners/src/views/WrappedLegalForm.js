@@ -1,16 +1,16 @@
 import { html } from 'sling-framework';
-import { getRenderLegalPersonForm } from './RenderLegalPersonFormView.js';
+import { getRenderLegalPartnerForm } from './RenderLegalPartnerFormView.js';
 
 export const getWrappedLegalFormView = (
   state,
-  handleStopEditLegalPerson, // stop
-  handleSubmitEditLegalPersonForm, // submit form
-  handleUpdateEditLegalPersonForm, // update form
+  handleStopEditLegalPartner, // stop
+  handleSubmitEditLegalPartnerForm, // submit form
+  handleUpdateEditLegalPartnerForm, // update form
 ) => html`
   <div class="business-component__form_legal">
     <div class="business-component__inner_legal">
       <svg
-        onclick="${handleStopEditLegalPerson}"
+        onclick="${handleStopEditLegalPartner}"
         class="business-component__close"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -19,7 +19,7 @@ export const getWrappedLegalFormView = (
           <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           <path d="M0 0h24v24H0z" fill="none"/>
       </svg>
-      ${getRenderLegalPersonForm(state, handleSubmitEditLegalPersonForm, handleUpdateEditLegalPersonForm)}
+      ${getRenderLegalPartnerForm(state, handleSubmitEditLegalPartnerForm, handleUpdateEditLegalPartnerForm)}
     </div>
   </div>
   `;

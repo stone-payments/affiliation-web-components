@@ -6,7 +6,7 @@ import 'sling-web-component-form';
 import {
   documentTypes,
   additionalDocumentTypes,
-  countryCodes,
+  displayDefaultBirthCountry,
 } from '../state/MerchantPartnersState.js';
 
 const validation = [
@@ -23,18 +23,18 @@ const validation = [
   isNotEmpty('motherName'),
 ];
 
-export const getRenderNaturalPersonForm = (
+export const getRenderNaturalPartnerForm = (
   state,
-  handleSubmitEditNaturalPersonForm,
-  handleUpdateEditNaturalPersonForm,
-  handleStopEditNaturalPerson,
-  handleDeleteNaturalPerson,
+  handleSubmitEditNaturalPartnerForm,
+  handleUpdateEditNaturalPartnerForm,
+  handleStopEditNaturalPartner,
+  handleDeleteNaturalPartner,
 ) => {
-  const fields = state.naturalPersonformData || {};
+  const fields = state.naturalPartnerformData || {};
   return html`
     <sling-form
-      onformsubmit="${handleSubmitEditNaturalPersonForm}"
-      onformupdate="${handleUpdateEditNaturalPersonForm}"
+      onformsubmit="${handleSubmitEditNaturalPartnerForm}"
+      onformupdate="${handleUpdateEditNaturalPartnerForm}"
       validation=${validation}>
       <sling-input
         type="text"
@@ -64,7 +64,7 @@ export const getRenderNaturalPersonForm = (
         type="text"
         name="birthCountryId"
         label="País de Nascimento"
-        srcoptions="${countryCodes}"
+        srcoptions="${displayDefaultBirthCountry}"
         value="${fields.birthCountryId}">
       </sling-select>
       <sling-input
@@ -134,13 +134,13 @@ export const getRenderNaturalPersonForm = (
       </sling-input>
       <sling-button
         name="delete"
-        onclick="${() => handleDeleteNaturalPerson(fields.key)}"
+        onclick="${() => handleDeleteNaturalPartner(fields.key)}"
         color="danger">
         Remover sócio
       </sling-button>
       <sling-button
         name="cancel"
-        onclick="${handleStopEditNaturalPerson}"
+        onclick="${handleStopEditNaturalPartner}"
         color="secondary">
         Cancelar
       </sling-button>

@@ -46,7 +46,7 @@ sling-button[name="delete"] {
 
 
 /* ------------ */
-/* Legal person */
+/* Legal partner */
 /* ------------ */
 .business-component__form_legal {
   position: fixed;
@@ -84,7 +84,7 @@ sling-input[name="tradeName"] {
 
 
 /* -------------- */
-/* Natural person */
+/* Natural partner */
 /* -------------- */
 .business-component__form_natural {
   position: fixed;
