@@ -106,8 +106,6 @@ export const PayloadNaturalModel = data => ({
   ],
 });
 
-export const CountriesModel = (_, data) => data;
-
 export const PartnersNaturalFormResponseModel = data => data;
 
 export const PayloadCreatePartnerlModel = data => data;
