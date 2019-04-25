@@ -12,6 +12,7 @@ import {
   PartnersLegalFormResponseModel,
   PartnersNaturalFormResponseModel,
   PayloadCreatePartnerlModel,
+  CountriesModel,
 } from '../model/MerchantPartnersModel.js';
 
 const notEmpty = arg => arg != null;
@@ -54,6 +55,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           naturalPersons: [],
           legalPerson: [],
         },
+        countries: [],
         legalPersonformData: {},
         naturalPersonformData: {},
       };
@@ -241,6 +243,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           affiliationCode: this.state.affiliationCode,
           key: evt.detail.key,
         };
+
         const payload = PayloadNaturalModel(evt.detail);
 
         this
@@ -273,12 +276,16 @@ export const AffiliationMerchantPartners = (base = class {}) =>
             sdk.affiliation.partners.get({
               affiliationCode,
             }),
+            sdk.affiliation.countries.get(),
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
               const partners = PartnersModel(responses);
+              const countries = CountriesModel(responses);
+
               this.setState({
                 partners,
+                countries,
                 affiliationCode,
               });
             }
