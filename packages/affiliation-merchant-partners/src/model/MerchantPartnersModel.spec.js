@@ -81,7 +81,7 @@ describe('Merchant Partners Model', () => {
           spouseTaxIdType: 2,
           birthDate: '1984-02-06',
           birthPlace: 'Rio de Janeiro',
-          birthCountryid: 76,
+          birthCountryId: 76,
           taxId: 11144455578,
           document: 'CPF',
           documentTypeId: 2,
