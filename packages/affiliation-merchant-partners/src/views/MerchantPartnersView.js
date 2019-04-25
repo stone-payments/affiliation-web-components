@@ -1,5 +1,4 @@
 import { html } from 'sling-framework';
-import '@stone-payments/emd-basic-table';
 import { getWrappedLegalFormView } from './WrappedLegalForm.js';
 import { getWrappedNaturalFormView } from './WrappedNaturalForm.js';
 import { getWrappedCreatePartnerFormView } from './WrappedCreatePartnerForm.js';
@@ -33,7 +32,7 @@ const naturalPersonColumns = [{
   title: 'RG',
   field: 'additionalDocumentIdentifier',
 }, {
-  title: 'Emissão',
+  title: 'Data de Emissão',
   field: 'displayAdditionalDocumentIssueDate',
 }, {
   title: 'Expedidor',
