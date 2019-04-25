@@ -30,7 +30,7 @@ export const getRenderNaturalPartnerForm = (
   handleStopEditNaturalPartner,
   handleDeleteNaturalPartner,
 ) => {
-  const fields = state.naturalPartnerformData || {};
+  const fields = state.naturalPartnerFormData || {};
   return html`
     <sling-form
       onformsubmit="${handleSubmitEditNaturalPartnerForm}"

@@ -13,7 +13,7 @@ export const getRenderLegalPartnerForm = (
   handleSubmitEditLegalPartnerForm,
   handleUpdateEditLegalPartnerForm,
 ) => {
-  const fields = state.legalPartnerformData || {};
+  const fields = state.legalPartnerFormData || {};
 
   // @TODO: DECIDIR COM BASE NAS REGRAS DE NEGOCIO O QUE SERA EDITAVEL
 
