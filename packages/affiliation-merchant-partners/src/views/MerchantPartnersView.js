@@ -40,7 +40,7 @@ const naturalPartnerColumns = [{
   title: 'Data de Emissão',
   field: 'displayAdditionalDocumentIssueDate',
 }, {
-  title: 'Expedidor',
+  title: 'Órgão Expedidor',
   field: 'additionalDocumentIssuedBy',
 },
 ];
