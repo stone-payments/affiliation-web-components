@@ -1,5 +1,5 @@
 import {
-  DATE_LENGTH_VERIFY_NMBER,
+  DATE_LENGTH_VERIFY_NUMBER,
   RG_DOCUMENT_IDENTIFIER,
   MONTH_SUM_NUMBER,
 } from '../contants/MerchantPartnersModelConstants.js';
