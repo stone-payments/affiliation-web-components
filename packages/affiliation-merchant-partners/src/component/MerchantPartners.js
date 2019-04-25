@@ -50,8 +50,8 @@ export const AffiliationMerchantPartners = (base = class {}) =>
           naturalPartners: [],
           legalPartners: [],
         },
-        legalPartnerformData: {},
-        naturalPartnerformData: {},
+        legalPartnerFormData: {},
+        naturalPartnerFormData: {},
       };
     }
 
@@ -171,7 +171,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
     handleUpdateEditLegalPartnerForm(evt) {
       if (evt.detail) {
         this.setState({
-          legalPartnerformData: evt.detail,
+          legalPartnerFormData: evt.detail,
         });
       } else {
         evt.stopPropagation();
@@ -215,7 +215,7 @@ export const AffiliationMerchantPartners = (base = class {}) =>
     handleUpdateEditNaturalPartnerForm(evt) {
       if (evt.detail) {
         this.setState({
-          naturalPartnerformData: evt.detail,
+          naturalPartnerFormData: evt.detail,
         });
       } else {
         evt.stopPropagation();
