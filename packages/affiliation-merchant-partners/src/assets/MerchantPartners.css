@@ -134,7 +134,7 @@ sling-input[name="birthDate"] {
   grid-column-end: span 2;
 }
 
-sling-select[name="birthCountryid"] {
+sling-select[name="birthCountryId"] {
   grid-column-end: span 2;
 }
 
