@@ -1,11 +1,18 @@
+import {
+  DATE_LENGTH_VERIFY_NMBER,
+  RG_DOCUMENT_IDENTIFIER,
+  MONTH_SUM_NUMBER,
+} from '../contants/MerchantPartnersModelConstants.js';
+
 export const formatDate = (date, target) => {
   const tempDate = new Date(date);
+
   let day = tempDate.getDate().toString();
-  let month = (tempDate.getMonth() + 1).toString();
+  let month = (tempDate.getMonth() + MONTH_SUM_NUMBER).toString();
   const year = tempDate.getFullYear();
 
-  day = (day.length === 1) ? `0${day}` : day;
-  month = (month.length === 1) ? `0${month}` : month;
+  day = (day.length === DATE_LENGTH_VERIFY_NMBER) ? `0${day}` : day;
+  month = (month.length === DATE_LENGTH_VERIFY_NMBER) ? `0${month}` : month;
 
   if (target === 'display') {
     return `${day}/${month}/${year}`;
@@ -19,7 +26,7 @@ export const formatDate = (date, target) => {
 };
 
 const findByDocumentTypeId = data =>
-  data.find(item => item.documentTypeId === 1);
+  data.find(item => item.documentTypeId === RG_DOCUMENT_IDENTIFIER);
 
 export const PartnersModel = ([{ data }]) => {
   const modeledPartnersData =
@@ -43,9 +50,9 @@ export const PartnersModel = ([{ data }]) => {
         spouseTaxIdType: partner.naturalPerson.spouseTaxIdType,
         birthDate: formatDate(partner.naturalPerson.birthdate),
         birthPlace: partner.naturalPerson.birthPlace,
-        birthCountryid: partner.naturalPerson.birthCountry.id,
+        birthCountryId: partner.naturalPerson.birthCountry.id,
         taxId: partner.naturalPerson.taxId,
-        document: partner.naturalPerson.taxIdType.name,
+        documentTypeName: partner.naturalPerson.taxIdType.name,
         documentTypeId: partner.naturalPerson.taxIdType.id,
         additionalDocumentId: additionalDocument.documentTypeId,
         additionalDocumentIdentifier: additionalDocument.documentIdentifier,
@@ -64,7 +71,7 @@ export const PartnersModel = ([{ data }]) => {
         key: partner.legalPerson.key,
         tradeName: partner.legalPerson.tradeName,
         taxId: partner.legalPerson.taxId,
-        document: partner.legalPerson.taxIdType.name,
+        documentTypeName: partner.legalPerson.taxIdType.name,
         documentTypeId: partner.legalPerson.taxIdType.id,
         partnerType: 'legal',
       };
@@ -83,7 +90,7 @@ export const PayloadNaturalModel = data => ({
   name: data.name,
   birthdate: data.birthDate,
   birthPlace: data.birthPlace,
-  birthCountryid: data.birthCountryid,
+  birthCountryId: data.birthCountryId,
   fatherName: data.fatherName,
   motherName: data.motherName,
   spouseTaxId: data.spouseName,
@@ -98,6 +105,9 @@ export const PayloadNaturalModel = data => ({
     },
   ],
 });
+
+export const CountriesModel = (_, data) => data;
+
 export const PartnersNaturalFormResponseModel = data => data;
 
 export const PayloadCreatePartnerlModel = data => data;
