@@ -11,3 +11,10 @@ export const additionalDocumentTypes = [
     name: 'RG - Registro Geral',
   },
 ];
+
+export const displayDefaultBirthCountry = [
+  {
+    id: 76,
+    name: 'Brazil',
+  },
+];
