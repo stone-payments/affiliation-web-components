@@ -4,9 +4,8 @@ import 'sling-web-component-input';
 import 'sling-web-component-select';
 import 'sling-web-component-form';
 import {
-  documentTypeIds,
-  additionalDocumentTypeIds,
-  countryCodes,
+  additionalDocumentTypes,
+  documentTypes,
 } from '../state/MerchantPartnersState.js';
 
 
@@ -16,7 +15,7 @@ const validation = [
   isNotEmpty('taxId'),
   isNotEmpty('birthDate'),
   isNotEmpty('birthPlace'),
-  isNotEmpty('birthCountryid'),
+  isNotEmpty('birthCountryId'),
   isNotEmpty('additionalDocumentId'),
   isNotEmpty('additionalDocumentIdentifier'),
   isNotEmpty('additionalDocumentIssueDate'),
@@ -40,7 +39,7 @@ export const getRenderCreatePartnerForm = (
     <sling-select
       label="Documento"
       name="documentTypeId"
-      srcoptions="${documentTypeIds}">
+      srcoptions="${documentTypes}">
     </sling-select>
     <sling-input
       type="text"
@@ -54,10 +53,10 @@ export const getRenderCreatePartnerForm = (
     </sling-input>
     <sling-select
       type="text"
-      name="birthCountryid"
+      name="birthCountryId"
       placeholder="selecione um país"
       label="País de Nascimento"
-      srcoptions="${countryCodes}">
+      srcoptions="${state.countries}">
     </sling-select>
     <sling-input
       type="text"
@@ -66,8 +65,8 @@ export const getRenderCreatePartnerForm = (
     </sling-input>
     <sling-select
       label="Documento Adicional"
-      name="additionalDocumentId""
-      srcoptions="${additionalDocumentTypeIds}">
+      name="additionalDocumentId"
+      srcoptions="${additionalDocumentTypes}">
     </sling-select>
     <sling-input
       type="text"
@@ -102,7 +101,7 @@ export const getRenderCreatePartnerForm = (
     <sling-select
       label="Documento"
       name="spouseTaxIdType"
-      srcoptions="${documentTypeIds}">
+      srcoptions="${documentTypes}">
     </sling-select>
     <sling-input
       type="text"
