@@ -64,10 +64,10 @@ describe('Merchant Addresses Model', () => {
       cityName: 'test',
       streetName: 'test',
       number: 1,
-      complement: 'N/A',
+      complement: '',
       neighborhood: 'test',
       cityDisplay: 'test / test',
-      streetDisplay: 'test, 1 N/A',
+      streetDisplay: 'test, 1 ',
     }];
 
     const testData = AddressesModel(mockData);
@@ -103,7 +103,7 @@ describe('Merchant Addresses Model', () => {
       cityName: 'test',
       streetName: 'test street name',
       number: 1,
-      complement: 'N/A',
+      complement: '',
       neighborhood: 'test',
     };
 
@@ -133,10 +133,10 @@ describe('Merchant Addresses Model', () => {
         cityName: 'test',
         streetName: 'test',
         number: 1,
-        complement: 'N/A',
+        complement: '',
         neighborhood: 'test',
         cityDisplay: 'test / test',
-        streetDisplay: 'test, 1 N/A',
+        streetDisplay: 'test, 1 ',
       },
       {
         key: '1111-1111',
@@ -147,10 +147,10 @@ describe('Merchant Addresses Model', () => {
         cityName: 'test',
         streetName: 'test',
         number: 1,
-        complement: 'N/A',
+        complement: '',
         neighborhood: 'test',
         cityDisplay: 'test / test',
-        streetDisplay: 'test, 1 N/A',
+        streetDisplay: 'test, 1 ',
       },
     ];
 
@@ -194,10 +194,10 @@ describe('Merchant Addresses Model', () => {
         cityName: 'test',
         streetName: 'test',
         number: 1,
-        complement: 'N/A',
+        complement: '',
         neighborhood: 'test',
         cityDisplay: 'test / test',
-        streetDisplay: 'test, 1 N/A',
+        streetDisplay: 'test, 1 ',
       },
       {
         key: '1111-1111',
@@ -208,10 +208,10 @@ describe('Merchant Addresses Model', () => {
         cityName: 'test',
         streetName: 'test street name',
         number: 1,
-        complement: 'N/A',
+        complement: '',
         neighborhood: 'test',
         cityDisplay: 'test / test',
-        streetDisplay: 'test street name, 1 N/A',
+        streetDisplay: 'test street name, 1 ',
       },
     ];
 

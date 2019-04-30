@@ -7,10 +7,10 @@ export const AddressesModel = ([data]) => data.data.map(item => ({
   cityName: item.city.name,
   streetName: item.streetName,
   number: item.entranceNumber,
-  complement: item.complement ? item.complement : 'N/A',
+  complement: item.complement ? item.complement : '',
   neighborhood: item.neighborhood,
   cityDisplay: `${item.city.name} / ${item.city.countrySubdivision.iso31662Short}`,
-  streetDisplay: `${item.streetName}, ${item.entranceNumber} ${item.complement ? item.complement : 'N/A'}`,
+  streetDisplay: `${item.streetName}, ${item.entranceNumber} ${item.complement ? item.complement : ''}`,
 }));
 
 export const StatesModel = ([, data]) => {
@@ -47,10 +47,10 @@ export const AddressesUpdatedResponseModel = (currentState, [{ data }]) => {
         cityName: data.city.name,
         streetName: data.streetName,
         number: data.entranceNumber,
-        complement: data.complement ? data.complement : 'N/A',
+        complement: data.complement ? data.complement : '',
         neighborhood: data.neighborhood,
         cityDisplay: `${data.city.name} / ${data.city.countrySubdivision.iso31662Short}`,
-        streetDisplay: `${data.streetName}, ${data.entranceNumber} ${data.complement ? data.complement : 'N/A'}`,
+        streetDisplay: `${data.streetName}, ${data.entranceNumber} ${data.complement ? data.complement : ''}`,
       };
 
       return modeledArray.push(updatedItem);
