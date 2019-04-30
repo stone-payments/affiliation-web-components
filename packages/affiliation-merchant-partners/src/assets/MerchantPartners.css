@@ -1,3 +1,6 @@
+/* ------ */
+/* commom */
+/* ------ */
 .business-component {
   position: relative;
   min-height: 120px;
@@ -7,3 +10,208 @@
   text-align: right;
   padding: 16px;
 }
+
+sling-table {
+  min-height: 115px;
+}
+
+sling-form {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-gap: 16px;
+}
+
+
+sling-button[name="save"] {
+  grid-column-start: 7;
+  grid-column-end: span 2;
+}
+
+sling-button[name="cancel"] {
+  grid-column-start: 5;
+  grid-column-end: span 2;
+}
+
+sling-button[name="cancelCreate"] {
+  grid-column-start: 5;
+  grid-column-end: span 2;
+}
+
+sling-button[name="delete"] {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+
+
+
+
+
+/* ------------ */
+/* Legal partner */
+/* ------------ */
+.business-component__form_legal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+}
+
+.business-component__inner_legal {
+  max-width: 600px;
+  position: relative;
+  padding: 32px 0;
+}
+
+.business-component__inner_legal > svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  fill: #424B54;
+  cursor: pointer;
+}
+
+sling-input[name="tradeName"] {
+  grid-column: 1 / 3;
+}
+
+
+/* -------------- */
+/* Natural partner */
+/* -------------- */
+.business-component__form_natural {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+}
+
+.business-component__inner_natural {
+  max-width: 700px;
+  position: relative;
+  padding: 32px 0;
+}
+
+.business-component__inner_natural > svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  fill: #424B54;
+  cursor: pointer;
+}
+
+/* ROW 1 */
+sling-input[name="name"] {
+  grid-column-end: span 3;
+}
+
+sling-select[name="documentTypeId"] {
+  grid-column-end: span 2;
+}
+sling-input[name="taxId"] {
+  grid-column-end: span 3;
+}
+
+
+/* ROW 2 */
+sling-input[name="birthDate"] {
+  grid-column-end: span 2;
+}
+
+sling-select[name="birthCountryId"] {
+  grid-column-end: span 2;
+}
+
+sling-input[name="birthPlace"] {
+  grid-column-end: span 4;
+}
+
+/* ROW 3 */
+sling-select[name="additionalDocumentId"] {
+  grid-column-end: span 2;
+}
+
+sling-input[name="additionalDocumentIdentifier"] {
+  grid-column-end: span 2;
+}
+
+sling-input[name="additionalDocumentIssueDate"] {
+  grid-column-end: span 2;
+}
+
+sling-input[name="additionalDocumentIssuedBy"] {
+  grid-column-end: span 2;
+}
+
+sling-input[name="fatherName"] {
+  grid-column-end: span 4;
+}
+
+sling-input[name="motherName"] {
+  grid-column-end: span 4;
+}
+
+
+sling-input[name="spouseName"] {
+  grid-column-end: span 3;
+}
+
+sling-select[name="spouseTaxIdType"] {
+  grid-column-end: span 2;
+}
+
+sling-input[name="spouseTaxId"] {
+  grid-column-end: span 3;
+}
+
+
+/* ------ */
+/* Create */
+/* ------ */
+.business-component__form_create {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+}
+
+.business-component__inner_create {
+  max-width: 700px;
+  position: relative;
+  padding: 32px 0;
+}
+
+.business-component__inner_create > svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  fill: #424B54;
+  cursor: pointer;
+}
+
+
