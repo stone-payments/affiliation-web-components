@@ -1,5 +1,4 @@
 import {
-  DATE_LENGTH_VERIFY_NUMBER,
   RG_DOCUMENT_IDENTIFIER,
   MONTH_SUM_NUMBER,
 } from '../contants/MerchantPartnersModelConstants.js';
@@ -11,8 +10,8 @@ export const formatDate = (date, target) => {
   let month = (tempDate.getMonth() + MONTH_SUM_NUMBER).toString();
   const year = tempDate.getFullYear();
 
-  day = (day.length === DATE_LENGTH_VERIFY_NUMBER) ? `0${day}` : day;
-  month = (month.length === DATE_LENGTH_VERIFY_NUMBER) ? `0${month}` : month;
+  day = (day.length === 1) ? `0${day}` : day;
+  month = (month.length === 1) ? `0${month}` : month;
 
   if (target === 'display') {
     return `${day}/${month}/${year}`;
