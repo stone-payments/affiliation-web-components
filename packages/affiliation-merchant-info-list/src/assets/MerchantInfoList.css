@@ -8,6 +8,15 @@
   padding: 16px;
 }
 
+.business-component_paragraph {
+  font-weight: bold;
+  padding: 5px;
+  margin-top: 0;
+  color: #0b903d;
+  white-space: nowrap;
+  font-family: 'Roboto', sans-serif;
+}
+
 
 .business-component__form {
   position: fixed;

@@ -22,7 +22,10 @@ export const AffiliationMerchantContacts = (base = class {}) =>
       this.state = {
         contacts: [],
         editedContact: {},
-        formData: {},
+        formData: {
+          emails: [],
+          phones: [],
+        },
       };
     }
 
@@ -56,24 +59,27 @@ export const AffiliationMerchantContacts = (base = class {}) =>
     }
 
     handleFormUpdate(evt) {
-      this.setState({
-        formdata: evt.detail,
-      });
+      if (evt.detail.emails !== undefined ||
+          evt.detail.phones !== undefined) {
+        this.setState({
+          formData: evt.detail,
+        });
+      } else {
+        evt.stopPropagation();
+      }
     }
 
     handleFormSubmit(evt) {
       if (evt.detail) {
         const requestParams = {
           affiliationCode: this.state.affiliationCode,
-          id: evt.detail.id,
+          id: evt.detail.key,
         };
-
         const payload = MerchantContactsPayloadModel(evt.detail);
-
         this
           .request([
             // @TODO Change the sdk method to sdk.affiliation.contacts.put.
-            sdk.merchants.contacts.put(requestParams, payload),
+            sdk.affiliation.contacts.put(requestParams, payload),
           ])
           .then((responses) => {
             const data = UpdateContactstList(this.state.contacts, responses);
@@ -107,10 +113,10 @@ export const AffiliationMerchantContacts = (base = class {}) =>
           ])
           .then((responses) => {
             if (responses.every(notEmpty)) {
-              const data = ContactsModel(responses);
+              const contacts = ContactsModel(responses);
               this.setState({
                 affiliationCode,
-                contacts: data,
+                contacts,
               });
             }
           });

@@ -1,0 +1,55 @@
+:host .business-component__form_legal {
+    display: none;
+  }
+
+  :host([isEditingLegalPartner]) .business-component__form_legal {
+    display: flex;
+  }
+
+  /* for compatibility */
+
+  affiliation-merchant-partners .business-component__form_legal {
+    display: none;
+  }
+
+  affiliation-merchant-partners[isEditingLegalPartner] .business-component__form_legal {
+    display: flex;
+  }
+
+  /* ------------ natural partner ----------- */
+  :host .business-component__form_natural {
+    display: none;
+  }
+
+  :host([isEditingNaturalPartner]) .business-component__form_natural {
+    display: flex;
+  }
+
+  /* for compatibility */
+
+  affiliation-merchant-partners .business-component__form_natural {
+    display: none;
+  }
+
+  affiliation-merchant-partners[isEditingNaturalPartner] .business-component__form_natural {
+    display: flex;
+  }
+
+  /* ------------  Create  ----------- */
+  :host .business-component__form_create {
+    display: none;
+  }
+
+  :host([isCreatingPartner]) .business-component__form_create {
+    display: flex;
+  }
+
+  /* for compatibility */
+
+  affiliation-merchant-partners .business-component__form_create {
+    display: none;
+  }
+
+  affiliation-merchant-partners[isCreatingPartner] .business-component__form_create {
+    display: flex;
+  }

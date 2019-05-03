@@ -4,7 +4,7 @@ import {
   BankAccountsFormResponseModel,
 } from './BankAccountsModel.js';
 
-const newStateDataMock = [
+const stateDataMock = [
   {
     key: '1',
     bankId: 'test',
@@ -33,23 +33,24 @@ const newStateDataMock = [
   },
 ];
 
-const newResponseDataMock = [
-  {
-    key: '2',
-    bank: { id: 1, name: 'test response' },
-    bankName: 'test response',
-    branchCode: 'test response',
-    accountNumber: 'test response',
-    accountNumberCheckDigit: '1',
-    accountType: { id: 1, name: 'test response' },
-    accountTypeName: 'test response',
-    status: { id: 1, name: 'test response' },
-    statusName: 'test response',
-  },
-];
-
 describe('Merchant Bank Accounts Model', () => {
   it('Should return correct Merchant Bank Accounts form Response model', () => {
+    const mockUpdateResponse = [
+      {
+        data: {
+          key: '2',
+          bank: { id: 1, name: 'test response' },
+          bankName: 'test response',
+          branchCode: 'test response',
+          accountNumber: 'test response',
+          accountNumberCheckDigit: '1',
+          accountType: { id: 1, name: 'test response' },
+          accountTypeName: 'test response',
+          status: { id: 1, name: 'test response' },
+          statusName: 'test response',
+        },
+      },
+    ];
     const modeledData = [
       {
         key: '1',
@@ -81,7 +82,7 @@ describe('Merchant Bank Accounts Model', () => {
       },
     ];
 
-    expect(BankAccountsFormResponseModel(newStateDataMock, newResponseDataMock))
+    expect(BankAccountsFormResponseModel(stateDataMock, mockUpdateResponse))
       .to
       .deep
       .equal(modeledData);
